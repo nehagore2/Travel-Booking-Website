@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="View complete travel package details, itinerary, gallery and pricing with Wanderly."
+    >
+
+    <title>Package Details | Wanderly</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+
+    <header class="header" id="header">
+
+        <div class="container nav-container">
+
+            <!-- Logo -->
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <span class="logo-icon">
+                    ✈
+                </span>
+
+                <span>
+                    Wanderly
+                </span>
+
+            </a>
+
+
+            <!-- Navigation -->
+
+            <nav
+                class="navbar"
+                id="navbar"
+            >
+
+                <a
+                    href="index.html"
+                    class="nav-link"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="destinations.html"
+                    class="nav-link"
+                >
+                    Destinations
+                </a>
+
+                <a
+                    href="packages.html"
+                    class="nav-link active"
+                >
+                    Packages
+                </a>
+
+                <a
+                    href="about.html"
+                    class="nav-link"
+                >
+                    About Us
+                </a>
+
+                <a
+                    href="contact.html"
+                    class="nav-link"
+                >
+                    Contact
+                </a>
+
+                <a
+                    href="booking.html"
+                    class="nav-book-btn"
+                >
+                    Book Now
+                </a>
+
+            </nav>
+
+
+            <!-- Mobile Menu -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open navigation menu"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         PACKAGE DETAILS
+    =========================================== -->
+
+    <main id="packageDetailsPage">
+
+
+        <!-- ==================================
+             PACKAGE HERO
+        =================================== -->
+
+        <section class="package-details-hero">
+
+            <div
+                class="package-details-hero-image"
+                id="packageHeroImage"
+            >
+                <!-- Dynamic image -->
+            </div>
+
+
+            <div class="package-details-hero-overlay"></div>
+
+
+            <div class="container package-details-hero-content">
+
+                <div class="breadcrumb">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <span>
+                        /
+                    </span>
+
+                    <a href="packages.html">
+                        Packages
+                    </a>
+
+                    <span>
+                        /
+                    </span>
+
+                    <span id="heroPackageName">
+                        Package Details
+                    </span>
+
+                </div>
+
+
+                <span
+                    class="package-details-category"
+                    id="packageCategoryBadge"
+                >
+                    Travel Package
+                </span>
+
+
+                <h1 id="packageTitle">
+                    Loading Package...
+                </h1>
+
+
+                <div class="package-quick-info">
+
+                    <span id="packageDestination">
+                        📍 Destination
+                    </span>
+
+                    <span id="packageDuration">
+                        🕒 Duration
+                    </span>
+
+                    <span>
+                        ⭐ 4.8 Rating
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================
+             PACKAGE INFORMATION
+        =================================== -->
+
+        <section class="section package-details-section">
+
+            <div class="container package-details-grid">
+
+
+                <!-- ==================================
+                     LEFT CONTENT
+                =================================== -->
+
+                <div class="package-main-content">
+
+
+                    <!-- Overview -->
+
+                    <div class="details-block">
+
+                        <span class="section-tag">
+                            PACKAGE OVERVIEW
+                        </span>
+
+                        <h2 id="overviewTitle">
+                            Discover Your Next Adventure
+                        </h2>
+
+                        <p id="packageDescription">
+                            Loading package information...
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         GALLERY
+                    =================================== -->
+
+                    <div class="details-block">
+
+                        <div class="details-block-heading">
+
+                            <div>
+
+                                <span class="section-tag">
+                                    TRAVEL GALLERY
+                                </span>
+
+                                <h2>
+                                    Experience The Journey
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="package-gallery"
+                            id="packageGallery"
+                        >
+
+                            <!-- Gallery generated by JavaScript -->
+
+                        </div>
+
+
+                        <!-- Gallery Lightbox -->
+
+                        <div
+                            class="gallery-lightbox"
+                            id="galleryLightbox"
+                            hidden
+                        >
+
+                            <button
+                                type="button"
+                                class="lightbox-close"
+                                id="lightboxClose"
+                                aria-label="Close gallery"
+                            >
+                                ×
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="lightbox-prev"
+                                id="lightboxPrev"
+                                aria-label="Previous image"
+                            >
+                                ‹
+                            </button>
+
+
+                            <img
+                                src=""
+                                alt="Travel gallery"
+                                id="lightboxImage"
+                            >
+
+
+                            <button
+                                type="button"
+                                class="lightbox-next"
+                                id="lightboxNext"
+                                aria-label="Next image"
+                            >
+                                ›
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         ITINERARY
+                    =================================== -->
+
+                    <div class="details-block">
+
+                        <span class="section-tag">
+                            YOUR JOURNEY
+                        </span>
+
+                        <h2>
+                            Day-by-Day Itinerary
+                        </h2>
+
+
+                        <div
+                            class="itinerary"
+                            id="packageItinerary"
+                        >
+
+                            <!-- Itinerary generated by JavaScript -->
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         INCLUSIONS
+                    =================================== -->
+
+                    <div class="details-block">
+
+                        <span class="section-tag">
+                            WHAT'S INCLUDED
+                        </span>
+
+                        <h2>
+                            Package Inclusions
+                        </h2>
+
+
+                        <div
+                            class="inclusions-grid"
+                            id="packageInclusions"
+                        >
+
+                            <!-- Inclusions generated by JavaScript -->
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         IMPORTANT INFORMATION
+                    =================================== -->
+
+                    <div class="details-block information-box">
+
+                        <div class="information-icon">
+                            ℹ
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Before You Travel
+                            </h3>
+
+                            <p>
+                                Please make sure your passport and
+                                travel documents are valid. Package
+                                prices may vary depending on travel
+                                dates and availability.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     RIGHT BOOKING CARD
+                =================================== -->
+
+                <aside class="booking-summary-card">
+
+                    <div class="booking-card-header">
+
+                        <span>
+                            PACKAGE PRICE
+                        </span>
+
+                        <div
+                            class="booking-price"
+                            id="packagePrice"
+                        >
+                            ₹0
+                        </div>
+
+                        <p>
+                            per person
+                        </p>
+
+                    </div>
+
+
+                    <!-- Old Price -->
+
+                    <div
+                        class="booking-old-price"
+                        id="packageOldPrice"
+                    >
+                        ₹0
+                    </div>
+
+
+                    <!-- Savings -->
+
+                    <div class="saving-badge">
+
+                        Save on this package
+
+                    </div>
+
+
+                    <!-- Package Summary -->
+
+                    <div class="booking-summary-list">
+
+                        <div>
+
+                            <span>
+                                📍 Destination
+                            </span>
+
+                            <strong id="summaryDestination">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                🕒 Duration
+                            </span>
+
+                            <strong id="summaryDuration">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                🍳 Breakfast
+                            </span>
+
+                            <strong>
+                                Included
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                🚗 Transfers
+                            </span>
+
+                            <strong>
+                                Included
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Book Button -->
+
+                    <a
+                        href="booking.html"
+                        class="btn btn-primary booking-main-btn"
+                        id="bookPackageButton"
+                    >
+                        Book This Package
+                    </a>
+
+
+                    <a
+                        href="contact.html"
+                        class="booking-help-link"
+                    >
+                        Need help? Talk to an expert
+                    </a>
+
+
+                    <div class="secure-booking">
+
+                        🔒
+                        <span>
+                            Secure & trusted booking
+                        </span>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             RELATED PACKAGES
+        =========================================== -->
+
+        <section class="section related-packages-section">
+
+            <div class="container">
+
+                <div class="section-heading centered">
+
+                    <span class="section-tag">
+                        YOU MAY ALSO LIKE
+                    </span>
+
+                    <h2>
+                        Explore More Packages
+                    </h2>
+
+                </div>
+
+
+                <div
+                    class="package-grid"
+                    id="relatedPackages"
+                >
+
+                    <!-- Related packages generated by JavaScript -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             CTA
+        =========================================== -->
+
+        <section class="cta-section">
+
+            <div class="container cta-content">
+
+                <span class="section-tag">
+                    READY TO TRAVEL?
+                </span>
+
+                <h2>
+                    Your Adventure
+                    <span>Starts Here.</span>
+                </h2>
+
+                <p>
+                    Book your dream trip today and create memories
+                    that last a lifetime.
+                </p>
+
+                <a
+                    href="booking.html"
+                    class="btn btn-light"
+                >
+                    Start Your Journey
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+
+            <!-- Brand -->
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="logo footer-logo"
+                >
+
+                    <span class="logo-icon">
+                        ✈
+                    </span>
+
+                    <span>
+                        Wanderly
+                    </span>
+
+                </a>
+
+                <p>
+                    Making travel simple, memorable and
+                    unforgettable. Discover the world with us.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#">
+                        Instagram
+                    </a>
+
+                    <a href="#">
+                        Facebook
+                    </a>
+
+                    <a href="#">
+                        YouTube
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Explore -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Explore
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="destinations.html">
+                    Destinations
+                </a>
+
+                <a href="packages.html">
+                    Travel Packages
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+            </div>
+
+
+
+            <!-- Support -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Support
+                </h3>
+
+                <a href="booking.html">
+                    Book a Trip
+                </a>
+
+                <a href="contact.html">
+                    Contact Us
+                </a>
+
+                <a href="contact.html">
+                    Help Center
+                </a>
+
+                <a href="contact.html">
+                    FAQs
+                </a>
+
+            </div>
+
+
+
+            <!-- Contact -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Get In Touch
+                </h3>
+
+                <p>
+                    📍 Pune, Maharashtra, India
+                </p>
+
+                <p>
+                    ☎ +91 98765 43210
+                </p>
+
+                <p>
+                    ✉ hello@wanderly.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Footer Bottom -->
+
+        <div class="footer-bottom">
+
+            <div class="container footer-bottom-content">
+
+                <p>
+                    © 2026 Wanderly Travel. All Rights Reserved.
+                </p>
+
+                <div>
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                    <a href="#">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="js/data.js"></script>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
