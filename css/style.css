@@ -4938,3 +4938,245 @@ p {
     }
 
 }
+/* =========================================================
+   HOME HERO - MOBILE FINAL FIX
+========================================================= */
+
+@media (max-width: 800px) {
+
+    body.home-page .hero {
+        min-height: auto;
+
+        height: auto;
+
+        padding:
+            0 0 35px;
+
+        background-position:
+            62% center;
+    }
+
+
+    body.home-page .hero-content {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        padding:
+            105px 20px 35px;
+    }
+
+
+    body.home-page .hero-tag {
+
+        font-size: 0.78rem;
+
+        margin-bottom: 8px;
+    }
+
+
+    body.home-page .hero h1 {
+
+        max-width: 330px;
+
+        margin:
+            8px 0 16px;
+
+        font-size:
+            clamp(2.65rem, 12vw, 3.5rem);
+
+        line-height: 0.98;
+
+        letter-spacing:
+            -1px;
+    }
+
+
+    body.home-page .hero h1 span {
+
+        display: block;
+
+        margin-top: 3px;
+    }
+
+
+    body.home-page .hero p {
+
+        max-width: 330px;
+
+        margin-bottom: 20px;
+
+        font-size: 0.84rem;
+
+        line-height: 1.6;
+    }
+
+
+    body.home-page .hero-buttons {
+
+        width: 100%;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+    }
+
+
+    body.home-page .hero-buttons .btn {
+
+        width: 100%;
+
+        min-height: 45px;
+
+        padding:
+            12px 15px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 0.78rem;
+    }
+
+
+    /* SEARCH BOX */
+
+    body.home-page .hero-search {
+
+        width: 100%;
+
+        padding: 8px;
+
+        gap: 6px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        border-radius: 14px;
+
+        background:
+            rgba(255, 255, 255, 0.97);
+
+        box-shadow:
+            0 12px 35px
+            rgba(0, 0, 0, 0.2);
+    }
+
+
+    body.home-page .search-item {
+
+        width: 100%;
+
+        min-height: 48px;
+
+        padding:
+            5px 9px;
+
+        gap: 10px;
+    }
+
+
+    body.home-page .search-icon {
+
+        width: 34px;
+
+        height: 34px;
+
+        font-size: 1rem;
+    }
+
+
+    body.home-page .search-item small {
+
+        font-size: 0.62rem;
+    }
+
+
+    body.home-page .search-item input {
+
+        font-size: 0.78rem;
+    }
+
+
+    body.home-page .search-btn {
+
+        width: 100%;
+
+        min-height: 43px;
+
+        border-radius: 9px;
+
+        font-size: 0.78rem;
+    }
+
+}
+
+
+/* EXTRA SMALL PHONES */
+
+@media (max-width: 380px) {
+
+    body.home-page .hero-content {
+
+        padding:
+            98px 16px 28px;
+    }
+
+
+    body.home-page .hero h1 {
+
+        font-size: 2.55rem;
+
+        max-width: 300px;
+    }
+
+
+    body.home-page .hero p {
+
+        max-width: 305px;
+
+        font-size: 0.78rem;
+    }
+
+
+    body.home-page .hero-buttons {
+
+        gap: 8px;
+    }
+
+
+    body.home-page .hero-buttons .btn {
+
+        min-height: 42px;
+
+        padding:
+            10px 12px;
+
+        font-size: 0.73rem;
+    }
+
+
+    body.home-page .hero-search {
+
+        padding: 7px;
+    }
+
+
+    body.home-page .search-item {
+
+        min-height: 44px;
+    }
+
+
+    body.home-page .search-btn {
+
+        min-height: 40px;
+    }
+
+}

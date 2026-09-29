@@ -5,308 +5,523 @@
 
 
 /* =========================================================
-   01. GLOBAL HELPERS
+   HELPER FUNCTIONS
 ========================================================= */
 
-const $ = (selector, parent = document) => {
+function $(selector, parent = document) {
     return parent.querySelector(selector);
-};
-
-
-const $$ = (selector, parent = document) => {
-    return [...parent.querySelectorAll(selector)];
-};
-
-
-function getPageName() {
-    const path = window.location.pathname;
-
-    const file = path.split("/").pop();
-
-    return file || "index.html";
 }
 
-
-function formatPrice(price) {
-    return `₹${Number(price).toLocaleString("en-IN")}`;
-}
-
-
-function getStoredBookings() {
-    return JSON.parse(
-        localStorage.getItem("wanderlyBookings") || "[]"
-    );
+function $$(selector, parent = document) {
+    return Array.from(parent.querySelectorAll(selector));
 }
 
 
 /* =========================================================
-   02. HEADER / NAVIGATION
+   MOBILE NAVIGATION
 ========================================================= */
 
-function initializeNavigation() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    const header = $(".header");
+    const menuToggle =
+        $(".menu-toggle");
 
-    const menuToggle = $(".menu-toggle");
+    const nav =
+        $(".main-nav");
 
-    const navbar = $(".navbar");
+    if (menuToggle && nav) {
+
+        menuToggle.addEventListener(
+            "click",
+            function () {
+
+                nav.classList.toggle("active");
+
+                menuToggle.classList.toggle(
+                    "active"
+                );
+
+            }
+        );
 
 
-    if (!header) {
-        return;
+        $$(".main-nav a").forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        nav.classList.remove(
+                            "active"
+                        );
+
+                        menuToggle.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
     }
 
+});
 
-    function updateHeader() {
+
+/* =========================================================
+   STICKY HEADER
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        const header =
+            $(".header");
+
+        if (!header) {
+            return;
+        }
 
         if (window.scrollY > 50) {
-            header.classList.add("scrolled");
+
+            header.classList.add(
+                "scrolled"
+            );
+
         } else {
-            header.classList.remove("scrolled");
+
+            header.classList.remove(
+                "scrolled"
+            );
+
         }
 
     }
-
-
-    updateHeader();
-
-    window.addEventListener("scroll", updateHeader);
-
-
-    if (menuToggle && navbar) {
-
-        menuToggle.addEventListener("click", () => {
-
-            menuToggle.classList.toggle("active");
-
-            navbar.classList.toggle("active");
-
-        });
-
-
-        $$(".nav-link", navbar).forEach(link => {
-
-            link.addEventListener("click", () => {
-
-                menuToggle.classList.remove("active");
-
-                navbar.classList.remove("active");
-
-            });
-
-        });
-
-    }
-
-}
+);
 
 
 /* =========================================================
-   03. ACTIVE NAVIGATION LINK
+   HOME SEARCH
 ========================================================= */
 
-function setActiveNavigation() {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const currentPage = getPageName();
+        const searchForm =
+            $("#homeSearchForm");
 
-    $$(".nav-link").forEach(link => {
+        const searchInput =
+            $("#homeSearchInput");
 
-        const href = link.getAttribute("href");
-
-        if (!href) {
+        if (!searchForm || !searchInput) {
             return;
         }
 
 
-        const linkPage = href.split("/").pop();
+        searchForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                const query =
+                    searchInput.value
+                        .trim()
+                        .toLowerCase();
+
+                if (!query) {
+
+                    window.location.href =
+                        "destinations.html";
+
+                    return;
+
+                }
 
 
-        if (
-            linkPage === currentPage ||
-            (
-                currentPage === "" &&
-                linkPage === "index.html"
-            )
-        ) {
+                const destination =
+                    destinationData?.find(
+                        function (item) {
 
-            link.classList.add("active");
+                            return (
+                                item.name
+                                    .toLowerCase()
+                                    .includes(query) ||
+
+                                item.country
+                                    ?.toLowerCase()
+                                    .includes(query)
+                            );
+
+                        }
+                    );
+
+
+                if (destination) {
+
+                    window.location.href =
+                        `destinations.html?search=${encodeURIComponent(
+                            destination.name
+                        )}`;
+
+                } else {
+
+                    window.location.href =
+                        `destinations.html?search=${encodeURIComponent(
+                            query
+                        )}`;
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   DESTINATION SEARCH / FILTER
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const searchInput =
+            $("#destinationSearch");
+
+        const categoryFilter =
+            $("#destinationCategory");
+
+        const priceFilter =
+            $("#destinationPrice");
+
+        const sortSelect =
+            $("#destinationSort");
+
+        const grid =
+            $("#destinationsGrid");
+
+        if (!grid) {
+            return;
+        }
+
+
+        function renderDestinations() {
+
+            let destinations =
+                [...(destinationData || [])];
+
+
+            const search =
+                searchInput
+                    ? searchInput.value
+                        .trim()
+                        .toLowerCase()
+                    : "";
+
+
+            const category =
+                categoryFilter
+                    ? categoryFilter.value
+                    : "all";
+
+
+            const price =
+                priceFilter
+                    ? priceFilter.value
+                    : "all";
+
+
+            const sort =
+                sortSelect
+                    ? sortSelect.value
+                    : "default";
+
+
+            /* SEARCH */
+
+            if (search) {
+
+                destinations =
+                    destinations.filter(
+                        function (item) {
+
+                            return (
+
+                                item.name
+                                    .toLowerCase()
+                                    .includes(search)
+
+                                ||
+
+                                item.country
+                                    ?.toLowerCase()
+                                    .includes(search)
+
+                                ||
+
+                                item.description
+                                    ?.toLowerCase()
+                                    .includes(search)
+
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            /* CATEGORY */
+
+            if (
+                category &&
+                category !== "all"
+            ) {
+
+                destinations =
+                    destinations.filter(
+                        function (item) {
+
+                            return (
+                                item.category
+                                    ?.toLowerCase()
+                                ===
+                                category.toLowerCase()
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            /* PRICE */
+
+            if (price !== "all") {
+
+                destinations =
+                    destinations.filter(
+                        function (item) {
+
+                            const amount =
+                                Number(
+                                    item.price
+                                );
+
+
+                            if (price === "low") {
+
+                                return amount < 25000;
+
+                            }
+
+
+                            if (price === "medium") {
+
+                                return (
+                                    amount >= 25000 &&
+                                    amount <= 50000
+                                );
+
+                            }
+
+
+                            if (price === "high") {
+
+                                return amount > 50000;
+
+                            }
+
+
+                            return true;
+
+                        }
+                    );
+
+            }
+
+
+            /* SORT */
+
+            if (sort === "price-low") {
+
+                destinations.sort(
+                    (a, b) =>
+                        Number(a.price) -
+                        Number(b.price)
+                );
+
+            }
+
+
+            if (sort === "price-high") {
+
+                destinations.sort(
+                    (a, b) =>
+                        Number(b.price) -
+                        Number(a.price)
+                );
+
+            }
+
+
+            if (sort === "name") {
+
+                destinations.sort(
+                    (a, b) =>
+                        a.name.localeCompare(
+                            b.name
+                        )
+                );
+
+            }
+
+
+            /* RENDER */
+
+            if (!destinations.length) {
+
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <h3>No destinations found</h3>
+                        <p>
+                            Try another search or filter.
+                        </p>
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            grid.innerHTML =
+                destinations
+                    .map(
+                        createDestinationCard
+                    )
+                    .join("");
 
         }
 
-    });
 
-}
+        if (searchInput) {
+
+            searchInput.addEventListener(
+                "input",
+                renderDestinations
+            );
+
+        }
+
+
+        if (categoryFilter) {
+
+            categoryFilter.addEventListener(
+                "change",
+                renderDestinations
+            );
+
+        }
+
+
+        if (priceFilter) {
+
+            priceFilter.addEventListener(
+                "change",
+                renderDestinations
+            );
+
+        }
+
+
+        if (sortSelect) {
+
+            sortSelect.addEventListener(
+                "change",
+                renderDestinations
+            );
+
+        }
+
+
+        renderDestinations();
+
+    }
+);
 
 
 /* =========================================================
-   04. HOME PAGE DESTINATIONS
+   DESTINATION CARD
 ========================================================= */
 
-function renderHomeDestinations() {
-
-    const container = $("#homeDestinations");
-
-    if (!container) {
-        return;
-    }
-
-
-    if (
-        typeof destinations === "undefined" ||
-        !Array.isArray(destinations)
-    ) {
-
-        console.warn("Destination data not found.");
-
-        return;
-    }
-
-
-    const popularDestinations = destinations.slice(0, 6);
-
-
-    container.innerHTML = popularDestinations
-        .map(destination => {
-
-            return `
-                <article class="destination-card">
-
-                    <div class="destination-card-image">
-
-                        <img
-                            src="${destination.image}"
-                            alt="${destination.name}"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-
-                    <div class="destination-card-content">
-
-                        <span class="card-category">
-                            ${destination.category}
-                        </span>
-
-
-                        <h3>
-                            ${destination.name}
-                        </h3>
-
-
-                        <p>
-                            ${destination.description}
-                        </p>
-
-
-                        <div class="card-bottom">
-
-                            <span class="card-price">
-                                ${formatPrice(destination.price)}
-                                <small>/ person</small>
-                            </span>
-
-
-                            <a
-                                href="destinations.html?id=${destination.id}"
-                                class="card-link"
-                            >
-                                Explore →
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </article>
-            `;
-
-        })
-        .join("");
-
-}
-
-
-/* =========================================================
-   05. HOME PAGE PACKAGES
-========================================================= */
-
-function renderHomePackages() {
-
-    const container = $("#homePackages");
-
-    if (!container) {
-        return;
-    }
-
-
-    if (
-        typeof packages === "undefined" ||
-        !Array.isArray(packages)
-    ) {
-
-        console.warn("Package data not found.");
-
-        return;
-    }
-
-
-    const featuredPackages = packages.slice(0, 6);
-
-
-    container.innerHTML = featuredPackages
-        .map(pkg => createPackageCard(pkg))
-        .join("");
-
-}
-
-
-function createPackageCard(pkg) {
+function createDestinationCard(
+    destination
+) {
 
     return `
-        <article class="package-card">
+        <article class="destination-card">
 
-            <div class="package-card-image">
+            <div class="destination-image">
 
                 <img
-                    src="${pkg.image}"
-                    alt="${pkg.name}"
+                    src="${destination.image}"
+                    alt="${destination.name}"
                     loading="lazy"
                 >
+
+                <span class="destination-category">
+                    ${destination.category || "Travel"}
+                </span>
 
             </div>
 
 
-            <div class="package-card-content">
+            <div class="destination-content">
 
-                <span class="card-category">
-                    ${pkg.category}
+                <span class="destination-country">
+                    ${destination.country || ""}
                 </span>
 
-
                 <h3>
-                    ${pkg.name}
+                    ${destination.name}
                 </h3>
 
-
                 <p>
-                    ${pkg.description}
+                    ${destination.description || ""}
                 </p>
 
 
-                <div class="card-bottom">
+                <div class="destination-bottom">
 
-                    <span class="card-price">
-                        ${formatPrice(pkg.price)}
-                        <small>/ person</small>
-                    </span>
+                    <div>
+
+                        <small>
+                            Starting from
+                        </small>
+
+                        <strong>
+                            ₹${Number(
+                                destination.price || 0
+                            ).toLocaleString("en-IN")}
+                        </strong>
+
+                    </div>
 
 
                     <a
-                        href="package-details.html?id=${pkg.id}"
-                        class="card-link"
+                        href="package-details.html?id=${destination.id}"
+                        class="btn btn-small"
                     >
-                        View Details →
+                        Explore
                     </a>
 
                 </div>
@@ -320,1626 +535,748 @@ function createPackageCard(pkg) {
 
 
 /* =========================================================
-   06. DESTINATIONS PAGE
+   PACKAGE SEARCH / FILTER
 ========================================================= */
 
-function initializeDestinationPage() {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const container = $("#destinationGrid");
+        const searchInput =
+            $("#packageSearch");
 
-    if (!container) {
-        return;
-    }
+        const categoryFilter =
+            $("#packageCategory");
 
+        const priceFilter =
+            $("#packagePrice");
 
-    if (
-        typeof destinations === "undefined" ||
-        !Array.isArray(destinations)
-    ) {
+        const sortSelect =
+            $("#packageSort");
 
-        return;
-    }
+        const grid =
+            $("#packagesGrid");
 
-
-    const searchInput = $("#destinationSearch");
-
-    const categoryFilter = $("#categoryFilter");
-
-    const priceFilter = $("#priceFilter");
-
-    const sortFilter = $("#sortFilter");
-
-    const resetButton = $("#resetFilters");
-
-    const resultCount = $("#destinationCount");
-
-
-    function filterDestinations() {
-
-        let filtered = [...destinations];
-
-
-        /* SEARCH */
-
-        const searchValue =
-            searchInput?.value
-                .trim()
-                .toLowerCase() || "";
-
-
-        if (searchValue) {
-
-            filtered = filtered.filter(destination => {
-
-                return (
-                    destination.name
-                        .toLowerCase()
-                        .includes(searchValue) ||
-
-                    destination.description
-                        .toLowerCase()
-                        .includes(searchValue) ||
-
-                    destination.category
-                        .toLowerCase()
-                        .includes(searchValue)
-                );
-
-            });
-
-        }
-
-
-        /* CATEGORY */
-
-        const category =
-            categoryFilter?.value || "all";
-
-
-        if (category !== "all") {
-
-            filtered = filtered.filter(destination => {
-
-                return (
-                    destination.category.toLowerCase() ===
-                    category.toLowerCase()
-                );
-
-            });
-
-        }
-
-
-        /* PRICE */
-
-        const price =
-            priceFilter?.value || "all";
-
-
-        if (price !== "all") {
-
-            filtered = filtered.filter(destination => {
-
-                const amount = Number(destination.price);
-
-
-                if (price === "under-20000") {
-                    return amount < 20000;
-                }
-
-
-                if (price === "20000-40000") {
-                    return amount >= 20000 && amount <= 40000;
-                }
-
-
-                if (price === "40000-60000") {
-                    return amount > 40000 && amount <= 60000;
-                }
-
-
-                if (price === "above-60000") {
-                    return amount > 60000;
-                }
-
-
-                return true;
-
-            });
-
-        }
-
-
-        /* SORT */
-
-        const sort =
-            sortFilter?.value || "default";
-
-
-        if (sort === "price-low") {
-
-            filtered.sort(
-                (a, b) =>
-                    Number(a.price) -
-                    Number(b.price)
-            );
-
-        }
-
-
-        if (sort === "price-high") {
-
-            filtered.sort(
-                (a, b) =>
-                    Number(b.price) -
-                    Number(a.price)
-            );
-
-        }
-
-
-        if (sort === "name") {
-
-            filtered.sort(
-                (a, b) =>
-                    a.name.localeCompare(b.name)
-            );
-
-        }
-
-
-        renderDestinationResults(
-            filtered,
-            container,
-            resultCount
-        );
-
-    }
-
-
-    function renderDestinationResults(
-        items,
-        target,
-        countElement
-    ) {
-
-        if (countElement) {
-
-            countElement.textContent =
-                `${items.length} destination${items.length !== 1 ? "s" : ""} found`;
-
-        }
-
-
-        if (items.length === 0) {
-
-            target.innerHTML = `
-                <div class="no-results">
-
-                    <div class="no-results-icon">
-                        🔎
-                    </div>
-
-                    <h3>
-                        No destinations found
-                    </h3>
-
-                    <p>
-                        Try changing your search or filters.
-                    </p>
-
-                    <button
-                        class="btn btn-primary"
-                        id="emptyResetButton"
-                    >
-                        Reset Filters
-                    </button>
-
-                </div>
-            `;
-
-
-            $("#emptyResetButton")?.addEventListener(
-                "click",
-                resetFilters
-            );
-
-
+        if (!grid) {
             return;
         }
 
 
-        target.innerHTML = items
-            .map(destination => {
+        function renderPackages() {
 
-                return `
-                    <article class="destination-card">
+            let packages =
+                [...(packageData || [])];
 
-                        <div class="destination-card-image">
 
-                            <img
-                                src="${destination.image}"
-                                alt="${destination.name}"
-                                loading="lazy"
-                            >
+            const search =
+                searchInput
+                    ? searchInput.value
+                        .trim()
+                        .toLowerCase()
+                    : "";
 
-                        </div>
 
+            const category =
+                categoryFilter
+                    ? categoryFilter.value
+                    : "all";
 
-                        <div class="destination-card-content">
 
-                            <span class="card-category">
-                                ${destination.category}
-                            </span>
+            const price =
+                priceFilter
+                    ? priceFilter.value
+                    : "all";
 
 
-                            <h3>
-                                ${destination.name}
-                            </h3>
+            const sort =
+                sortSelect
+                    ? sortSelect.value
+                    : "default";
 
 
-                            <p>
-                                ${destination.description}
-                            </p>
+            /* SEARCH */
 
+            if (search) {
 
-                            <div class="card-bottom">
+                packages =
+                    packages.filter(
+                        function (item) {
 
-                                <span class="card-price">
-                                    ${formatPrice(destination.price)}
-                                    <small>/ person</small>
-                                </span>
+                            return (
 
+                                item.name
+                                    .toLowerCase()
+                                    .includes(search)
 
-                                <a
-                                    href="destination-details.html?id=${destination.id}"
-                                    class="card-link"
-                                >
-                                    View Details →
-                                </a>
+                                ||
 
-                            </div>
+                                item.destination
+                                    ?.toLowerCase()
+                                    .includes(search)
 
-                        </div>
+                                ||
 
-                    </article>
-                `;
+                                item.description
+                                    ?.toLowerCase()
+                                    .includes(search)
 
-            })
-            .join("");
+                            );
 
-    }
+                        }
+                    );
 
+            }
 
-    function resetFilters() {
 
-        if (searchInput) {
-            searchInput.value = "";
-        }
+            /* CATEGORY */
 
+            if (
+                category &&
+                category !== "all"
+            ) {
 
-        if (categoryFilter) {
-            categoryFilter.value = "all";
-        }
+                packages =
+                    packages.filter(
+                        function (item) {
 
+                            return (
+                                item.category
+                                    ?.toLowerCase()
+                                ===
+                                category.toLowerCase()
+                            );
 
-        if (priceFilter) {
-            priceFilter.value = "all";
-        }
+                        }
+                    );
 
+            }
 
-        if (sortFilter) {
-            sortFilter.value = "default";
-        }
 
+            /* PRICE */
 
-        filterDestinations();
+            if (price !== "all") {
 
-    }
+                packages =
+                    packages.filter(
+                        function (item) {
 
+                            const amount =
+                                Number(
+                                    item.price
+                                );
 
-    searchInput?.addEventListener(
-        "input",
-        filterDestinations
-    );
 
+                            if (price === "low") {
 
-    categoryFilter?.addEventListener(
-        "change",
-        filterDestinations
-    );
+                                return amount < 25000;
 
+                            }
 
-    priceFilter?.addEventListener(
-        "change",
-        filterDestinations
-    );
 
+                            if (price === "medium") {
 
-    sortFilter?.addEventListener(
-        "change",
-        filterDestinations
-    );
+                                return (
+                                    amount >= 25000 &&
+                                    amount <= 50000
+                                );
 
+                            }
 
-    resetButton?.addEventListener(
-        "click",
-        resetFilters
-    );
 
+                            if (price === "high") {
 
-    filterDestinations();
+                                return amount > 50000;
 
-}
+                            }
 
 
-/* =========================================================
-   07. PACKAGES PAGE
-========================================================= */
+                            return true;
 
-function initializePackagesPage() {
+                        }
+                    );
 
-    const container = $("#packageGrid");
+            }
 
-    if (!container) {
-        return;
-    }
 
+            /* SORT */
 
-    if (
-        typeof packages === "undefined" ||
-        !Array.isArray(packages)
-    ) {
+            if (sort === "price-low") {
 
-        return;
-    }
-
-
-    const searchInput = $("#packageSearch");
-
-    const categoryFilter = $("#packageCategory");
-
-    const durationFilter = $("#durationFilter");
-
-    const priceFilter = $("#packagePrice");
-
-    const sortFilter = $("#packageSort");
-
-    const resetButton = $("#resetPackageFilters");
-
-    const resultCount = $("#packageCount");
-
-
-    function filterPackages() {
-
-        let filtered = [...packages];
-
-
-        /* SEARCH */
-
-        const search =
-            searchInput?.value
-                .trim()
-                .toLowerCase() || "";
-
-
-        if (search) {
-
-            filtered = filtered.filter(pkg => {
-
-                return (
-                    pkg.name.toLowerCase().includes(search) ||
-
-                    pkg.description.toLowerCase().includes(search) ||
-
-                    pkg.category.toLowerCase().includes(search)
+                packages.sort(
+                    (a, b) =>
+                        Number(a.price) -
+                        Number(b.price)
                 );
 
-            });
-
-        }
+            }
 
 
-        /* CATEGORY */
+            if (sort === "price-high") {
 
-        const category =
-            categoryFilter?.value || "all";
-
-
-        if (category !== "all") {
-
-            filtered = filtered.filter(pkg => {
-
-                return (
-                    pkg.category.toLowerCase() ===
-                    category.toLowerCase()
+                packages.sort(
+                    (a, b) =>
+                        Number(b.price) -
+                        Number(a.price)
                 );
 
-            });
+            }
 
-        }
 
+            if (sort === "name") {
 
-        /* DURATION */
+                packages.sort(
+                    (a, b) =>
+                        a.name.localeCompare(
+                            b.name
+                        )
+                );
 
-        const duration =
-            durationFilter?.value || "all";
+            }
 
 
-        if (duration !== "all") {
+            if (!packages.length) {
 
-            filtered = filtered.filter(pkg => {
-
-                const days =
-                    parseInt(pkg.duration, 10);
-
-
-                if (duration === "short") {
-                    return days <= 4;
-                }
-
-
-                if (duration === "medium") {
-                    return days >= 5 && days <= 7;
-                }
-
-
-                if (duration === "long") {
-                    return days >= 8;
-                }
-
-
-                return true;
-
-            });
-
-        }
-
-
-        /* PRICE */
-
-        const price =
-            priceFilter?.value || "all";
-
-
-        if (price !== "all") {
-
-            filtered = filtered.filter(pkg => {
-
-                const amount = Number(pkg.price);
-
-
-                if (price === "under-30000") {
-                    return amount < 30000;
-                }
-
-
-                if (price === "30000-50000") {
-                    return amount >= 30000 && amount <= 50000;
-                }
-
-
-                if (price === "above-50000") {
-                    return amount > 50000;
-                }
-
-
-                return true;
-
-            });
-
-        }
-
-
-        /* SORT */
-
-        const sort =
-            sortFilter?.value || "default";
-
-
-        if (sort === "price-low") {
-
-            filtered.sort(
-                (a, b) =>
-                    Number(a.price) -
-                    Number(b.price)
-            );
-
-        }
-
-
-        if (sort === "price-high") {
-
-            filtered.sort(
-                (a, b) =>
-                    Number(b.price) -
-                    Number(a.price)
-            );
-
-        }
-
-
-        if (sort === "duration-short") {
-
-            filtered.sort(
-                (a, b) =>
-                    parseInt(a.duration) -
-                    parseInt(b.duration)
-            );
-
-        }
-
-
-        if (sort === "duration-long") {
-
-            filtered.sort(
-                (a, b) =>
-                    parseInt(b.duration) -
-                    parseInt(a.duration)
-            );
-
-        }
-
-
-        renderPackages(
-            filtered,
-            container,
-            resultCount
-        );
-
-    }
-
-
-    function renderPackages(
-        items,
-        target,
-        countElement
-    ) {
-
-        if (countElement) {
-
-            countElement.textContent =
-                `${items.length} package${items.length !== 1 ? "s" : ""} found`;
-
-        }
-
-
-        if (items.length === 0) {
-
-            target.innerHTML = `
-                <div class="no-results">
-
-                    <div class="no-results-icon">
-                        🔎
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <h3>No packages found</h3>
+                        <p>
+                            Try another search or filter.
+                        </p>
                     </div>
+                `;
 
-                    <h3>
-                        No packages found
-                    </h3>
+                return;
 
-                    <p>
-                        Try changing your filters.
-                    </p>
+            }
 
-                </div>
-            `;
 
-            return;
+            grid.innerHTML =
+                packages
+                    .map(
+                        createPackageCard
+                    )
+                    .join("");
+
         }
 
 
-        target.innerHTML = items
-            .map(pkg => {
-
-                return `
-                    <article class="package-card">
-
-                        <div class="package-card-image">
-
-                            <img
-                                src="${pkg.image}"
-                                alt="${pkg.name}"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-
-                        <div class="package-card-content">
-
-                            <span class="card-category">
-                                ${pkg.category}
-                            </span>
-
-
-                            <h3>
-                                ${pkg.name}
-                            </h3>
-
-
-                            <p>
-                                ${pkg.description}
-                            </p>
-
-
-                            <div class="card-bottom">
-
-                                <span class="card-price">
-                                    ${formatPrice(pkg.price)}
-                                    <small>/ person</small>
-                                </span>
-
-
-                                <a
-                                    href="package-details.html?id=${pkg.id}"
-                                    class="card-link"
-                                >
-                                    View Details →
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                `;
-
-            })
-            .join("");
-
-    }
-
-
-    function resetFilters() {
-
         if (searchInput) {
-            searchInput.value = "";
+
+            searchInput.addEventListener(
+                "input",
+                renderPackages
+            );
+
         }
 
 
         if (categoryFilter) {
-            categoryFilter.value = "all";
-        }
 
+            categoryFilter.addEventListener(
+                "change",
+                renderPackages
+            );
 
-        if (durationFilter) {
-            durationFilter.value = "all";
         }
 
 
         if (priceFilter) {
-            priceFilter.value = "all";
+
+            priceFilter.addEventListener(
+                "change",
+                renderPackages
+            );
+
         }
 
 
-        if (sortFilter) {
-            sortFilter.value = "default";
+        if (sortSelect) {
+
+            sortSelect.addEventListener(
+                "change",
+                renderPackages
+            );
+
         }
 
 
-        filterPackages();
+        renderPackages();
 
     }
-
-
-    searchInput?.addEventListener(
-        "input",
-        filterPackages
-    );
-
-
-    categoryFilter?.addEventListener(
-        "change",
-        filterPackages
-    );
-
-
-    durationFilter?.addEventListener(
-        "change",
-        filterPackages
-    );
-
-
-    priceFilter?.addEventListener(
-        "change",
-        filterPackages
-    );
-
-
-    sortFilter?.addEventListener(
-        "change",
-        filterPackages
-    );
-
-
-    resetButton?.addEventListener(
-        "click",
-        resetFilters
-    );
-
-
-    filterPackages();
-
-}
+);
 
 
 /* =========================================================
-   08. PACKAGE DETAILS PAGE
+   PACKAGE CARD
 ========================================================= */
 
-function initializePackageDetails() {
+function createPackageCard(
+    item
+) {
 
-    const container = $("#packageDetails");
+    return `
+        <article class="package-card">
 
-    if (!container) {
-        return;
-    }
+            <div class="package-image">
 
+                <img
+                    src="${item.image}"
+                    alt="${item.name}"
+                    loading="lazy"
+                >
 
-    if (
-        typeof packages === "undefined" ||
-        !Array.isArray(packages)
-    ) {
-
-        return;
-    }
-
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+            </div>
 
 
-    const packageId =
-        params.get("id");
+            <div class="package-content">
+
+                <span class="package-category">
+                    ${item.category || "Travel"}
+                </span>
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+                <p>
+                    ${item.description || ""}
+                </p>
 
 
-    let selectedPackage =
-        packages.find(
-            pkg =>
-                String(pkg.id) ===
-                String(packageId)
-        );
+                <div class="package-meta">
 
-
-    if (!selectedPackage) {
-
-        selectedPackage = packages[0];
-
-    }
-
-
-    renderPackageDetails(selectedPackage);
-
-
-    initializeGallery();
-
-
-    initializeBookingLinks(
-        selectedPackage
-    );
-
-}
-
-
-function renderPackageDetails(pkg) {
-
-    const container = $("#packageDetails");
-
-    if (!container) {
-        return;
-    }
-
-
-    const itinerary =
-        Array.isArray(pkg.itinerary)
-            ? pkg.itinerary
-            : [];
-
-
-    const inclusions =
-        Array.isArray(pkg.inclusions)
-            ? pkg.inclusions
-            : [];
-
-
-    const gallery =
-        Array.isArray(pkg.gallery)
-            ? pkg.gallery
-            : [pkg.image];
-
-
-    container.innerHTML = `
-
-        <div class="package-details-hero">
-
-            <div
-                class="package-details-hero-image"
-                style="background-image: url('${pkg.image}')"
-            ></div>
-
-
-            <div class="package-details-hero-overlay"></div>
-
-
-            <div class="container">
-
-                <div class="package-details-hero-content">
-
-                    <span class="package-details-category">
-                        ${pkg.category}
+                    <span>
+                        ${item.duration || ""}
                     </span>
 
+                    <strong>
+                        ₹${Number(
+                            item.price || 0
+                        ).toLocaleString("en-IN")}
+                    </strong>
 
-                    <h1>
-                        ${pkg.name}
-                    </h1>
+                </div>
 
 
-                    <div class="package-quick-info">
+                <div class="package-actions">
 
-                        <span>
-                            📅 ${pkg.duration}
-                        </span>
+                    <a
+                        href="package-details.html?id=${item.id}"
+                        class="btn btn-outline"
+                    >
+                        View Details
+                    </a>
 
-                        <span>
-                            📍 ${pkg.destination || pkg.name}
-                        </span>
-
-                        <span>
-                            ⭐ ${pkg.rating || "4.8"}
-                        </span>
-
-                    </div>
+                    <a
+                        href="booking.html?package=${item.id}"
+                        class="btn btn-primary"
+                    >
+                        Book Now
+                    </a>
 
                 </div>
 
             </div>
 
-        </div>
-
-
-        <section class="section">
-
-            <div class="container">
-
-                <div class="package-details-grid">
-
-
-                    <main>
-
-
-                        <div class="details-block">
-
-                            <span class="section-tag">
-                                About the journey
-                            </span>
-
-
-                            <h2>
-                                ${pkg.name}
-                            </h2>
-
-
-                            <p>
-                                ${pkg.description}
-                            </p>
-
-                        </div>
-
-
-                        <div class="details-block">
-
-                            <span class="section-tag">
-                                Journey
-                            </span>
-
-
-                            <h2>
-                                Itinerary
-                            </h2>
-
-
-                            <div class="itinerary">
-
-                                ${itinerary
-                                    .map(
-                                        (day, index) => `
-
-                                    <div class="itinerary-item">
-
-                                        <div class="itinerary-day">
-                                            DAY ${index + 1}
-                                        </div>
-
-
-                                        <div class="itinerary-content">
-
-                                            <h3>
-                                                ${
-                                                    typeof day === "string"
-                                                        ? day
-                                                        : day.title || `Day ${index + 1}`
-                                                }
-                                            </h3>
-
-
-                                            <p>
-                                                ${
-                                                    typeof day === "string"
-                                                        ? "Explore beautiful places, local experiences and unforgettable moments."
-                                                        : day.description || ""
-                                                }
-                                            </p>
-
-                                        </div>
-
-                                    </div>
-
-                                `
-                                    )
-                                    .join("")}
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="details-block">
-
-                            <span class="section-tag">
-                                What's included
-                            </span>
-
-
-                            <h2>
-                                Package Inclusions
-                            </h2>
-
-
-                            <div class="inclusions-grid">
-
-                                ${inclusions
-                                    .map(
-                                        item => `
-
-                                    <div class="inclusion-item">
-
-                                        <span>
-                                            ✓
-                                        </span>
-
-                                        <span>
-                                            ${item}
-                                        </span>
-
-                                    </div>
-
-                                `
-                                    )
-                                    .join("")}
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="details-block">
-
-                            <span class="section-tag">
-                                Memories
-                            </span>
-
-
-                            <h2>
-                                Travel Gallery
-                            </h2>
-
-
-                            <div class="package-gallery">
-
-                                ${gallery
-                                    .map(
-                                        (image, index) => `
-
-                                    <div
-                                        class="package-gallery-item"
-                                        data-gallery-index="${index}"
-                                    >
-
-                                        <img
-                                            src="${image}"
-                                            alt="${pkg.name} gallery ${index + 1}"
-                                            loading="lazy"
-                                        >
-
-                                    </div>
-
-                                `
-                                    )
-                                    .join("")}
-
-                            </div>
-
-                        </div>
-
-
-                    </main>
-
-
-                    <aside>
-
-                        <div class="booking-summary-card">
-
-                            <div class="booking-card-header">
-
-                                <span>
-                                    STARTING FROM
-                                </span>
-
-
-                                <div class="booking-price">
-                                    ${formatPrice(pkg.price)}
-                                </div>
-
-
-                                <p>
-                                    per person
-                                </p>
-
-                            </div>
-
-
-                            ${
-                                pkg.oldPrice
-                                    ? `
-                                    <div class="booking-old-price">
-                                        ${formatPrice(pkg.oldPrice)}
-                                    </div>
-                                `
-                                    : ""
-                            }
-
-
-                            ${
-                                pkg.oldPrice
-                                    ? `
-                                    <span class="saving-badge">
-                                        Special Offer
-                                    </span>
-                                `
-                                    : ""
-                            }
-
-
-                            <div class="booking-summary-list">
-
-                                <div>
-
-                                    <span>
-                                        Duration
-                                    </span>
-
-                                    <strong>
-                                        ${pkg.duration}
-                                    </strong>
-
-                                </div>
-
-
-                                <div>
-
-                                    <span>
-                                        Category
-                                    </span>
-
-                                    <strong>
-                                        ${pkg.category}
-                                    </strong>
-
-                                </div>
-
-
-                                <div>
-
-                                    <span>
-                                        Destination
-                                    </span>
-
-                                    <strong>
-                                        ${pkg.destination || pkg.name}
-                                    </strong>
-
-                                </div>
-
-                            </div>
-
-
-                            <a
-                                href="booking.html?package=${pkg.id}"
-                                class="btn btn-primary booking-main-btn"
-                            >
-                                Book This Package
-                            </a>
-
-
-                            <a
-                                href="contact.html"
-                                class="booking-help-link"
-                            >
-                                Need help? Contact us
-                            </a>
-
-
-                            <div class="secure-booking">
-                                🔒 Secure booking
-                            </div>
-
-                        </div>
-
-                    </aside>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
+        </article>
     `;
 
 }
 
 
 /* =========================================================
-   09. GALLERY
+   PACKAGE DETAILS PAGE
 ========================================================= */
 
-let galleryImages = [];
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-let galleryIndex = 0;
+        const detailsContainer =
+            $("#packageDetails");
 
-
-function initializeGallery() {
-
-    const galleryItems =
-        $$(".package-gallery-item");
-
-
-    if (!galleryItems.length) {
-        return;
-    }
+        if (!detailsContainer) {
+            return;
+        }
 
 
-    galleryImages =
-        galleryItems.map(item => {
-
-            const image =
-                $("img", item);
-
-            return image?.src;
-
-        });
-
-
-    galleryItems.forEach(
-        (item, index) => {
-
-            item.addEventListener(
-                "click",
-                () => {
-
-                    openLightbox(index);
-
-                }
+        const params =
+            new URLSearchParams(
+                window.location.search
             );
 
+
+        const id =
+            params.get("id");
+
+
+        if (!id) {
+            return;
         }
-    );
 
 
-    createLightbox();
+        const item =
+            (packageData || [])
+                .find(
+                    function (packageItem) {
 
-}
+                        return String(
+                            packageItem.id
+                        ) === String(id);
+
+                    }
+                );
 
 
-function createLightbox() {
+        if (!item) {
 
-    if ($(".gallery-lightbox")) {
-        return;
+            detailsContainer.innerHTML = `
+                <div class="no-results">
+                    <h2>Package not found</h2>
+                    <p>
+                        The selected package could not be found.
+                    </p>
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        detailsContainer.innerHTML = `
+
+            <div class="package-detail-image">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}"
+                >
+
+            </div>
+
+
+            <div class="package-detail-content">
+
+                <span>
+                    ${item.category || "Travel"}
+                </span>
+
+                <h1>
+                    ${item.name}
+                </h1>
+
+                <p>
+                    ${item.description || ""}
+                </p>
+
+
+                <div class="package-detail-price">
+
+                    <small>
+                        Starting from
+                    </small>
+
+                    <strong>
+                        ₹${Number(
+                            item.price || 0
+                        ).toLocaleString("en-IN")}
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="booking.html?package=${item.id}"
+                    class="btn btn-primary"
+                >
+                    Book This Package
+                </a>
+
+            </div>
+
+        `;
+
     }
+);
 
 
-    const lightbox =
-        document.createElement("div");
+/* =========================================================
+   BOOKING PAGE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const bookingForm =
+            $("#bookingForm");
+
+        if (!bookingForm) {
+            return;
+        }
 
 
-    lightbox.className =
-        "gallery-lightbox";
+        /* -----------------------------
+           DATE MINIMUM
+        ----------------------------- */
+
+        const dateInput =
+            $("#bookingDate");
+
+        if (dateInput) {
+
+            const today =
+                new Date();
+
+            const year =
+                today.getFullYear();
+
+            const month =
+                String(
+                    today.getMonth() + 1
+                ).padStart(2, "0");
+
+            const day =
+                String(
+                    today.getDate()
+                ).padStart(2, "0");
 
 
-    lightbox.hidden = true;
+            dateInput.min =
+                `${year}-${month}-${day}`;
+
+        }
 
 
-    lightbox.innerHTML = `
+        /* -----------------------------
+           DESTINATION OPTIONS
+        ----------------------------- */
 
-        <button
-            class="lightbox-close"
-            aria-label="Close gallery"
-        >
-            ×
-        </button>
+        const destinationSelect =
+            $("#bookingDestination");
 
 
-        <button
-            class="lightbox-prev"
-            aria-label="Previous image"
-        >
-            ‹
-        </button>
+        if (
+            destinationSelect &&
+            typeof destinationData !==
+            "undefined"
+        ) {
+
+            const currentValue =
+                destinationSelect.value;
 
 
-        <img
-            src=""
-            alt="Gallery preview"
-        >
+            if (
+                destinationSelect.options.length
+                <= 1
+            ) {
+
+                destinationData.forEach(
+                    function (destination) {
+
+                        const option =
+                            document.createElement(
+                                "option"
+                            );
+
+                        option.value =
+                            destination.name;
+
+                        option.textContent =
+                            destination.name;
+
+                        destinationSelect.appendChild(
+                            option
+                        );
+
+                    }
+                );
+
+            }
 
 
-        <button
-            class="lightbox-next"
-            aria-label="Next image"
-        >
-            ›
-        </button>
+            destinationSelect.value =
+                currentValue;
 
-    `;
+        }
 
 
-    document.body.appendChild(lightbox);
+        /* -----------------------------
+           PACKAGE OPTIONS
+        ----------------------------- */
+
+        const packageSelect =
+            $("#bookingPackage");
 
 
-    $(".lightbox-close", lightbox)
-        .addEventListener(
-            "click",
-            closeLightbox
+        if (
+            packageSelect &&
+            typeof packageData !==
+            "undefined"
+        ) {
+
+            const currentValue =
+                packageSelect.value;
+
+
+            if (
+                packageSelect.options.length
+                <= 1
+            ) {
+
+                packageData.forEach(
+                    function (item) {
+
+                        const option =
+                            document.createElement(
+                                "option"
+                            );
+
+                        option.value =
+                            item.id;
+
+                        option.textContent =
+                            item.name;
+
+                        packageSelect.appendChild(
+                            option
+                        );
+
+                    }
+                );
+
+            }
+
+
+            packageSelect.value =
+                currentValue;
+
+        }
+
+
+        /* -----------------------------
+           URL PACKAGE
+        ----------------------------- */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const packageId =
+            params.get("package");
+
+
+        if (
+            packageId &&
+            packageSelect
+        ) {
+
+            packageSelect.value =
+                packageId;
+
+        }
+
+
+        /* -----------------------------
+           FORM SUBMIT
+        ----------------------------- */
+
+        bookingForm.addEventListener(
+            "submit",
+            handleBookingSubmit
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLEAR FORM ERRORS
+========================================================= */
+
+function clearFormErrors(form) {
+
+    $$(".input-error", form)
+        .forEach(
+            function (element) {
+
+                element.classList.remove(
+                    "input-error"
+                );
+
+            }
         );
 
 
-    $(".lightbox-prev", lightbox)
-        .addEventListener(
-            "click",
-            () => changeGalleryImage(-1)
+    $$(".field-error", form)
+        .forEach(
+            function (element) {
+
+                element.remove();
+
+            }
         );
-
-
-    $(".lightbox-next", lightbox)
-        .addEventListener(
-            "click",
-            () => changeGalleryImage(1)
-        );
-
-
-    lightbox.addEventListener(
-        "click",
-        event => {
-
-            if (event.target === lightbox) {
-                closeLightbox();
-            }
-
-        }
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                !lightbox.hidden &&
-                event.key === "Escape"
-            ) {
-
-                closeLightbox();
-
-            }
-
-
-            if (
-                !lightbox.hidden &&
-                event.key === "ArrowRight"
-            ) {
-
-                changeGalleryImage(1);
-
-            }
-
-
-            if (
-                !lightbox.hidden &&
-                event.key === "ArrowLeft"
-            ) {
-
-                changeGalleryImage(-1);
-
-            }
-
-        }
-    );
-
-}
-
-
-function openLightbox(index) {
-
-    const lightbox =
-        $(".gallery-lightbox");
-
-
-    if (!lightbox) {
-        return;
-    }
-
-
-    galleryIndex = index;
-
-
-    updateLightbox();
-
-
-    lightbox.hidden = false;
-
-
-    document.body.style.overflow = "hidden";
-
-}
-
-
-function closeLightbox() {
-
-    const lightbox =
-        $(".gallery-lightbox");
-
-
-    if (!lightbox) {
-        return;
-    }
-
-
-    lightbox.hidden = true;
-
-
-    document.body.style.overflow = "";
-
-}
-
-
-function changeGalleryImage(direction) {
-
-    if (!galleryImages.length) {
-        return;
-    }
-
-
-    galleryIndex += direction;
-
-
-    if (galleryIndex < 0) {
-
-        galleryIndex =
-            galleryImages.length - 1;
-
-    }
-
-
-    if (
-        galleryIndex >=
-        galleryImages.length
-    ) {
-
-        galleryIndex = 0;
-
-    }
-
-
-    updateLightbox();
-
-}
-
-
-function updateLightbox() {
-
-    const lightbox =
-        $(".gallery-lightbox");
-
-
-    const image =
-        $("img", lightbox);
-
-
-    if (
-        !lightbox ||
-        !image ||
-        !galleryImages[galleryIndex]
-    ) {
-
-        return;
-    }
-
-
-    image.src =
-        galleryImages[galleryIndex];
 
 }
 
 
 /* =========================================================
-   10. BOOKING PAGE
+   SHOW FIELD ERROR
 ========================================================= */
 
-function initializeBookingPage() {
+function showFieldError(
+    fieldId,
+    message
+) {
 
-    const form =
-        $("#bookingForm");
+    const field =
+        document.getElementById(
+            fieldId
+        );
 
 
-    if (!form) {
+    if (!field) {
         return;
     }
 
 
-    populatePackageSelect();
+    field.classList.add(
+        "input-error"
+    );
 
 
-    populateDestinationSelect();
+    const error =
+        document.createElement(
+            "small"
+        );
 
 
-    preselectBooking();
+    error.className =
+        "field-error";
 
 
-    form.addEventListener(
-        "submit",
-        handleBookingSubmit
+    error.textContent =
+        message;
+
+
+    field.insertAdjacentElement(
+        "afterend",
+        error
     );
 
 }
 
 
-function populatePackageSelect() {
+/* =========================================================
+   BOOKING FORM SUBMIT
+========================================================= */
 
-    const select =
-        $("#packageSelect");
-
-
-    if (
-        !select ||
-        typeof packages === "undefined"
-    ) {
-
-        return;
-    }
-
-
-    const currentOptions =
-        [...select.options].map(
-            option => option.value
-        );
-
-
-    packages.forEach(pkg => {
-
-        if (
-            currentOptions.includes(
-                String(pkg.id)
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        const option =
-            document.createElement("option");
-
-
-        option.value = pkg.id;
-
-        option.textContent =
-            `${pkg.name} — ${formatPrice(pkg.price)}`;
-
-
-        select.appendChild(option);
-
-    });
-
-}
-
-
-function populateDestinationSelect() {
-
-    const select =
-        $("#destinationSelect");
-
-
-    if (
-        !select ||
-        typeof destinations === "undefined"
-    ) {
-
-        return;
-    }
-
-
-    const currentOptions =
-        [...select.options].map(
-            option => option.value
-        );
-
-
-    destinations.forEach(destination => {
-
-        if (
-            currentOptions.includes(
-                String(destination.id)
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        const option =
-            document.createElement("option");
-
-
-        option.value =
-            destination.id;
-
-
-        option.textContent =
-            destination.name;
-
-
-        select.appendChild(option);
-
-    });
-
-}
-
-
-function preselectBooking() {
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const packageId =
-        params.get("package");
-
-
-    const packageSelect =
-        $("#packageSelect");
-
-
-    if (
-        packageId &&
-        packageSelect
-    ) {
-
-        packageSelect.value =
-            packageId;
-
-    }
-
-}
-
-
-function handleBookingSubmit(event) {
+function handleBookingSubmit(
+    event
+) {
 
     event.preventDefault();
 
@@ -1955,49 +1292,52 @@ function handleBookingSubmit(event) {
         new FormData(form);
 
 
-    const data = {
+    const name =
+        String(
+            formData.get("name") || ""
+        ).trim();
 
-        name:
-            String(
-                formData.get("name") || ""
-            ).trim(),
 
-        email:
-            String(
-                formData.get("email") || ""
-            ).trim(),
+    const email =
+        String(
+            formData.get("email") || ""
+        ).trim();
 
-        phone:
-            String(
-                formData.get("phone") || ""
-            ).trim(),
 
-        destination:
-            String(
-                formData.get("destination") || ""
-            ).trim(),
+    const phone =
+        String(
+            formData.get("phone") || ""
+        ).trim();
 
-        travelDate:
-            String(
-                formData.get("travelDate") || ""
-            ).trim(),
 
-        travelers:
-            String(
-                formData.get("travelers") || ""
-            ).trim(),
+    const destination =
+        String(
+            formData.get("destination") || ""
+        ).trim();
 
-        packageId:
-            String(
-                formData.get("package") || ""
-            ).trim(),
 
-        message:
-            String(
-                formData.get("message") || ""
-            ).trim()
+    const travelDate =
+        String(
+            formData.get("travelDate") || ""
+        ).trim();
 
-    };
+
+    const travelers =
+        String(
+            formData.get("travelers") || ""
+        ).trim();
+
+
+    const packageId =
+        String(
+            formData.get("package") || ""
+        ).trim();
+
+
+    const message =
+        String(
+            formData.get("message") || ""
+        ).trim();
 
 
     let valid = true;
@@ -2005,10 +1345,10 @@ function handleBookingSubmit(event) {
 
     /* NAME */
 
-    if (data.name.length < 2) {
+    if (name.length < 2) {
 
         showFieldError(
-            "name",
+            "bookingName",
             "Please enter your full name."
         );
 
@@ -2021,11 +1361,11 @@ function handleBookingSubmit(event) {
 
     if (
         !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
-            .test(data.email)
+            .test(email)
     ) {
 
         showFieldError(
-            "email",
+            "bookingEmail",
             "Please enter a valid email address."
         );
 
@@ -2037,13 +1377,18 @@ function handleBookingSubmit(event) {
     /* PHONE */
 
     const cleanPhone =
-        data.phone.replace(/\D/g, "");
+        phone.replace(
+            /\D/g,
+            ""
+        );
 
 
-    if (cleanPhone.length < 10) {
+    if (
+        cleanPhone.length < 10
+    ) {
 
         showFieldError(
-            "phone",
+            "bookingPhone",
             "Please enter a valid phone number."
         );
 
@@ -2054,10 +1399,10 @@ function handleBookingSubmit(event) {
 
     /* DESTINATION */
 
-    if (!data.destination) {
+    if (!destination) {
 
         showFieldError(
-            "destination",
+            "bookingDestination",
             "Please select a destination."
         );
 
@@ -2068,10 +1413,10 @@ function handleBookingSubmit(event) {
 
     /* DATE */
 
-    if (!data.travelDate) {
+    if (!travelDate) {
 
         showFieldError(
-            "travelDate",
+            "bookingDate",
             "Please select your travel date."
         );
 
@@ -2080,7 +1425,9 @@ function handleBookingSubmit(event) {
     } else {
 
         const selectedDate =
-            new Date(data.travelDate);
+            new Date(
+                travelDate
+            );
 
 
         const today =
@@ -2095,10 +1442,12 @@ function handleBookingSubmit(event) {
         );
 
 
-        if (selectedDate < today) {
+        if (
+            selectedDate < today
+        ) {
 
             showFieldError(
-                "travelDate",
+                "bookingDate",
                 "Travel date cannot be in the past."
             );
 
@@ -2111,19 +1460,23 @@ function handleBookingSubmit(event) {
 
     /* TRAVELERS */
 
-    const travelers =
-        Number(data.travelers);
+    const travelerCount =
+        Number(
+            travelers
+        );
 
 
     if (
-        !Number.isInteger(travelers) ||
-        travelers < 1 ||
-        travelers > 50
+        !Number.isInteger(
+            travelerCount
+        ) ||
+        travelerCount < 1 ||
+        travelerCount > 50
     ) {
 
         showFieldError(
-            "travelers",
-            "Enter a number between 1 and 50."
+            "bookingTravelers",
+            "Please select the number of travelers."
         );
 
         valid = false;
@@ -2133,10 +1486,10 @@ function handleBookingSubmit(event) {
 
     /* PACKAGE */
 
-    if (!data.packageId) {
+    if (!packageId) {
 
         showFieldError(
-            "package",
+            "bookingPackage",
             "Please select a package."
         );
 
@@ -2148,17 +1501,17 @@ function handleBookingSubmit(event) {
     /* TERMS */
 
     const terms =
-        $("#terms");
+        $("#bookingTerms");
 
 
     if (
-        terms &&
+        !terms ||
         !terms.checked
     ) {
 
         showFieldError(
-            "terms",
-            "Please accept the booking terms."
+            "bookingTerms",
+            "Please accept the Terms & Conditions."
         );
 
         valid = false;
@@ -2166,41 +1519,81 @@ function handleBookingSubmit(event) {
     }
 
 
+    /* STOP */
+
     if (!valid) {
 
         const firstError =
-            $(".input-error");
+            $(".input-error", form);
 
 
-        firstError?.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
+        if (firstError) {
 
+            firstError.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
 
         return;
 
     }
 
 
-    const booking = {
+    /* CREATE BOOKING */
 
-        ...data,
+    const booking =
+        {
 
-        id:
-            `WB-${Date.now().toString().slice(-8)}`,
+            id:
+                "WB-" +
+                Date.now()
+                    .toString()
+                    .slice(-8),
 
-        createdAt:
-            new Date().toISOString(),
+            name:
+                name,
 
-        status:
-            "Confirmed"
+            email:
+                email,
 
-    };
+            phone:
+                phone,
+
+            destination:
+                destination,
+
+            travelDate:
+                travelDate,
+
+            travelers:
+                travelerCount,
+
+            packageId:
+                packageId,
+
+            message:
+                message,
+
+            status:
+                "Confirmed",
+
+            createdAt:
+                new Date()
+                    .toISOString()
+
+        };
 
 
-    saveBooking(booking);
+    /* SAVE */
 
+    saveBooking(
+        booking
+    );
+
+
+    /* SHOW SUCCESS */
 
     showBookingConfirmation(
         booking
@@ -2209,104 +1602,50 @@ function handleBookingSubmit(event) {
 }
 
 
-function saveBooking(booking) {
+/* =========================================================
+   SAVE BOOKING TO LOCAL STORAGE
+========================================================= */
 
-    const bookings =
-        getStoredBookings();
+function saveBooking(
+    booking
+) {
+
+    let bookings = [];
 
 
-    bookings.push(booking);
+    try {
+
+        bookings =
+            JSON.parse(
+                localStorage.getItem(
+                    "wanderlyBookings"
+                )
+            ) || [];
+
+    } catch (error) {
+
+        bookings = [];
+
+    }
+
+
+    bookings.push(
+        booking
+    );
 
 
     localStorage.setItem(
         "wanderlyBookings",
-        JSON.stringify(bookings)
+        JSON.stringify(
+            bookings
+        )
     );
 
 }
 
 
 /* =========================================================
-   11. FORM ERROR HELPERS
-========================================================= */
-
-function showFieldError(
-    fieldName,
-    message
-) {
-
-    const field =
-        document.getElementById(fieldName);
-
-
-    if (!field) {
-        return;
-    }
-
-
-    const group =
-        field.closest(".form-group");
-
-
-    if (!group) {
-        return;
-    }
-
-
-    group.classList.add(
-        "input-error"
-    );
-
-
-    let error =
-        $(".form-error", group);
-
-
-    if (!error) {
-
-        error =
-            document.createElement("small");
-
-
-        error.className =
-            "form-error";
-
-
-        group.appendChild(error);
-
-    }
-
-
-    error.textContent =
-        message;
-
-}
-
-
-function clearFormErrors(form) {
-
-    $$(".input-error", form)
-        .forEach(group => {
-
-            group.classList.remove(
-                "input-error"
-            );
-
-        });
-
-
-    $$(".form-error", form)
-        .forEach(error => {
-
-            error.textContent = "";
-
-        });
-
-}
-
-
-/* =========================================================
-   12. BOOKING CONFIRMATION
+   BOOKING CONFIRMATION
 ========================================================= */
 
 function showBookingConfirmation(
@@ -2317,60 +1656,91 @@ function showBookingConfirmation(
         $("#bookingForm");
 
 
-    if (!form) {
-        return;
+    if (form) {
+
+        form.style.display =
+            "none";
+
     }
 
 
-    const container =
-        form.parentElement;
+    let confirmation =
+        $("#bookingConfirmation");
 
 
-    form.style.display = "none";
+    if (!confirmation) {
+
+        confirmation =
+            document.createElement(
+                "div"
+            );
+
+        confirmation.id =
+            "bookingConfirmation";
 
 
-    const confirmation =
-        document.createElement("div");
+        confirmation.className =
+            "booking-confirmation";
 
 
-    confirmation.className =
-        "booking-success";
+        if (form) {
+
+            form.parentNode.insertBefore(
+                confirmation,
+                form.nextSibling
+            );
+
+        } else {
+
+            document.body.appendChild(
+                confirmation
+            );
+
+        }
+
+    }
 
 
     confirmation.innerHTML = `
 
-        <div class="success-icon">
+        <div class="confirmation-icon">
             ✓
         </div>
 
-
-        <span class="section-tag">
-            Booking Confirmed
-        </span>
-
-
         <h2>
-            Your journey is booked!
+            Booking Confirmed!
         </h2>
 
-
         <p>
-            Thank you, ${booking.name}.
-            We have received your booking request
-            and will contact you shortly.
+            Thank you,
+            <strong>${booking.name}</strong>.
+            Your travel request has been
+            successfully submitted.
         </p>
 
+        <div class="confirmation-details">
 
-        <div class="booking-reference">
-            Booking ID: ${booking.id}
+            <div>
+                <span>Booking ID</span>
+                <strong>${booking.id}</strong>
+            </div>
+
+            <div>
+                <span>Destination</span>
+                <strong>${booking.destination}</strong>
+            </div>
+
+            <div>
+                <span>Travel Date</span>
+                <strong>${booking.travelDate}</strong>
+            </div>
+
+            <div>
+                <span>Travelers</span>
+                <strong>${booking.travelers}</strong>
+            </div>
+
         </div>
-
-
-        <p>
-            A confirmation will be sent to
-            <strong>${booking.email}</strong>.
-        </p>
-
 
         <a
             href="index.html"
@@ -2382,9 +1752,8 @@ function showBookingConfirmation(
     `;
 
 
-    container.appendChild(
-        confirmation
-    );
+    confirmation.style.display =
+        "block";
 
 
     confirmation.scrollIntoView({
@@ -2396,400 +1765,229 @@ function showBookingConfirmation(
 
 
 /* =========================================================
-   13. CONTACT FORM
-========================================================= */
-
-function initializeContactForm() {
-
-    const form =
-        $("#contactForm");
-
-
-    if (!form) {
-        return;
-    }
-
-
-    form.addEventListener(
-        "submit",
-        event => {
-
-            event.preventDefault();
-
-
-            clearFormErrors(form);
-
-
-            const name =
-                $("#contactName")?.value
-                    .trim() || "";
-
-
-            const email =
-                $("#contactEmail")?.value
-                    .trim() || "";
-
-
-            const message =
-                $("#contactMessage")?.value
-                    .trim() || "";
-
-
-            let valid = true;
-
-
-            if (name.length < 2) {
-
-                showFieldError(
-                    "contactName",
-                    "Please enter your name."
-                );
-
-                valid = false;
-
-            }
-
-
-            if (
-                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                    .test(email)
-            ) {
-
-                showFieldError(
-                    "contactEmail",
-                    "Please enter a valid email."
-                );
-
-                valid = false;
-
-            }
-
-
-            if (message.length < 10) {
-
-                showFieldError(
-                    "contactMessage",
-                    "Message should contain at least 10 characters."
-                );
-
-                valid = false;
-
-            }
-
-
-            if (!valid) {
-                return;
-            }
-
-
-            form.innerHTML = `
-
-                <div class="contact-success">
-
-                    <div class="success-icon">
-                        ✓
-                    </div>
-
-
-                    <h3>
-                        Message Sent Successfully!
-                    </h3>
-
-
-                    <p>
-                        Thank you for contacting Wanderly.
-                        Our team will get back to you soon.
-                    </p>
-
-
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                        onclick="window.location.reload()"
-                    >
-                        Send Another Message
-                    </button>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   14. FAQ
-========================================================= */
-
-function initializeFAQ() {
-
-    const questions =
-        $$(".faq-question");
-
-
-    questions.forEach(question => {
-
-        question.addEventListener(
-            "click",
-            () => {
-
-                const item =
-                    question.closest(".faq-item");
-
-
-                if (!item) {
-                    return;
-                }
-
-
-                const wasActive =
-                    item.classList.contains("active");
-
-
-                $$(".faq-item")
-                    .forEach(faq => {
-
-                        faq.classList.remove(
-                            "active"
-                        );
-
-                    });
-
-
-                if (!wasActive) {
-
-                    item.classList.add(
-                        "active"
-                    );
-
-                }
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   15. DYNAMIC BOOKING LINKS
-========================================================= */
-
-function initializeBookingLinks(pkg) {
-
-    const buttons =
-        $$(
-            'a[href="booking.html"], .booking-main-btn'
-        );
-
-
-    buttons.forEach(button => {
-
-        if (
-            !button.href.includes(
-                "package="
-            )
-        ) {
-
-            button.href =
-                `booking.html?package=${pkg.id}`;
-
-        }
-
-    });
-
-}
-
-
-/* =========================================================
-   16. DATE INPUT MINIMUM
-========================================================= */
-
-function initializeDateInputs() {
-
-    const dateInputs =
-        $$('input[type="date"]');
-
-
-    if (!dateInputs.length) {
-        return;
-    }
-
-
-    const today =
-        new Date();
-
-
-    const year =
-        today.getFullYear();
-
-
-    const month =
-        String(
-            today.getMonth() + 1
-        ).padStart(2, "0");
-
-
-    const day =
-        String(
-            today.getDate()
-        ).padStart(2, "0");
-
-
-    const todayString =
-        `${year}-${month}-${day}`;
-
-
-    dateInputs.forEach(input => {
-
-        input.min =
-            todayString;
-
-    });
-
-}
-
-
-/* =========================================================
-   17. IMAGE ERROR HANDLING
-========================================================= */
-
-function initializeImageFallback() {
-
-    $$("img").forEach(image => {
-
-        image.addEventListener(
-            "error",
-            () => {
-
-                image.style.background =
-                    "#e8ece9";
-
-
-                image.alt =
-                    "Travel image unavailable";
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   18. SMOOTH ANIMATION ON SCROLL
-========================================================= */
-
-function initializeScrollAnimations() {
-
-    const elements =
-        $$(
-            ".destination-card, .package-card, .mission-card, .team-card, .contact-info-card"
-        );
-
-
-    if (
-        !elements.length ||
-        !("IntersectionObserver" in window)
-    ) {
-
-        return;
-
-    }
-
-
-    elements.forEach(element => {
-
-        element.style.opacity = "0";
-
-        element.style.transform =
-            "translateY(25px)";
-
-        element.style.transition =
-            "opacity 0.6s ease, transform 0.6s ease";
-
-    });
-
-
-    const observer =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-
-                    entry.target.style.opacity =
-                        "1";
-
-
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                });
-
-            },
-            {
-                threshold: 0.1
-            }
-        );
-
-
-    elements.forEach(element => {
-
-        observer.observe(element);
-
-    });
-
-}
-
-
-/* =========================================================
-   19. INITIALIZE EVERYTHING
+   GALLERY INTERACTION
 ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    function () {
 
-        initializeNavigation();
+        const galleryImages =
+            $$(".gallery img");
 
-        setActiveNavigation();
 
-        renderHomeDestinations();
+        if (!galleryImages.length) {
+            return;
+        }
 
-        renderHomePackages();
 
-        initializeDestinationPage();
+        galleryImages.forEach(
+            function (image) {
 
-        initializePackagesPage();
+                image.addEventListener(
+                    "click",
+                    function () {
 
-        initializePackageDetails();
+                        const overlay =
+                            document.createElement(
+                                "div"
+                            );
 
-        initializeBookingPage();
 
-        initializeContactForm();
+                        overlay.className =
+                            "image-lightbox";
 
-        initializeFAQ();
 
-        initializeDateInputs();
+                        overlay.innerHTML = `
 
-        initializeImageFallback();
+                            <button
+                                class="lightbox-close"
+                                aria-label="Close"
+                            >
+                                ×
+                            </button>
 
-        initializeScrollAnimations();
+                            <img
+                                src="${image.src}"
+                                alt="${image.alt || ""}"
+                            >
+
+                        `;
+
+
+                        document.body.appendChild(
+                            overlay
+                        );
+
+
+                        overlay
+                            .querySelector(
+                                ".lightbox-close"
+                            )
+                            .addEventListener(
+                                "click",
+                                function () {
+
+                                    overlay.remove();
+
+                                }
+                            );
+
+
+                        overlay.addEventListener(
+                            "click",
+                            function (event) {
+
+                                if (
+                                    event.target ===
+                                    overlay
+                                ) {
+
+                                    overlay.remove();
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const contactForm =
+            $("#contactForm");
+
+
+        if (!contactForm) {
+            return;
+        }
+
+
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    $("#contactName")
+                        ?.value
+                        .trim();
+
+
+                const email =
+                    $("#contactEmail")
+                        ?.value
+                        .trim();
+
+
+                const message =
+                    $("#contactMessage")
+                        ?.value
+                        .trim();
+
+
+                if (
+                    !name ||
+                    !email ||
+                    !message
+                ) {
+
+                    alert(
+                        "Please fill in all required fields."
+                    );
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Thank you! Your message has been sent successfully."
+                );
+
+
+                contactForm.reset();
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const elements =
+            $$(".reveal");
+
+
+        if (!elements.length) {
+            return;
+        }
+
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "visible"
+                                );
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        elements.forEach(
+            function (element) {
+
+                observer.observe(
+                    element
+                );
+
+            }
+        );
 
     }
 );
