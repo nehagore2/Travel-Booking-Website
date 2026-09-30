@@ -18,60 +18,6 @@ function $$(selector, parent = document) {
 
 
 /* =========================================================
-   MOBILE NAVIGATION
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const menuToggle =
-        $(".menu-toggle");
-
-    const nav =
-        $(".main-nav");
-
-    if (menuToggle && nav) {
-
-        menuToggle.addEventListener(
-            "click",
-            function () {
-
-                nav.classList.toggle("active");
-
-                menuToggle.classList.toggle(
-                    "active"
-                );
-
-            }
-        );
-
-
-        $$(".main-nav a").forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        nav.classList.remove(
-                            "active"
-                        );
-
-                        menuToggle.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-    }
-
-});
-
-
-/* =========================================================
    STICKY HEADER
 ========================================================= */
 
@@ -80,7 +26,7 @@ window.addEventListener(
     function () {
 
         const header =
-            $(".header");
+            $(".site-header") || $(".header");
 
         if (!header) {
             return;
@@ -211,6 +157,10 @@ document.addEventListener(
         if (!grid) {
             return;
         }
+
+        const params = new URLSearchParams(window.location.search);
+        if (searchInput && params.get("search")) searchInput.value = params.get("search");
+        if (categoryFilter && params.get("category")) categoryFilter.value = params.get("category");
 
 
         function renderDestinations() {
@@ -1991,3 +1941,69 @@ document.addEventListener(
 
     }
 );
+
+/* =========================================================
+   PREMIUM HOME INTERACTIONS
+========================================================= */
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector("#header");
+    const focusSearch = document.querySelector("#focusSearch");
+    const homeSearch = document.querySelector("#homeSearchInput");
+    const newsletterForm = document.querySelector("#newsletterForm");
+    const menuToggle = document.querySelector("#menuToggle");
+    const nav = document.querySelector("#mainNav");
+
+    if (header) {
+        const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 30);
+        updateHeader();
+        window.addEventListener("scroll", updateHeader, {passive:true});
+    }
+
+    if (focusSearch && homeSearch) {
+        focusSearch.addEventListener("click", function () {
+            document.querySelector("#home")?.scrollIntoView({behavior:"smooth"});
+            setTimeout(() => homeSearch.focus(), 450);
+        });
+    }
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener("click", function () {
+            const open = nav.classList.toggle("active");
+            menuToggle.classList.toggle("active", open);
+            menuToggle.setAttribute("aria-expanded", String(open));
+        });
+        nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+            nav.classList.remove("active");
+            menuToggle.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded", "false");
+        }));
+    }
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const email = document.querySelector("#newsletterEmail");
+            if (!email || !email.value.trim()) return;
+            alert("Thank you! You are subscribed to Wanderly travel inspiration.");
+            newsletterForm.reset();
+        });
+    }
+
+    const dates = document.querySelectorAll('.travel-search input[type="date"]');
+    if (dates.length === 2) {
+        const today = new Date().toISOString().split("T")[0];
+        dates.forEach(d => d.min = today);
+        dates[0].addEventListener("change", () => { dates[1].min = dates[0].value || today; });
+    }
+
+    // Animate any reveal elements added dynamically.
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add("visible"); io.unobserve(entry.target); }
+            });
+        }, {threshold:.12});
+        revealItems.forEach(el => io.observe(el));
+    } else revealItems.forEach(el => el.classList.add("visible"));
+});

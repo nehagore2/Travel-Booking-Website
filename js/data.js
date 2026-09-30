@@ -491,3 +491,6 @@ const specialOffer = {
         "Plan your dream vacation today and enjoy exclusive savings on selected travel packages.",
     image: "images/offer-banner.jpg"
 };
+// Backward-compatible aliases used by the website scripts.
+const destinationData = destinations;
+const packageData = packages;
