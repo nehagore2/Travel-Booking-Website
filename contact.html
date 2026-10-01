@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Contact WanderLight Travel & Tours.">
+
+    <title>Contact Us | WanderLight</title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- MAIN CSS -->
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+
+    <style>
+
+        /* =====================================================
+           CONTACT PAGE
+        ===================================================== */
+
+        .contact-page {
+            background: #f8f5ed;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .contact-hero {
+
+            min-height: 410px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            background: #063f38;
+
+            color: #fff;
+
+        }
+
+
+        .contact-hero-image {
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: .34;
+
+        }
+
+
+        .contact-hero-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            animation:
+                contactZoom 12s ease forwards;
+
+        }
+
+
+        @keyframes contactZoom {
+
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.08);
+            }
+
+        }
+
+
+        .contact-hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3,47,43,.96),
+                    rgba(3,47,43,.58),
+                    rgba(3,47,43,.18)
+                );
+
+        }
+
+
+        .contact-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 650px;
+
+            animation:
+                contactHeroIn .8s ease both;
+
+        }
+
+
+        @keyframes contactHeroIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(25px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        .contact-eyebrow {
+
+            color: #e8b84e;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .contact-hero h1 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(45px, 6vw, 70px);
+
+            line-height: 1;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .contact-hero h1 em {
+
+            color: #e8b84e;
+
+            font-weight: 500;
+
+        }
+
+
+        .contact-hero p {
+
+            max-width: 530px;
+
+            color:
+                rgba(255,255,255,.7);
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           CONTACT MAIN
+        ===================================================== */
+
+        .contact-main {
+
+            padding:
+                90px 0;
+
+        }
+
+
+        .contact-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                .8fr 1.2fr;
+
+            gap: 70px;
+
+            align-items: start;
+
+        }
+
+
+        /* =====================================================
+           CONTACT INFO
+        ===================================================== */
+
+        .contact-info h2 {
+
+            color: #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(34px, 4vw, 50px);
+
+            line-height: 1.08;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .contact-info h2 em {
+
+            color: #c89a32;
+
+            font-weight: 500;
+
+        }
+
+
+        .contact-intro {
+
+            color: #71807d;
+
+            font-size: 11px;
+
+            line-height: 1.9;
+
+            margin-bottom: 35px;
+
+            max-width: 420px;
+
+        }
+
+
+        .contact-details {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+
+        }
+
+
+        .contact-detail {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .contact-icon {
+
+            flex-shrink: 0;
+
+            width: 48px;
+
+            height: 48px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: #e8f0ec;
+
+            color: #146f65;
+
+            font-size: 17px;
+
+        }
+
+
+        .contact-detail strong {
+
+            display: block;
+
+            color: #063f38;
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .contact-detail span {
+
+            color: #7d8b87;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .contact-social {
+
+            margin-top: 35px;
+
+            display: flex;
+
+            gap: 9px;
+
+        }
+
+
+        .contact-social a {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+                1px solid #dce5e1;
+
+            border-radius: 50%;
+
+            color: #146f65;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            transition:
+                .3s ease;
+
+        }
+
+
+        .contact-social a:hover {
+
+            background: #063f38;
+
+            color: #fff;
+
+            border-color: #063f38;
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        /* =====================================================
+           FORM CARD
+        ===================================================== */
+
+        .contact-form-card {
+
+            background: #fff;
+
+            padding: 40px;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 20px 55px
+                rgba(6,63,56,.08);
+
+        }
+
+
+        .contact-form-card h3 {
+
+            color: #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 28px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .contact-form-card > p {
+
+            color: #87938f;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+            margin-bottom: 27px;
+
+        }
+
+
+        .contact-form {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+        .form-group.full {
+
+            grid-column:
+                1 / -1;
+
+        }
+
+
+        .form-group label {
+
+            color: #063f38;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            border:
+                1px solid #dfe7e3;
+
+            border-radius: 8px;
+
+            padding:
+                13px 14px;
+
+            outline: none;
+
+            color: #063f38;
+
+            background: #fcfdfc;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 10px;
+
+            transition:
+                border .25s ease,
+                box-shadow .25s ease;
+
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color: #146f65;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(20,111,101,.08);
+
+        }
+
+
+        .form-group textarea {
+
+            min-height: 125px;
+
+            resize: vertical;
+
+        }
+
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+
+            color: #a8b2af;
+
+        }
+
+
+        .contact-submit {
+
+            grid-column:
+                1 / -1;
+
+            margin-top: 4px;
+
+        }
+
+
+        .contact-submit button {
+
+            width: 100%;
+
+            border: none;
+
+            cursor: pointer;
+
+            justify-content: center;
+
+        }
+
+
+        /* =====================================================
+           FORM MESSAGE
+        ===================================================== */
+
+        .form-message {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 13px 15px;
+
+            border-radius: 8px;
+
+            background: #eaf5ee;
+
+            color: #146f65;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .form-message.show {
+
+            display: block;
+
+            animation:
+                messageIn .4s ease;
+
+        }
+
+
+        @keyframes messageIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(5px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MAP SECTION
+        ===================================================== */
+
+        .map-section {
+
+            padding:
+                0 0 90px;
+
+        }
+
+
+        .map-wrapper {
+
+            position: relative;
+
+            height: 440px;
+
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            background: #dfe9e4;
+
+        }
+
+
+        .map-wrapper iframe {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: 0;
+
+            filter:
+                grayscale(20%)
+                saturate(75%);
+
+        }
+
+
+        .map-card {
+
+            position: absolute;
+
+            left: 30px;
+
+            bottom: 30px;
+
+            width: 280px;
+
+            padding: 25px;
+
+            background: #fff;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,.12);
+
+        }
+
+
+        .map-card span {
+
+            color: #146f65;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .map-card h3 {
+
+            color: #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 22px;
+
+            margin: 6px 0;
+
+        }
+
+
+        .map-card p {
+
+            color: #7d8b87;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           FAQ
+        ===================================================== */
+
+        .faq-section {
+
+            padding:
+                0 0 100px;
+
+        }
+
+
+        .faq-grid {
+
+            max-width: 800px;
+
+            margin: auto;
+
+        }
+
+
+        .faq-item {
+
+            border-bottom:
+                1px solid #dce5e1;
+
+        }
+
+
+        .faq-question {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding:
+                20px 0;
+
+            border: 0;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            color: #063f38;
+
+            text-align: left;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+        }
+
+
+        .faq-plus {
+
+            width: 28px;
+
+            height: 28px;
+
+            display: grid;
+
+            place-items: center;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: #e8f0ec;
+
+            color: #146f65;
+
+            transition:
+                transform .3s ease;
+
+        }
+
+
+        .faq-answer {
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition:
+                max-height .35s ease;
+
+        }
+
+
+        .faq-answer p {
+
+            color: #7c8986;
+
+            font-size: 10px;
+
+            line-height: 1.8;
+
+            padding:
+                0 50px 20px 0;
+
+        }
+
+
+        .faq-item.open
+        .faq-answer {
+
+            max-height: 150px;
+
+        }
+
+
+        .faq-item.open
+        .faq-plus {
+
+            transform:
+                rotate(45deg);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .contact-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 50px;
+
+            }
+
+
+            .contact-info {
+
+                max-width: 650px;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .contact-hero {
+
+                min-height: 360px;
+
+            }
+
+
+            .contact-main {
+
+                padding: 65px 0;
+
+            }
+
+
+            .contact-form-card {
+
+                padding: 25px 20px;
+
+            }
+
+
+            .contact-form {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .form-group.full,
+            .contact-submit {
+
+                grid-column: auto;
+
+            }
+
+
+            .map-wrapper {
+
+                height: 390px;
+
+            }
+
+
+            .map-card {
+
+                left: 15px;
+
+                right: 15px;
+
+                bottom: 15px;
+
+                width: auto;
+
+            }
+
+
+            .faq-section {
+
+                padding-bottom: 65px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="header" id="header">
+
+    <div class="container nav-container">
+
+
+        <a href="index.html"
+           class="logo">
+
+            <span class="logo-mark">
+                ▲
+            </span>
+
+            <span class="logo-text">
+
+                <strong>
+                    WanderLight
+                </strong>
+
+                <small>
+                    TRAVEL & TOURS
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <nav class="navbar"
+             id="navbar">
+
+            <a href="index.html"
+               class="nav-link">
+
+                Home
+
+            </a>
+
+            <a href="destinations.html"
+               class="nav-link">
+
+                Destinations
+
+            </a>
+
+            <a href="packages.html"
+               class="nav-link">
+
+                Packages
+
+            </a>
+
+            <a href="about.html"
+               class="nav-link">
+
+                About
+
+            </a>
+
+            <a href="contact.html"
+               class="nav-link active">
+
+                Contact
+
+            </a>
+            <a href="cart.html" class="nav-cart">
+               ♡ My Trips
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button
+                type="button"
+                class="icon-btn search-toggle"
+                id="searchToggle"
+                aria-label="Search">
+
+                ⌕
+
+            </button>
+
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <a href="booking.html"
+               class="btn btn-primary nav-btn">
+
+                Plan Your Trip
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-panel"
+         id="searchPanel">
+
+        <div class="container search-inner">
+
+            <form
+                action="packages.html"
+                method="GET"
+                class="search-form">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    name="search"
+                    placeholder="Search travel packages...">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    Search
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main class="contact-page">
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="contact-hero">
+
+
+    <div class="contact-hero-image">
+
+        <img
+            src="images/iceland-northern-lights.jpg"
+            alt="Beautiful travel destination"
+            loading="eager">
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="contact-hero-content">
+
+            <p class="contact-eyebrow">
+                LET'S TALK TRAVEL
+            </p>
+
+            <h1>
+
+                Have a question?
+                <br>
+
+                <em>
+                    We're here.
+                </em>
+
+            </h1>
+
+            <p>
+
+                Whether you have a dream destination
+                in mind or simply need a little
+                inspiration, our travel designers
+                would love to hear from you.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT CONTENT
+====================================================== -->
+
+<section class="contact-main">
+
+    <div class="container contact-grid">
+
+
+        <!-- INFO -->
+
+        <div class="contact-info">
+
+            <p class="contact-eyebrow"
+               style="color:#146f65;">
+
+                GET IN TOUCH
+
+            </p>
+
+
+            <h2>
+
+                Let's make your
+                <em>
+                    next journey
+                </em>
+                happen.
+
+            </h2>
+
+
+            <p class="contact-intro">
+
+                Tell us a little about what you're
+                looking for and our team will get back
+                to you within one business day.
+
+            </p>
+
+
+            <div class="contact-details">
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ✉
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Email
+                        </strong>
+
+                        <span>
+                            hello@wanderlight.com
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ☎
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Phone
+                        </strong>
+
+                        <span>
+                            +91 98765 43210
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ◉
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Office
+                        </strong>
+
+                        <span>
+                            Koregaon Park,
+                            Pune, Maharashtra, India
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ◷
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Working Hours
+                        </strong>
+
+                        <span>
+                            Monday – Saturday · 9:00 AM – 7:00 PM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="contact-social">
+
+                <a href="#"
+                   aria-label="Instagram">
+                    IG
+                </a>
+
+                <a href="#"
+                   aria-label="Facebook">
+                    FB
+                </a>
+
+                <a href="#"
+                   aria-label="Twitter">
+                    X
+                </a>
+
+                <a href="#"
+                   aria-label="LinkedIn">
+                    IN
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <div class="contact-form-card">
+
+            <h3>
+                Send us a message
+            </h3>
+
+            <p>
+                Fill out the form and our team
+                will get back to you shortly.
+            </p>
+
+
+            <form
+                class="contact-form"
+                id="contactForm"
+                novalidate>
+
+
+                <div class="form-group">
+
+                    <label for="contactName">
+                        YOUR NAME *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        name="name"
+                        placeholder="Your full name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="contactEmail">
+                        EMAIL ADDRESS *
+                    </label>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        name="email"
+                        placeholder="you@example.com"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="contactPhone">
+                        PHONE NUMBER
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="contactPhone"
+                        name="phone"
+                        placeholder="+91 98765 43210">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="contactSubject">
+                        WHAT CAN WE HELP WITH? *
+                    </label>
+
+                    <select
+                        id="contactSubject"
+                        name="subject"
+                        required>
+
+                        <option value="">
+                            Select a topic
+                        </option>
+
+                        <option value="booking">
+                            Booking enquiry
+                        </option>
+
+                        <option value="package">
+                            Package information
+                        </option>
+
+                        <option value="custom">
+                            Custom trip
+                        </option>
+
+                        <option value="support">
+                            Existing booking
+                        </option>
+
+                        <option value="other">
+                            Something else
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="contactMessage">
+                        MESSAGE *
+                    </label>
+
+                    <textarea
+                        id="contactMessage"
+                        name="message"
+                        placeholder="Tell us about your dream trip..."
+                        required></textarea>
+
+                </div>
+
+
+                <div class="contact-submit">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        Send Message
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <div
+                        class="form-message"
+                        id="contactMessageBox">
+
+                        ✓ Thank you! Your message has been
+                        received. Our travel team will contact
+                        you soon.
+
+                    </div>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MAP
+====================================================== -->
+
+<section class="map-section">
+
+    <div class="container">
+
+        <div class="map-wrapper">
+
+
+            <iframe
+                title="WanderLight office location"
+                src="https://www.google.com/maps?q=Koregaon%20Park%20Pune%20Maharashtra&output=embed"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+
+
+            <div class="map-card">
+
+                <span>
+                    COME SAY HELLO
+                </span>
+
+                <h3>
+                    Pune, India
+                </h3>
+
+                <p>
+                    Koregaon Park, Pune,
+                    Maharashtra, India.
+                    We'd love to meet you
+                    and talk travel.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FAQ
+====================================================== -->
+
+<section class="faq-section">
+
+    <div class="container">
+
+
+        <div class="section-heading center">
+
+            <p class="section-eyebrow">
+                QUICK ANSWERS
+            </p>
+
+            <h2>
+                Before you reach out
+            </h2>
+
+        </div>
+
+
+        <div class="faq-grid">
+
+
+            <div class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    How quickly will you reply?
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        We usually respond within one
+                        business day. During busy travel
+                        periods, it may take a little longer.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    Can you create a custom itinerary?
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Absolutely. Tell us your destination,
+                        travel dates, interests and budget,
+                        and we'll help create a journey
+                        around you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    Can I change my travel dates?
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Date changes depend on the specific
+                        package, airline and accommodation
+                        policies. Contact us and we'll check
+                        the available options.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+                <button
+                    type="button"
+                    class="faq-question">
+
+                    Do you arrange international trips?
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Yes. We create both domestic and
+                        international journeys across a
+                        wide range of destinations.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
+
+                <a href="index.html"
+                   class="logo footer-logo">
+
+                    <span class="logo-mark">
+                        ▲
+                    </span>
+
+                    <span class="logo-text">
+
+                        <strong>
+                            WanderLight
+                        </strong>
+
+                        <small>
+                            TRAVEL & TOURS
+                        </small>
+
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Creating meaningful journeys,
+                    one destination at a time.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#">
+                        IG
+                    </a>
+
+                    <a href="#">
+                        FB
+                    </a>
+
+                    <a href="#">
+                        X
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Explore
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="destinations.html">
+                    Destinations
+                </a>
+
+                <a href="packages.html">
+                    Packages
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Popular
+                </h3>
+
+                <a href="destinations.html">
+                    Bali
+                </a>
+
+                <a href="destinations.html">
+                    Maldives
+                </a>
+
+                <a href="destinations.html">
+                    Paris
+                </a>
+
+                <a href="destinations.html">
+                    Kashmir
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    📍 Pune, Maharashtra, India
+                </p>
+
+                <p>
+                    ✉ hello@wanderlight.com
+                </p>
+
+                <p>
+                    ☎ +91 98765 43210
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 WanderLight Travel & Tours.
+                All rights reserved.
+            </p>
+
+            <div>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+                <a href="#">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- MAIN JS -->
+
+<script src="js/script.js"></script>
+
+
+
+<!-- =====================================================
+     CONTACT PAGE JS
+====================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* ================================================
+           CONTACT FORM
+        ================================================ */
+
+        const form =
+            document.getElementById(
+                "contactForm"
+            );
+
+
+        const messageBox =
+            document.getElementById(
+                "contactMessageBox"
+            );
+
+
+        if (form) {
+
+            form.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const name =
+                        document.getElementById(
+                            "contactName"
+                        ).value.trim();
+
+
+                    const email =
+                        document.getElementById(
+                            "contactEmail"
+                        ).value.trim();
+
+
+                    const subject =
+                        document.getElementById(
+                            "contactSubject"
+                        ).value;
+
+
+                    const message =
+                        document.getElementById(
+                            "contactMessage"
+                        ).value.trim();
+
+
+                    if (
+                        !name ||
+                        !email ||
+                        !subject ||
+                        !message
+                    ) {
+
+                        alert(
+                            "Please fill in all required fields."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const emailPattern =
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                    if (
+                        !emailPattern.test(email)
+                    ) {
+
+                        alert(
+                            "Please enter a valid email address."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const contactData = {
+
+                        name: name,
+
+                        email: email,
+
+                        phone:
+                            document.getElementById(
+                                "contactPhone"
+                            ).value.trim(),
+
+                        subject: subject,
+
+                        message: message,
+
+                        date:
+                            new Date().toISOString()
+
+                    };
+
+
+                    /* Save message locally */
+
+                    localStorage.setItem(
+                        "wanderlightContact",
+                        JSON.stringify(
+                            contactData
+                        )
+                    );
+
+
+                    messageBox.classList.add(
+                        "show"
+                    );
+
+
+                    form.reset();
+
+
+                    messageBox.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest"
+                    });
+
+
+                }
+            );
+
+        }
+
+
+
+        /* ================================================
+           FAQ ACCORDION
+        ================================================ */
+
+        const faqItems =
+            document.querySelectorAll(
+                ".faq-item"
+            );
+
+
+        faqItems.forEach(
+            function (item) {
+
+
+                const question =
+                    item.querySelector(
+                        ".faq-question"
+                    );
+
+
+                question.addEventListener(
+                    "click",
+                    function () {
+
+
+                        faqItems.forEach(
+                            function (otherItem) {
+
+                                if (
+                                    otherItem !== item
+                                ) {
+
+                                    otherItem.classList.remove(
+                                        "open"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+
+                        item.classList.toggle(
+                            "open"
+                        );
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+        /* ================================================
+           SCROLL ANIMATIONS
+        ================================================ */
+
+        const animatedElements =
+            document.querySelectorAll(
+                ".contact-detail, .contact-form-card, .map-wrapper, .faq-item"
+            );
+
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+
+                    entries.forEach(
+                        function (entry) {
+
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.style.opacity =
+                                    "1";
+
+                                entry.target.style.transform =
+                                    "translateY(0)";
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+
+                },
+                {
+                    threshold: .1
+                }
+            );
+
+
+        animatedElements.forEach(
+            function (element, index) {
+
+                element.style.opacity =
+                    "0";
+
+                element.style.transform =
+                    "translateY(20px)";
+
+                element.style.transition =
+                    "opacity .6s ease " +
+                    (index * .07) +
+                    "s, transform .6s ease " +
+                    (index * .07) +
+                    "s";
+
+                observer.observe(
+                    element
+                );
+
+            }
+        );
+
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>

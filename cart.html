@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Trips | WanderLight</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+
+    <style>
+
+        /* ================================
+           CART PAGE
+        ================================= */
+
+        .cart-page {
+
+            min-height: 80vh;
+
+            background: #f8f5ed;
+
+            padding:
+                90px 0 110px;
+
+        }
+
+
+        .cart-heading {
+
+            text-align: center;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .cart-heading span {
+
+            display: block;
+
+            color: #c89a32;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .cart-heading h1 {
+
+            color: #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(38px, 5vw, 58px);
+
+            margin: 0 0 12px;
+
+        }
+
+
+        .cart-heading p {
+
+            color: #788581;
+
+            font-size: 12px;
+
+        }
+
+
+        /* CART CONTAINER */
+
+        .cart-container {
+
+            max-width: 1050px;
+
+            margin: auto;
+
+        }
+
+
+        .cart-items {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+        }
+
+
+        /* CART CARD */
+
+        .cart-item {
+
+            display: grid;
+
+            grid-template-columns:
+                150px 1fr auto;
+
+            gap: 25px;
+
+            align-items: center;
+
+            background: #ffffff;
+
+            padding: 18px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(6,63,56,.07);
+
+        }
+
+
+        .cart-item-image {
+
+            width: 150px;
+
+            height: 115px;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+
+        }
+
+
+        .cart-item-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .cart-item-info h3 {
+
+            color: #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 23px;
+
+            margin: 0 0 7px;
+
+        }
+
+
+        .cart-item-info p {
+
+            color: #7c8985;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+            margin: 4px 0;
+
+        }
+
+
+        .cart-price {
+
+            color: #c08f22;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            margin-top: 10px;
+
+        }
+
+
+        .remove-cart {
+
+            border: none;
+
+            background: #f5ebe6;
+
+            color: #b05a45;
+
+            border-radius: 50%;
+
+            width: 38px;
+
+            height: 38px;
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+            transition: .25s ease;
+
+        }
+
+
+        .remove-cart:hover {
+
+            background: #b05a45;
+
+            color: #ffffff;
+
+            transform: scale(1.05);
+
+        }
+
+
+        /* EMPTY CART */
+
+        .empty-cart {
+
+            text-align: center;
+
+            background: #ffffff;
+
+            padding: 70px 25px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(6,63,56,.07);
+
+        }
+
+
+        .empty-cart-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            display: grid;
+
+            place-items: center;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #e8f0ec;
+
+            color: #146f65;
+
+            font-size: 30px;
+
+        }
+
+
+        .empty-cart h2 {
+
+            color: #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .empty-cart p {
+
+            color: #7c8985;
+
+            font-size: 11px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* SUMMARY */
+
+        .cart-summary {
+
+            margin-top: 30px;
+
+            background: #063f38;
+
+            color: white;
+
+            padding: 28px 30px;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+        }
+
+
+        .cart-summary-text span {
+
+            display: block;
+
+            color: #a9c1bc;
+
+            font-size: 10px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .cart-summary-text strong {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 27px;
+
+        }
+
+
+        .cart-summary-buttons {
+
+            display: flex;
+
+            gap: 12px;
+
+        }
+
+
+        .cart-summary-buttons a {
+
+            text-decoration: none;
+
+        }
+
+
+        .continue-btn {
+
+            background: transparent;
+
+            border: 1px solid #e8b84e;
+
+            color: #e8b84e;
+
+            padding:
+                13px 20px;
+
+            border-radius: 30px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        .checkout-btn {
+
+            background: #e8b84e;
+
+            color: #063f38;
+
+            padding:
+                13px 22px;
+
+            border-radius: 30px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .cart-page {
+
+                padding:
+                    60px 15px 80px;
+
+            }
+
+
+            .cart-item {
+
+                grid-template-columns:
+                    90px 1fr;
+
+                gap: 15px;
+
+            }
+
+
+            .cart-item-image {
+
+                width: 90px;
+
+                height: 90px;
+
+            }
+
+
+            .cart-item-info h3 {
+
+                font-size: 18px;
+
+            }
+
+
+            .remove-cart {
+
+                grid-column: 2;
+
+                justify-self: end;
+
+                margin-top: -45px;
+
+            }
+
+
+            .cart-summary {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+            }
+
+
+            .cart-summary-buttons {
+
+                flex-direction: column;
+
+            }
+
+
+            .cart-summary-buttons a {
+
+                text-align: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header class="header">
+
+    <div class="container nav-container">
+
+
+        <a href="index.html"
+           class="logo">
+
+            <span class="logo-mark">
+                ▲
+            </span>
+
+            <span class="logo-text">
+
+                <strong>
+                    WanderLight
+                </strong>
+
+                <small>
+                    TRAVEL & TOURS
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <nav class="navbar"
+             id="navbar">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="destinations.html">
+                Destinations
+            </a>
+
+            <a href="packages.html">
+                Packages
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a href="cart.html"
+               class="icon-btn"
+               title="My Trips">
+
+                ♡
+
+            </a>
+
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <a href="booking.html"
+               class="btn btn-primary nav-btn">
+
+                Plan Your Trip
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================================
+     CART
+================================= -->
+
+<main class="cart-page">
+
+
+    <div class="container cart-container">
+
+
+        <div class="cart-heading">
+
+            <span>
+                YOUR JOURNEY
+            </span>
+
+            <h1>
+                Saved Trips
+            </h1>
+
+            <p>
+                Your favourite destinations and
+                packages are waiting for you.
+            </p>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cartItems">
+        </div>
+
+
+        <div
+            class="empty-cart"
+            id="emptyCart">
+
+            <div class="empty-cart-icon">
+                ♡
+            </div>
+
+            <h2>
+                Your trip list is empty
+            </h2>
+
+            <p>
+                Start exploring and save the
+                destinations you love.
+            </p>
+
+            <a
+                href="destinations.html"
+                class="btn btn-primary">
+
+                Explore Destinations
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div
+            class="cart-summary"
+            id="cartSummary"
+            style="display:none;">
+
+
+            <div class="cart-summary-text">
+
+                <span>
+                    SAVED TRIPS
+                </span>
+
+                <strong id="cartCount">
+                    0 trips
+                </strong>
+
+            </div>
+
+
+            <div class="cart-summary-buttons">
+
+                <a
+                    href="destinations.html"
+                    class="continue-btn">
+
+                    Continue Exploring
+
+                </a>
+
+
+                <a
+                    href="booking.html"
+                    class="checkout-btn">
+
+                    Plan This Trip →
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 WanderLight Travel & Tours.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script src="js/script.js"></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const cartItems =
+            document.getElementById(
+                "cartItems"
+            );
+
+
+        const emptyCart =
+            document.getElementById(
+                "emptyCart"
+            );
+
+
+        const cartSummary =
+            document.getElementById(
+                "cartSummary"
+            );
+
+
+        const cartCount =
+            document.getElementById(
+                "cartCount"
+            );
+
+
+        function getCart() {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    "wanderlightCart"
+                )
+            ) || [];
+
+        }
+
+
+        function saveCart(cart) {
+
+            localStorage.setItem(
+                "wanderlightCart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        function displayCart() {
+
+            const cart = getCart();
+
+
+            cartItems.innerHTML = "";
+
+
+            if (cart.length === 0) {
+
+                emptyCart.style.display =
+                    "block";
+
+                cartSummary.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            emptyCart.style.display =
+                "none";
+
+            cartSummary.style.display =
+                "flex";
+
+
+            cartCount.textContent =
+                cart.length +
+                (cart.length === 1
+                    ? " trip"
+                    : " trips");
+
+
+            cart.forEach(
+                function (item, index) {
+
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "cart-item";
+
+
+                    card.innerHTML = `
+
+                        <div class="cart-item-image">
+
+                            <img
+                                src="${item.image}"
+                                alt="${item.name}"
+                                onerror="this.src='images/hero-banner.jpg'">
+
+                        </div>
+
+
+                        <div class="cart-item-info">
+
+                            <h3>
+                                ${item.name}
+                            </h3>
+
+                            <p>
+                                ${item.location || "Beautiful destination"}
+                            </p>
+
+                            <p>
+                                ${item.description || "A memorable WanderLight journey."}
+                            </p>
+
+                            <div class="cart-price">
+
+                                ${item.price || "Price on request"}
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="remove-cart"
+                            data-index="${index}"
+                            title="Remove">
+
+                            ×
+
+                        </button>
+
+                    `;
+
+
+                    cartItems.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+
+            document
+                .querySelectorAll(
+                    ".remove-cart"
+                )
+                .forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                const index =
+                                    Number(
+                                        this.dataset.index
+                                    );
+
+
+                                const cart =
+                                    getCart();
+
+
+                                cart.splice(
+                                    index,
+                                    1
+                                );
+
+
+                                saveCart(
+                                    cart
+                                );
+
+
+                                displayCart();
+
+                            }
+                        );
+
+                    }
+                );
+
+        }
+
+
+        displayCart();
+
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>

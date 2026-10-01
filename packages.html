@@ -1,0 +1,3673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Explore curated travel packages from WanderLight Travel & Tours.">
+
+    <title>Travel Packages | WanderLight</title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Yellowtail&display=swap"
+        rel="stylesheet">
+
+
+    <!-- MAIN CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+
+    <style>
+
+        /* =====================================================
+           PACKAGES PAGE
+        ===================================================== */
+
+        .packages-hero {
+
+            min-height: 470px;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3,47,43,.95),
+                    rgba(3,47,43,.68),
+                    rgba(3,47,43,.25)
+                ),
+                url("../images/hero-banner.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+        }
+
+
+        .packages-hero-content {
+
+            max-width: 700px;
+
+            padding-top: 65px;
+
+            position: relative;
+
+            z-index: 2;
+
+            animation:
+                packageHeroIn .9s ease both;
+
+        }
+
+
+        @keyframes packageHeroIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(35px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        .packages-hero h1 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(45px, 6vw, 72px);
+
+            line-height: 1.02;
+
+            margin:
+                12px 0 18px;
+
+        }
+
+
+        .packages-hero h1 span {
+
+            display: block;
+
+            color:
+                #e9bd52;
+
+            font-family:
+                "Yellowtail",
+                cursive;
+
+            font-weight: 400;
+
+        }
+
+
+        .packages-hero p {
+
+            max-width: 570px;
+
+            color:
+                rgba(255,255,255,.78);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           PACKAGE FILTER BOX
+        ===================================================== */
+
+        .packages-controls {
+
+            margin-top: -48px;
+
+            position: relative;
+
+            z-index: 10;
+
+        }
+
+
+        .package-filter-box {
+
+            background: #fff;
+
+            padding: 22px;
+
+            border-radius: 22px;
+
+            border:
+                1px solid
+                rgba(10,70,64,.12);
+
+            box-shadow:
+                0 18px 50px rgba(0,0,0,.12);
+
+        }
+
+
+        .package-filter-top {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 200px;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .package-search {
+
+            position: relative;
+
+        }
+
+
+        .package-search-icon {
+
+            position: absolute;
+
+            left: 18px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size: 18px;
+
+            color:
+                #146f65;
+
+        }
+
+
+        .package-search input {
+
+            width: 100%;
+
+            height: 50px;
+
+            border:
+                1px solid
+                #dce4e1;
+
+            border-radius: 50px;
+
+            outline: none;
+
+            padding:
+                0 20px 0 48px;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            color:
+                #163d38;
+
+        }
+
+
+        .package-search input:focus {
+
+            border-color:
+                #146f65;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(20,111,101,.08);
+
+        }
+
+
+        .package-sort {
+
+            height: 50px;
+
+            border:
+                1px solid
+                #dce4e1;
+
+            border-radius: 50px;
+
+            padding:
+                0 16px;
+
+            outline: none;
+
+            color:
+                #163d38;
+
+            background: #fff;
+
+            cursor: pointer;
+
+        }
+
+
+        .package-filter-row {
+
+            display: flex;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+
+        }
+
+
+        .filter-title {
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.4px;
+
+            text-transform: uppercase;
+
+            color:
+                #71807d;
+
+            margin-right: 5px;
+
+        }
+
+
+        .package-filter {
+
+            border:
+                1px solid
+                #dce4e1;
+
+            background: #fff;
+
+            color:
+                #174a43;
+
+            border-radius: 50px;
+
+            padding:
+                9px 16px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                .25s ease;
+
+        }
+
+
+        .package-filter:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                #146f65;
+
+        }
+
+
+        .package-filter.active {
+
+            color: #fff;
+
+            background:
+                #063f38;
+
+            border-color:
+                #063f38;
+
+        }
+
+
+        /* =====================================================
+           PACKAGE SECTION
+        ===================================================== */
+
+        .packages-section {
+
+            background:
+                #f8f5ed;
+
+        }
+
+
+        .packages-heading {
+
+            display: flex;
+
+            align-items: end;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .packages-heading h2 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            color:
+                #073f38;
+
+            font-size:
+                clamp(32px, 4vw, 48px);
+
+            line-height: 1.1;
+
+            margin-top: 8px;
+
+        }
+
+
+        .packages-heading p {
+
+            max-width: 430px;
+
+            color:
+                #71807d;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .package-results {
+
+            font-size: 12px;
+
+            color:
+                #71807d;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .package-results strong {
+
+            color:
+                #063f38;
+
+        }
+
+
+        /* =====================================================
+           PACKAGE GRID
+        ===================================================== */
+
+        .package-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .package-card {
+
+            background:
+                #fff;
+
+            border:
+                1px solid
+                rgba(10,70,64,.12);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 7px 25px rgba(4,49,44,.06);
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease;
+
+        }
+
+
+        .package-card:hover {
+
+            transform:
+                translateY(-9px);
+
+            box-shadow:
+                0 20px 45px rgba(4,49,44,.13);
+
+        }
+
+
+        .package-image {
+
+            height: 245px;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .package-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform .7s ease;
+
+        }
+
+
+        .package-card:hover
+        .package-image img {
+
+            transform:
+                scale(1.08);
+
+        }
+
+
+        .package-image::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 45%,
+                    rgba(3,47,43,.48)
+                );
+
+        }
+
+
+        .package-badge {
+
+            position: absolute;
+
+            z-index: 2;
+
+            top: 15px;
+
+            left: 15px;
+
+            background:
+                #e8b84e;
+
+            color:
+                #073f38;
+
+            padding:
+                7px 12px;
+
+            border-radius: 50px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        .package-favorite {
+
+            position: absolute;
+
+            z-index: 3;
+
+            right: 15px;
+
+            top: 15px;
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.45);
+
+            background:
+                rgba(3,47,43,.72);
+
+            color: #fff;
+
+            cursor: pointer;
+
+            font-size: 19px;
+
+            display: grid;
+
+            place-items: center;
+
+            transition:
+                .25s ease;
+
+        }
+
+
+        .package-favorite:hover,
+        .package-favorite.active {
+
+            background:
+                #e8b84e;
+
+            color:
+                #063f38;
+
+            transform:
+                scale(1.08);
+
+        }
+
+
+        .package-duration {
+
+            position: absolute;
+
+            z-index: 3;
+
+            left: 15px;
+
+            bottom: 15px;
+
+            color: #fff;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+        }
+
+
+        .package-body {
+
+            padding:
+                22px;
+
+        }
+
+
+        .package-category {
+
+            display: inline-block;
+
+            color:
+                #146f65;
+
+            background:
+                rgba(20,111,101,.09);
+
+            border-radius: 50px;
+
+            padding:
+                6px 10px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom: 11px;
+
+        }
+
+
+        .package-body h3 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            color:
+                #063f38;
+
+            font-size: 27px;
+
+            margin-bottom: 7px;
+
+            line-height: 1.1;
+
+        }
+
+
+        .package-location {
+
+            color:
+                #71807d;
+
+            font-size: 11px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .package-description {
+
+            color:
+                #71807d;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            min-height: 61px;
+
+            margin-bottom: 16px;
+
+        }
+
+
+        .package-inclusions {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            padding-bottom: 17px;
+
+            border-bottom:
+                1px solid
+                #e4e9e6;
+
+        }
+
+
+        .inclusion {
+
+            padding:
+                6px 9px;
+
+            background:
+                #f4f6f3;
+
+            color:
+                #506762;
+
+            border-radius: 5px;
+
+            font-size: 9px;
+
+        }
+
+
+        .package-bottom {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 12px;
+
+            padding-top: 17px;
+
+        }
+
+
+        .package-price small {
+
+            display: block;
+
+            color:
+                #87938f;
+
+            font-size: 9px;
+
+            margin-bottom: 2px;
+
+        }
+
+
+        .package-price strong {
+
+            color:
+                #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 23px;
+
+        }
+
+
+        .package-price span {
+
+            color:
+                #87938f;
+
+            font-size: 9px;
+
+        }
+
+
+        .package-actions {
+
+            display: flex;
+
+            gap: 7px;
+
+        }
+
+
+        .package-view {
+
+            height: 40px;
+
+            padding:
+                0 13px;
+
+            border-radius: 50px;
+
+            border:
+                1px solid
+                #dce4e1;
+
+            background:
+                #fff;
+
+            color:
+                #063f38;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition:
+                .25s ease;
+
+        }
+
+
+        .package-view:hover {
+
+            background:
+                #f3f5f2;
+
+        }
+
+
+        .package-book {
+
+            height: 40px;
+
+            padding:
+                0 15px;
+
+            border-radius: 50px;
+
+            background:
+                #e8b84e;
+
+            color:
+                #063f38;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition:
+                .25s ease;
+
+        }
+
+
+        .package-book:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 7px 18px
+                rgba(232,184,78,.25);
+
+        }
+
+
+        /* =====================================================
+           NO RESULTS
+        ===================================================== */
+
+        .package-no-results {
+
+            display: none;
+
+            text-align: center;
+
+            padding:
+                80px 20px;
+
+        }
+
+
+        .package-no-results.show {
+
+            display: block;
+
+        }
+
+
+        .package-no-results-icon {
+
+            width: 72px;
+
+            height: 72px;
+
+            display: grid;
+
+            place-items: center;
+
+            margin:
+                0 auto 20px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(20,111,101,.08);
+
+            color:
+                #146f65;
+
+            font-size: 28px;
+
+        }
+
+
+        .package-no-results h3 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            color:
+                #063f38;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .package-no-results p {
+
+            color:
+                #71807d;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =====================================================
+           SPECIAL OFFER BANNER
+        ===================================================== */
+
+        .package-offer {
+
+            background:
+                #063f38;
+
+            overflow: hidden;
+
+            position: relative;
+
+            color: #fff;
+
+        }
+
+
+        .package-offer::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+
+            height: 350px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(232,184,78,.18);
+
+            right: -100px;
+
+            top: -180px;
+
+        }
+
+
+        .package-offer-inner {
+
+            min-height: 250px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .offer-copy {
+
+            max-width: 650px;
+
+        }
+
+
+        .offer-copy .eyebrow {
+
+            color:
+                #e8b84e;
+
+        }
+
+
+        .offer-copy h2 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(30px, 4vw, 45px);
+
+            line-height: 1.1;
+
+            margin:
+                8px 0 12px;
+
+        }
+
+
+        .offer-copy p {
+
+            color:
+                rgba(255,255,255,.7);
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .offer-price {
+
+            min-width: 220px;
+
+            text-align: center;
+
+            padding: 25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            border-radius: 18px;
+
+            background:
+                rgba(255,255,255,.04);
+
+        }
+
+
+        .offer-price small {
+
+            display: block;
+
+            color:
+                rgba(255,255,255,.6);
+
+            font-size: 10px;
+
+        }
+
+
+        .offer-price strong {
+
+            display: block;
+
+            color:
+                #e8b84e;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 38px;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .package-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 760px) {
+
+            .packages-hero {
+
+                min-height: 420px;
+
+            }
+
+
+            .package-filter-top {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .packages-heading {
+
+                display: block;
+
+            }
+
+
+            .packages-heading p {
+
+                margin-top: 12px;
+
+            }
+
+
+            .package-offer-inner {
+
+                padding-top: 35px;
+
+                padding-bottom: 35px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+
+        @media (max-width: 560px) {
+
+            .package-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .package-filter-box {
+
+                padding: 16px;
+
+                border-radius: 17px;
+
+            }
+
+
+            .packages-hero h1 {
+
+                font-size: 45px;
+
+            }
+
+
+            .package-image {
+
+                height: 250px;
+
+            }
+
+
+            .package-bottom {
+
+                align-items: flex-end;
+
+            }
+
+
+            .package-actions {
+
+                flex-direction: column;
+
+            }
+
+
+            .package-view,
+            .package-book {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header
+    class="header"
+    id="header">
+
+    <div class="container nav-container">
+
+
+        <a
+            href="index.html"
+            class="logo">
+
+            <span class="logo-mark">
+                ▲
+            </span>
+
+            <span class="logo-text">
+
+                <strong>
+                    WanderLight
+                </strong>
+
+                <small>
+                    TRAVEL & TOURS
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <nav
+            class="navbar"
+            id="navbar">
+
+            <a
+                href="index.html"
+                class="nav-link">
+
+                Home
+
+            </a>
+
+
+            <a
+                href="destinations.html"
+                class="nav-link">
+
+                Destinations
+
+            </a>
+
+
+            <a
+                href="packages.html"
+                class="nav-link active">
+
+                Packages
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="nav-link">
+
+                About
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="nav-link">
+
+                Contact
+
+            </a>
+            <a href="cart.html" class="nav-cart">
+              ♡ My Trips
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button
+                type="button"
+                class="icon-btn search-toggle"
+                id="searchToggle"
+                aria-label="Search">
+
+                ⌕
+
+            </button>
+
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu"
+                aria-expanded="false">
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+            </button>
+
+
+            <a
+                href="booking.html"
+                class="btn btn-primary nav-btn">
+
+                Plan Your Trip
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="search-panel"
+        id="searchPanel">
+
+        <div class="container search-inner">
+
+            <form
+                action="packages.html"
+                method="GET"
+                class="search-form">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    name="search"
+                    placeholder="Search travel packages..."
+                    id="globalSearch">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    Search
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="packages-hero">
+
+    <div class="container packages-hero-content">
+
+        <p class="eyebrow light">
+            CURATED JOURNEYS • BEAUTIFUL MEMORIES
+        </p>
+
+        <h1>
+
+            Travel More.
+            <span>
+                Feel More.
+            </span>
+
+        </h1>
+
+        <p>
+
+            From relaxing island escapes to
+            unforgettable mountain adventures,
+            choose a journey designed around
+            the way you love to travel.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FILTERS
+====================================================== -->
+
+<section class="packages-controls">
+
+    <div class="container">
+
+        <div class="package-filter-box">
+
+
+            <div class="package-filter-top">
+
+
+                <div class="package-search">
+
+                    <span class="package-search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="packageSearch"
+                        placeholder="Search packages, destinations or experiences...">
+
+                </div>
+
+
+                <select
+                    id="packageSort"
+                    class="package-sort">
+
+                    <option value="default">
+                        Sort Packages
+                    </option>
+
+                    <option value="price-low">
+                        Price: Low to High
+                    </option>
+
+                    <option value="price-high">
+                        Price: High to Low
+                    </option>
+
+                    <option value="duration-short">
+                        Shortest Duration
+                    </option>
+
+                    <option value="duration-long">
+                        Longest Duration
+                    </option>
+
+                    <option value="name-a">
+                        Name: A to Z
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="package-filter-row">
+
+                <span class="filter-title">
+                    Category:
+                </span>
+
+
+                <button
+                    type="button"
+                    class="package-filter active"
+                    data-category="all">
+
+                    All
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="package-filter"
+                    data-category="beach">
+
+                    Beach Escapes
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="package-filter"
+                    data-category="mountain">
+
+                    Mountain
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="package-filter"
+                    data-category="culture">
+
+                    Culture
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="package-filter"
+                    data-category="adventure">
+
+                    Adventure
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="package-filter"
+                    data-category="luxury">
+
+                    Luxury
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PACKAGES
+====================================================== -->
+
+<section class="section packages-section">
+
+    <div class="container">
+
+
+        <div class="packages-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    OUR COLLECTION
+                </p>
+
+                <h2>
+                    Journeys Worth
+                    <br>
+                    Remembering
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Carefully planned itineraries,
+                handpicked stays and experiences
+                that turn a simple holiday into
+                a story you'll remember forever.
+
+            </p>
+
+        </div>
+
+
+        <p
+            class="package-results"
+            id="packageResults">
+
+            Showing
+            <strong>9</strong>
+            travel packages
+
+        </p>
+
+
+        <div
+            class="package-grid"
+            id="packageGrid">
+
+
+            <!-- =================================================
+                 PACKAGE 01
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Bali Bliss Escape"
+                data-category="beach"
+                data-price="39999"
+                data-duration="5">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/package-bali.jpg"
+                        alt="Bali Bliss Escape"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        Best Seller
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Bali package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 5 Days / 4 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Beach Escape
+                    </span>
+
+                    <h3>
+                        Bali Bliss Escape
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Bali, Indonesia
+                    </div>
+
+                    <p class="package-description">
+
+                        Tropical beaches, temple visits,
+                        sunset experiences and a relaxing
+                        island getaway.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Hotel
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Transfers
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Sightseeing
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹39,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=bali"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=bali"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PACKAGE 02
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Swiss Alpine Dream"
+                data-category="mountain"
+                data-price="79999"
+                data-duration="7">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/mountain-traveler.jpg"
+                        alt="Swiss Alpine Dream"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        Premium
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Switzerland package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 7 Days / 6 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Mountain
+                    </span>
+
+                    <h3>
+                        Swiss Alpine Dream
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Switzerland
+                    </div>
+
+                    <p class="package-description">
+
+                        Scenic train journeys, mountain
+                        villages, snow-covered peaks and
+                        breathtaking Alpine views.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Hotel
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Train Pass
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Guide
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹79,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=switzerland"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=switzerland"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PACKAGE 03
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Maldives Island Retreat"
+                data-category="luxury"
+                data-price="69999"
+                data-duration="5">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/home-maldives.jpg"
+                        alt="Maldives Island Retreat"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        Luxury
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Maldives package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 5 Days / 4 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Luxury
+                    </span>
+
+                    <h3>
+                        Maldives Island Retreat
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Maldives
+                    </div>
+
+                    <p class="package-description">
+
+                        Stay beside crystal-clear waters,
+                        enjoy island dining and experience
+                        a peaceful tropical escape.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Resort
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Speedboat
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Cruise
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹69,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=maldives"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=maldives"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PACKAGE 04
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Paris Romance"
+                data-category="culture"
+                data-price="59999"
+                data-duration="6">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/destination-paris.jpg"
+                        alt="Paris Romance"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        Romantic
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Paris package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 6 Days / 5 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Culture
+                    </span>
+
+                    <h3>
+                        Paris Romance
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Paris, France
+                    </div>
+
+                    <p class="package-description">
+
+                        Explore iconic landmarks, charming
+                        cafés, art galleries and the timeless
+                        romance of Paris.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Hotel
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ City Tour
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Cruise
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹59,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=paris"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=paris"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PACKAGE 05
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Dubai Luxury Explorer"
+                data-category="luxury"
+                data-price="45999"
+                data-duration="5">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/destination-dubai.jpg"
+                        alt="Dubai Luxury Explorer"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        Popular
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Dubai package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 5 Days / 4 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Luxury
+                    </span>
+
+                    <h3>
+                        Dubai Luxury Explorer
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Dubai, UAE
+                    </div>
+
+                    <p class="package-description">
+
+                        Modern architecture, desert safari,
+                        luxury shopping and unforgettable
+                        Arabian experiences.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Hotel
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Desert Safari
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Transfers
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹45,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=dubai"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=dubai"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PACKAGE 06
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Kashmir Valley Escape"
+                data-category="mountain"
+                data-price="29999"
+                data-duration="6">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/home-kashmir.jpg"
+                        alt="Kashmir Valley Escape"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        India Special
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Kashmir package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 6 Days / 5 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Mountain
+                    </span>
+
+                    <h3>
+                        Kashmir Valley Escape
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Kashmir, India
+                    </div>
+
+                    <p class="package-description">
+
+                        Peaceful valleys, beautiful lakes,
+                        mountain views and unforgettable
+                        Himalayan experiences.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Hotel
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Transfers
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Sightseeing
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹29,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=kashmir"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=kashmir"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PACKAGE 07
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Kyoto Heritage Journey"
+                data-category="culture"
+                data-price="74999"
+                data-duration="7">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/kyoto-japan.jpg"
+                        alt="Kyoto Heritage Journey"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        New
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Kyoto package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 7 Days / 6 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Culture
+                    </span>
+
+                    <h3>
+                        Kyoto Heritage Journey
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Kyoto, Japan
+                    </div>
+
+                    <p class="package-description">
+
+                        Ancient temples, traditional gardens,
+                        local food and beautiful Japanese
+                        cultural experiences.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Hotel
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ City Tour
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Guide
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹74,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=kyoto"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=kyoto"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PACKAGE 08
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Iceland Northern Lights"
+                data-category="adventure"
+                data-price="89999"
+                data-duration="8">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/iceland-northern-lights.jpg"
+                        alt="Iceland Northern Lights"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        Adventure
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Iceland package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 8 Days / 7 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Adventure
+                    </span>
+
+                    <h3>
+                        Iceland Northern Lights
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Iceland
+                    </div>
+
+                    <p class="package-description">
+
+                        Chase the Northern Lights, explore
+                        glaciers, waterfalls and dramatic
+                        volcanic landscapes.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Hotel
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Northern Lights
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Guide
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹89,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=iceland"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=iceland"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PACKAGE 09
+            ================================================== -->
+
+            <article
+                class="package-card"
+                data-name="Petra Desert Adventure"
+                data-category="adventure"
+                data-price="64999"
+                data-duration="6">
+
+
+                <div class="package-image">
+
+                    <img
+                        src="images/destination-bali.jpg"
+                        alt="Petra Desert Adventure"
+                        loading="lazy">
+
+                    <span class="package-badge">
+                        Explorer
+                    </span>
+
+                    <button
+                        type="button"
+                        class="package-favorite favorite-package"
+                        aria-label="Favorite Petra package">
+
+                        ♡
+
+                    </button>
+
+                    <span class="package-duration">
+                        ◷ 6 Days / 5 Nights
+                    </span>
+
+                </div>
+
+
+                <div class="package-body">
+
+                    <span class="package-category">
+                        Adventure
+                    </span>
+
+                    <h3>
+                        Petra Desert Adventure
+                    </h3>
+
+                    <div class="package-location">
+                        📍 Petra, Jordan
+                    </div>
+
+                    <p class="package-description">
+
+                        Discover ancient wonders, dramatic
+                        desert landscapes and the legendary
+                        lost city of Petra.
+
+                    </p>
+
+
+                    <div class="package-inclusions">
+
+                        <span class="inclusion">
+                            ✓ Hotel
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Breakfast
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Desert Tour
+                        </span>
+
+                        <span class="inclusion">
+                            ✓ Local Guide
+                        </span>
+
+                    </div>
+
+
+                    <div class="package-bottom">
+
+                        <div class="package-price">
+
+                            <small>
+                                Starting from
+                            </small>
+
+                            <strong>
+                                ₹64,999
+                            </strong>
+
+                            <span>
+                                / person
+                            </span>
+
+                        </div>
+
+
+                        <div class="package-actions">
+
+                            <a
+                                href="package-details.html?id=petra"
+                                class="package-view">
+
+                                Details
+
+                            </a>
+
+                            <a
+                                href="booking.html?package=petra"
+                                class="package-book">
+
+                                Book Now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- NO RESULTS -->
+
+        <div
+            class="package-no-results"
+            id="packageNoResults">
+
+            <div class="package-no-results-icon">
+                ⌕
+            </div>
+
+            <h3>
+                No packages found
+            </h3>
+
+            <p>
+                Try another destination,
+                category or search term.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SPECIAL OFFER
+====================================================== -->
+
+<section class="section-sm package-offer">
+
+    <div class="container package-offer-inner">
+
+
+        <div class="offer-copy">
+
+            <p class="eyebrow">
+                LIMITED TIME OFFER
+            </p>
+
+            <h2>
+                Your next adventure
+                is closer than you think.
+            </h2>
+
+            <p>
+
+                Save up to 20% on selected
+                international packages.
+                Start planning your dream journey today.
+
+            </p>
+
+        </div>
+
+
+        <div class="offer-price">
+
+            <small>
+                SPECIAL DEALS FROM
+            </small>
+
+            <strong>
+                ₹29,999
+            </strong>
+
+            <a
+                href="booking.html"
+                class="btn btn-primary">
+
+                Plan My Trip →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="logo footer-logo">
+
+                    <span class="logo-mark">
+                        ▲
+                    </span>
+
+                    <span class="logo-text">
+
+                        <strong>
+                            WanderLight
+                        </strong>
+
+                        <small>
+                            TRAVEL & TOURS
+                        </small>
+
+                    </span>
+
+                </a>
+
+                <p>
+                    Creating meaningful journeys,
+                    one destination at a time.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#">
+                        IG
+                    </a>
+
+                    <a href="#">
+                        FB
+                    </a>
+
+                    <a href="#">
+                        X
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Explore
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="destinations.html">
+                    Destinations
+                </a>
+
+                <a href="packages.html">
+                    Packages
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Popular
+                </h3>
+
+                <a href="package-details.html?id=bali">
+                    Bali
+                </a>
+
+                <a href="package-details.html?id=maldives">
+                    Maldives
+                </a>
+
+                <a href="package-details.html?id=paris">
+                    Paris
+                </a>
+
+                <a href="package-details.html?id=kashmir">
+                    Kashmir
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    📍 Pune, Maharashtra, India
+                </p>
+
+                <p>
+                    ✉ hello@wanderlight.com
+                </p>
+
+                <p>
+                    ☎ +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 WanderLight Travel & Tours.
+                All rights reserved.
+            </p>
+
+            <div>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+                <a href="#">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SCROLL TOP
+====================================================== -->
+
+<button
+    type="button"
+    class="scroll-top"
+    id="scrollTop"
+    aria-label="Scroll to top">
+
+    ↑
+
+</button>
+
+
+
+<!-- =====================================================
+     MAIN JAVASCRIPT
+====================================================== -->
+
+<script src="js/script.js"></script>
+
+
+
+<!-- =====================================================
+     PACKAGE PAGE JAVASCRIPT
+====================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* ==============================================
+           ELEMENTS
+        ============================================== */
+
+        const searchInput =
+            document.getElementById(
+                "packageSearch"
+            );
+
+
+        const sortSelect =
+            document.getElementById(
+                "packageSort"
+            );
+
+
+        const filterButtons =
+            document.querySelectorAll(
+                ".package-filter"
+            );
+
+
+        const grid =
+            document.getElementById(
+                "packageGrid"
+            );
+
+
+        const cards =
+            Array.from(
+                document.querySelectorAll(
+                    ".package-card"
+                )
+            );
+
+
+        const results =
+            document.getElementById(
+                "packageResults"
+            );
+
+
+        const noResults =
+            document.getElementById(
+                "packageNoResults"
+            );
+
+
+        let activeCategory =
+            "all";
+
+
+        /* ==============================================
+           FILTER FUNCTION
+        ============================================== */
+
+        function updatePackages() {
+
+
+            const search =
+                searchInput
+                    ? searchInput.value
+                        .trim()
+                        .toLowerCase()
+                    : "";
+
+
+            let filtered =
+                cards.filter(
+                    function (card) {
+
+
+                        const name =
+                            (
+                                card.dataset.name || ""
+                            ).toLowerCase();
+
+
+                        const category =
+                            (
+                                card.dataset.category || ""
+                            ).toLowerCase();
+
+
+                        const matchesSearch =
+                            !search ||
+                            name.includes(search) ||
+                            category.includes(search);
+
+
+                        const matchesCategory =
+                            activeCategory === "all" ||
+                            category === activeCategory;
+
+
+                        return (
+                            matchesSearch &&
+                            matchesCategory
+                        );
+
+                    }
+                );
+
+
+            /* ==========================================
+               SORT
+            ========================================== */
+
+            const sort =
+                sortSelect
+                    ? sortSelect.value
+                    : "default";
+
+
+            if (
+                sort === "price-low"
+            ) {
+
+                filtered.sort(
+                    function (a, b) {
+
+                        return (
+                            Number(a.dataset.price) -
+                            Number(b.dataset.price)
+                        );
+
+                    }
+                );
+
+            }
+
+
+            if (
+                sort === "price-high"
+            ) {
+
+                filtered.sort(
+                    function (a, b) {
+
+                        return (
+                            Number(b.dataset.price) -
+                            Number(a.dataset.price)
+                        );
+
+                    }
+                );
+
+            }
+
+
+            if (
+                sort === "duration-short"
+            ) {
+
+                filtered.sort(
+                    function (a, b) {
+
+                        return (
+                            Number(a.dataset.duration) -
+                            Number(b.dataset.duration)
+                        );
+
+                    }
+                );
+
+            }
+
+
+            if (
+                sort === "duration-long"
+            ) {
+
+                filtered.sort(
+                    function (a, b) {
+
+                        return (
+                            Number(b.dataset.duration) -
+                            Number(a.dataset.duration)
+                        );
+
+                    }
+                );
+
+            }
+
+
+            if (
+                sort === "name-a"
+            ) {
+
+                filtered.sort(
+                    function (a, b) {
+
+                        return a.dataset.name
+                            .localeCompare(
+                                b.dataset.name
+                            );
+
+                    }
+                );
+
+            }
+
+
+            /* ==========================================
+               HIDE ALL
+            ========================================== */
+
+            cards.forEach(
+                function (card) {
+
+                    card.style.display =
+                        "none";
+
+                }
+            );
+
+
+            /* ==========================================
+               SHOW FILTERED
+            ========================================== */
+
+            filtered.forEach(
+                function (card, index) {
+
+                    card.style.display =
+                        "block";
+
+                    card.style.animation =
+                        "packageCardAppear .5s ease " +
+                        (index * 0.06) +
+                        "s both";
+
+                    grid.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+
+            /* ==========================================
+               RESULT COUNT
+            ========================================== */
+
+            if (results) {
+
+                results.innerHTML =
+                    `Showing <strong>${filtered.length}</strong> travel packages`;
+
+            }
+
+
+            /* ==========================================
+               NO RESULTS
+            ========================================== */
+
+            if (noResults) {
+
+                noResults.classList.toggle(
+                    "show",
+                    filtered.length === 0
+                );
+
+            }
+
+        }
+
+
+        /* ==============================================
+           SEARCH
+        ============================================== */
+
+        if (searchInput) {
+
+            searchInput.addEventListener(
+                "input",
+                updatePackages
+            );
+
+        }
+
+
+        /* ==============================================
+           SORT
+        ============================================== */
+
+        if (sortSelect) {
+
+            sortSelect.addEventListener(
+                "change",
+                updatePackages
+            );
+
+        }
+
+
+        /* ==============================================
+           CATEGORY
+        ============================================== */
+
+        filterButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        filterButtons.forEach(
+                            function (item) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        button.classList.add(
+                            "active"
+                        );
+
+
+                        activeCategory =
+                            button.dataset.category ||
+                            "all";
+
+
+                        updatePackages();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* ==============================================
+           FAVORITES
+           LOCAL STORAGE
+        ============================================== */
+
+        const favorites =
+            JSON.parse(
+                localStorage.getItem(
+                    "wanderlightFavorites"
+                ) || "[]"
+            );
+
+
+        document
+            .querySelectorAll(
+                ".favorite-package"
+            )
+            .forEach(
+                function (button) {
+
+
+                    const card =
+                        button.closest(
+                            ".package-card"
+                        );
+
+
+                    const packageName =
+                        card.dataset.name;
+
+
+                    if (
+                        favorites.includes(
+                            packageName
+                        )
+                    ) {
+
+                        button.classList.add(
+                            "active"
+                        );
+
+                        button.textContent =
+                            "♥";
+
+                    }
+
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+
+                            const index =
+                                favorites.indexOf(
+                                    packageName
+                                );
+
+
+                            if (
+                                index === -1
+                            ) {
+
+                                favorites.push(
+                                    packageName
+                                );
+
+                                button.classList.add(
+                                    "active"
+                                );
+
+                                button.textContent =
+                                    "♥";
+
+                            } else {
+
+                                favorites.splice(
+                                    index,
+                                    1
+                                );
+
+                                button.classList.remove(
+                                    "active"
+                                );
+
+                                button.textContent =
+                                    "♡";
+
+                            }
+
+
+                            localStorage.setItem(
+                                "wanderlightFavorites",
+                                JSON.stringify(
+                                    favorites
+                                )
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* ==============================================
+           URL SEARCH
+        ============================================== */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const urlSearch =
+            params.get("search");
+
+
+        if (
+            urlSearch &&
+            searchInput
+        ) {
+
+            searchInput.value =
+                urlSearch;
+
+        }
+
+
+        /* ==============================================
+           INITIAL LOAD
+        ============================================== */
+
+        updatePackages();
+
+    }
+
+);
+
+
+/* ==============================================
+   PACKAGE CARD ANIMATION
+============================================== */
+
+const packageAnimation =
+    document.createElement(
+        "style"
+    );
+
+
+packageAnimation.textContent = `
+
+    @keyframes packageCardAppear {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+    }
+
+`;
+
+
+document.head.appendChild(
+    packageAnimation
+);
+
+</script>
+
+
+</body>
+
+</html>

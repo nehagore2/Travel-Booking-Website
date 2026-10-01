@@ -1,0 +1,3891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Explore your WanderLight travel package in detail.">
+
+    <title>Package Details | WanderLight</title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Yellowtail&display=swap"
+        rel="stylesheet">
+
+
+    <!-- MAIN CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+
+    <style>
+
+        /* =====================================================
+           PACKAGE DETAILS PAGE
+        ===================================================== */
+
+        .details-hero {
+
+            min-height: 570px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            overflow: hidden;
+
+            background:
+                #063f38;
+
+        }
+
+
+        .details-hero-image {
+
+            position: absolute;
+
+            inset: 0;
+
+        }
+
+
+        .details-hero-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            animation:
+                detailsZoom 10s ease
+                forwards;
+
+        }
+
+
+        @keyframes detailsZoom {
+
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.06);
+            }
+
+        }
+
+
+        .details-hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(3,47,43,.12) 10%,
+                    rgba(3,47,43,.42) 45%,
+                    rgba(3,47,43,.96) 100%
+                );
+
+        }
+
+
+        .details-hero-content {
+
+            position: relative;
+
+            z-index: 3;
+
+            width: 100%;
+
+            padding-bottom: 65px;
+
+            color: #fff;
+
+            animation:
+                detailsHeroIn .8s ease both;
+
+        }
+
+
+        @keyframes detailsHeroIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(30px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        .details-breadcrumb {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 10px;
+
+            color:
+                rgba(255,255,255,.65);
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .details-breadcrumb a {
+
+            color:
+                rgba(255,255,255,.65);
+
+            text-decoration: none;
+
+        }
+
+
+        .details-breadcrumb a:hover {
+
+            color: #e8b84e;
+
+        }
+
+
+        .details-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            background:
+                #e8b84e;
+
+            color:
+                #063f38;
+
+            border-radius: 50px;
+
+            padding:
+                7px 13px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .details-hero h1 {
+
+            max-width: 850px;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(42px, 6vw, 75px);
+
+            line-height: 1;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .details-location {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 12px;
+
+            color:
+                rgba(255,255,255,.75);
+
+        }
+
+
+        .details-hero-meta {
+
+            display: flex;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 23px;
+
+        }
+
+
+        .details-meta-item {
+
+            padding:
+                9px 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.2);
+
+            background:
+                rgba(3,47,43,.42);
+
+            backdrop-filter:
+                blur(8px);
+
+            border-radius: 50px;
+
+            font-size: 10px;
+
+            color:
+                rgba(255,255,255,.86);
+
+        }
+
+
+        /* =====================================================
+           MAIN DETAILS LAYOUT
+        ===================================================== */
+
+        .details-main {
+
+            background:
+                #f8f5ed;
+
+        }
+
+
+        .details-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                350px;
+
+            gap: 35px;
+
+            align-items: start;
+
+        }
+
+
+        .details-content {
+
+            min-width: 0;
+
+        }
+
+
+        .details-card {
+
+            background:
+                #fff;
+
+            border:
+                1px solid
+                rgba(10,70,64,.1);
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(4,49,44,.05);
+
+        }
+
+
+        .details-eyebrow {
+
+            color:
+                #146f65;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing:
+                1.5px;
+
+            text-transform:
+                uppercase;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .details-card h2 {
+
+            color:
+                #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(27px, 4vw, 38px);
+
+            line-height: 1.15;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .details-card p {
+
+            color:
+                #71807d;
+
+            font-size: 12px;
+
+            line-height: 1.85;
+
+        }
+
+
+        /* =====================================================
+           HIGHLIGHTS
+        ===================================================== */
+
+        .highlight-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-top: 23px;
+
+        }
+
+
+        .highlight {
+
+            padding: 18px 12px;
+
+            text-align: center;
+
+            border-radius: 13px;
+
+            background:
+                #f5f7f4;
+
+            transition:
+                .25s ease;
+
+        }
+
+
+        .highlight:hover {
+
+            transform:
+                translateY(-4px);
+
+            background:
+                #edf3f0;
+
+        }
+
+
+        .highlight-icon {
+
+            display: block;
+
+            font-size: 23px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .highlight strong {
+
+            display: block;
+
+            color:
+                #063f38;
+
+            font-size: 11px;
+
+        }
+
+
+        .highlight span {
+
+            display: block;
+
+            color:
+                #87938f;
+
+            font-size: 9px;
+
+            margin-top: 3px;
+
+        }
+
+
+        /* =====================================================
+           ITINERARY
+        ===================================================== */
+
+        .itinerary {
+
+            margin-top: 24px;
+
+        }
+
+
+        .itinerary-item {
+
+            display: grid;
+
+            grid-template-columns: 62px 1fr;
+
+            gap: 18px;
+
+            position: relative;
+
+            padding-bottom: 25px;
+
+        }
+
+
+        .itinerary-item:last-child {
+
+            padding-bottom: 0;
+
+        }
+
+
+        .itinerary-item:not(:last-child)::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 30px;
+
+            top: 58px;
+
+            bottom: 0;
+
+            width: 1px;
+
+            background:
+                #dbe5e1;
+
+        }
+
+
+        .day-number {
+
+            width: 60px;
+
+            height: 60px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                #063f38;
+
+            color:
+                #e8b84e;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 18px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .itinerary-info {
+
+            padding-top: 4px;
+
+        }
+
+
+        .itinerary-info h3 {
+
+            color:
+                #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 19px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .itinerary-info p {
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           INCLUSIONS
+        ===================================================== */
+
+        .inclusion-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 11px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .detail-inclusion {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px;
+
+            background:
+                #f5f7f4;
+
+            border-radius: 9px;
+
+            color:
+                #526a65;
+
+            font-size: 11px;
+
+        }
+
+
+        .detail-inclusion .check {
+
+            width: 25px;
+
+            height: 25px;
+
+            display: grid;
+
+            place-items: center;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background:
+                rgba(20,111,101,.1);
+
+            color:
+                #146f65;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           GALLERY
+        ===================================================== */
+
+        .gallery-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr;
+
+            grid-template-rows:
+                145px 145px;
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .gallery-item {
+
+            border-radius: 11px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            position: relative;
+
+        }
+
+
+        .gallery-item:first-child {
+
+            grid-row:
+                span 2;
+
+        }
+
+
+        .gallery-item img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform .5s ease;
+
+        }
+
+
+        .gallery-item:hover img {
+
+            transform:
+                scale(1.08);
+
+        }
+
+
+        .gallery-item::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                rgba(3,47,43,0);
+
+            transition:
+                .3s ease;
+
+        }
+
+
+        .gallery-item:hover::after {
+
+            background:
+                rgba(3,47,43,.15);
+
+        }
+
+
+        /* =====================================================
+           BOOKING SIDEBAR
+        ===================================================== */
+
+        .details-sidebar {
+
+            position: sticky;
+
+            top: 105px;
+
+        }
+
+
+        .booking-card {
+
+            background:
+                #fff;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            border:
+                1px solid
+                rgba(10,70,64,.1);
+
+            box-shadow:
+                0 12px 35px
+                rgba(4,49,44,.08);
+
+        }
+
+
+        .booking-card-top {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding-bottom: 18px;
+
+            border-bottom:
+                1px solid
+                #e5ebe7;
+
+        }
+
+
+        .booking-label {
+
+            color:
+                #87938f;
+
+            font-size: 9px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        .booking-price {
+
+            color:
+                #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 34px;
+
+            margin-top: 2px;
+
+        }
+
+
+        .booking-person {
+
+            color:
+                #87938f;
+
+            font-size: 9px;
+
+        }
+
+
+        .booking-rating {
+
+            text-align: right;
+
+            color:
+                #e6ad31;
+
+            font-size: 12px;
+
+        }
+
+
+        .booking-rating span {
+
+            display: block;
+
+            color:
+                #71807d;
+
+            font-size: 9px;
+
+            margin-top: 3px;
+
+        }
+
+
+        .booking-list {
+
+            padding:
+                18px 0;
+
+            border-bottom:
+                1px solid
+                #e5ebe7;
+
+        }
+
+
+        .booking-list-item {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 8px 0;
+
+            font-size: 10px;
+
+        }
+
+
+        .booking-list-item span:first-child {
+
+            color:
+                #87938f;
+
+        }
+
+
+        .booking-list-item strong {
+
+            color:
+                #174a43;
+
+            font-weight: 600;
+
+        }
+
+
+        .booking-cta {
+
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            padding:
+                14px 18px;
+
+            border-radius: 50px;
+
+            background:
+                #e8b84e;
+
+            color:
+                #063f38;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition:
+                .3s ease;
+
+        }
+
+
+        .booking-cta:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 9px 22px
+                rgba(232,184,78,.25);
+
+        }
+
+
+        .booking-note {
+
+            text-align: center;
+
+            color:
+                #87938f;
+
+            font-size: 9px;
+
+            margin-top: 11px;
+
+        }
+
+
+        .secure-note {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            margin-top: 17px;
+
+            color:
+                #6d817b;
+
+            font-size: 9px;
+
+        }
+
+
+        /* =====================================================
+           RELATED PACKAGES
+        ===================================================== */
+
+        .related-section {
+
+            background:
+                #fff;
+
+        }
+
+
+        .related-heading {
+
+            display: flex;
+
+            align-items: end;
+
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .related-heading h2 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            color:
+                #063f38;
+
+            font-size:
+                clamp(30px, 4vw, 43px);
+
+        }
+
+
+        .related-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .related-card {
+
+            overflow: hidden;
+
+            border-radius: 17px;
+
+            background:
+                #f8f5ed;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            transition:
+                .3s ease;
+
+        }
+
+
+        .related-card:hover {
+
+            transform:
+                translateY(-6px);
+
+        }
+
+
+        .related-image {
+
+            height: 190px;
+
+            overflow: hidden;
+
+        }
+
+
+        .related-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform .5s ease;
+
+        }
+
+
+        .related-card:hover
+        .related-image img {
+
+            transform:
+                scale(1.06);
+
+        }
+
+
+        .related-info {
+
+            padding: 17px;
+
+        }
+
+
+        .related-info span {
+
+            color:
+                #146f65;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .related-info h3 {
+
+            color:
+                #063f38;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 21px;
+
+            margin:
+                5px 0;
+
+        }
+
+
+        .related-info p {
+
+            color:
+                #87938f;
+
+            font-size: 10px;
+
+        }
+
+
+        /* =====================================================
+           IMAGE LIGHTBOX
+        ===================================================== */
+
+        .lightbox {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 25px;
+
+            background:
+                rgba(3,31,28,.92);
+
+            backdrop-filter:
+                blur(8px);
+
+        }
+
+
+        .lightbox.show {
+
+            display: flex;
+
+        }
+
+
+        .lightbox img {
+
+            max-width:
+                min(1000px, 94vw);
+
+            max-height:
+                85vh;
+
+            object-fit: contain;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 20px 70px
+                rgba(0,0,0,.4);
+
+            animation:
+                lightboxIn .35s ease;
+
+        }
+
+
+        @keyframes lightboxIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(.92);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+
+            }
+
+        }
+
+
+        .lightbox-close {
+
+            position: absolute;
+
+            right: 25px;
+
+            top: 22px;
+
+            width: 43px;
+
+            height: 43px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.3);
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: #fff;
+
+            font-size: 23px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .details-layout {
+
+                grid-template-columns:
+                    1fr 310px;
+
+            }
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .details-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .details-sidebar {
+
+                position: static;
+
+            }
+
+
+            .highlight-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .related-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .details-hero {
+
+                min-height: 510px;
+
+            }
+
+
+            .details-hero-content {
+
+                padding-bottom: 40px;
+
+            }
+
+
+            .details-card {
+
+                padding: 21px;
+
+                border-radius: 15px;
+
+            }
+
+
+            .inclusion-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .gallery-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                grid-template-rows:
+                    150px 110px;
+
+            }
+
+
+            .gallery-item:first-child {
+
+                grid-column:
+                    span 2;
+
+                grid-row:
+                    auto;
+
+            }
+
+
+            .related-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .details-hero-meta {
+
+                gap: 6px;
+
+            }
+
+
+            .details-meta-item {
+
+                font-size: 9px;
+
+                padding:
+                    8px 10px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header
+    class="header"
+    id="header">
+
+    <div class="container nav-container">
+
+
+        <a
+            href="index.html"
+            class="logo">
+
+            <span class="logo-mark">
+                ▲
+            </span>
+
+            <span class="logo-text">
+
+                <strong>
+                    WanderLight
+                </strong>
+
+                <small>
+                    TRAVEL & TOURS
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <nav
+            class="navbar"
+            id="navbar">
+
+            <a
+                href="index.html"
+                class="nav-link">
+
+                Home
+
+            </a>
+
+
+            <a
+                href="destinations.html"
+                class="nav-link">
+
+                Destinations
+
+            </a>
+
+
+            <a
+                href="packages.html"
+                class="nav-link active">
+
+                Packages
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="nav-link">
+
+                About
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="nav-link">
+
+                Contact
+
+            </a>
+            <a href="cart.html" class="nav-cart">
+               ♡ My Trips
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button
+                type="button"
+                class="icon-btn search-toggle"
+                id="searchToggle"
+                aria-label="Search">
+
+                ⌕
+
+            </button>
+
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <a
+                href="booking.html"
+                class="btn btn-primary nav-btn">
+
+                Plan Your Trip
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="search-panel"
+        id="searchPanel">
+
+        <div class="container search-inner">
+
+            <form
+                action="packages.html"
+                method="GET"
+                class="search-form">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    name="search"
+                    placeholder="Search travel packages...">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    Search
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main id="detailsPage">
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="details-hero">
+
+
+    <div class="details-hero-image">
+
+        <img
+            id="heroImage"
+            src=""
+            alt="Travel destination">
+
+    </div>
+
+
+    <div class="container details-hero-content">
+
+
+        <div class="details-breadcrumb">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>
+                /
+            </span>
+
+            <a href="packages.html">
+                Packages
+            </a>
+
+            <span>
+                /
+            </span>
+
+            <span id="breadcrumbName">
+                Package
+            </span>
+
+        </div>
+
+
+        <span
+            class="details-badge"
+            id="heroBadge">
+
+            Best Seller
+
+        </span>
+
+
+        <h1 id="heroTitle">
+            Loading...
+        </h1>
+
+
+        <div class="details-location">
+
+            <span>
+                📍
+            </span>
+
+            <span id="heroLocation">
+                Discover the world
+            </span>
+
+        </div>
+
+
+        <div class="details-hero-meta">
+
+
+            <span
+                class="details-meta-item"
+                id="heroDuration">
+
+                ◷ 5 Days / 4 Nights
+
+            </span>
+
+
+            <span class="details-meta-item">
+                ★ 4.9 Guest Rating
+            </span>
+
+
+            <span
+                class="details-meta-item"
+                id="heroCategory">
+
+                Beach Escape
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DETAILS CONTENT
+====================================================== -->
+
+<section class="section details-main">
+
+    <div class="container details-layout">
+
+
+        <!-- =================================================
+             LEFT CONTENT
+        ================================================== -->
+
+        <div class="details-content">
+
+
+            <!-- OVERVIEW -->
+
+            <article class="details-card">
+
+                <p class="details-eyebrow">
+                    THE JOURNEY
+                </p>
+
+                <h2>
+                    A trip you'll
+                    remember forever.
+                </h2>
+
+                <p id="packageDescription">
+
+                    Your journey is being prepared...
+
+                </p>
+
+
+                <div class="highlight-grid">
+
+
+                    <div class="highlight">
+
+                        <span class="highlight-icon">
+                            🏨
+                        </span>
+
+                        <strong>
+                            Handpicked Stays
+                        </strong>
+
+                        <span>
+                            Comfortable hotels
+                        </span>
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        <span class="highlight-icon">
+                            🍽️
+                        </span>
+
+                        <strong>
+                            Local Flavours
+                        </strong>
+
+                        <span>
+                            Breakfast included
+                        </span>
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        <span class="highlight-icon">
+                            🚐
+                        </span>
+
+                        <strong>
+                            Easy Transfers
+                        </strong>
+
+                        <span>
+                            Hassle-free travel
+                        </span>
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        <span class="highlight-icon">
+                            ✨
+                        </span>
+
+                        <strong>
+                            Experiences
+                        </strong>
+
+                        <span>
+                            Curated for you
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ITINERARY -->
+
+            <article class="details-card">
+
+                <p class="details-eyebrow">
+                    YOUR ITINERARY
+                </p>
+
+                <h2>
+                    A day-by-day adventure
+                </h2>
+
+
+                <div
+                    class="itinerary"
+                    id="itinerary">
+
+                </div>
+
+            </article>
+
+
+
+            <!-- INCLUSIONS -->
+
+            <article class="details-card">
+
+                <p class="details-eyebrow">
+                    WHAT'S INCLUDED
+                </p>
+
+                <h2>
+                    Everything you need
+                </h2>
+
+
+                <div
+                    class="inclusion-grid"
+                    id="inclusionGrid">
+
+                </div>
+
+            </article>
+
+
+
+            <!-- GALLERY -->
+
+            <article class="details-card">
+
+                <p class="details-eyebrow">
+                    TRAVEL INSPIRATION
+                </p>
+
+                <h2>
+                    See the journey
+                </h2>
+
+
+                <div
+                    class="gallery-grid"
+                    id="gallery">
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="details-sidebar">
+
+
+            <div class="booking-card">
+
+
+                <div class="booking-card-top">
+
+
+                    <div>
+
+                        <span class="booking-label">
+                            Starting from
+                        </span>
+
+                        <div
+                            class="booking-price"
+                            id="bookingPrice">
+
+                            ₹39,999
+
+                        </div>
+
+                        <span class="booking-person">
+                            per person
+                        </span>
+
+                    </div>
+
+
+                    <div class="booking-rating">
+
+                        ★★★★★
+
+                        <span>
+                            4.9 • 128 reviews
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-list">
+
+
+                    <div class="booking-list-item">
+
+                        <span>
+                            Duration
+                        </span>
+
+                        <strong
+                            id="sidebarDuration">
+
+                            5 Days / 4 Nights
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-list-item">
+
+                        <span>
+                            Accommodation
+                        </span>
+
+                        <strong>
+                            4★ Hotel
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-list-item">
+
+                        <span>
+                            Meals
+                        </span>
+
+                        <strong>
+                            Breakfast
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-list-item">
+
+                        <span>
+                            Group Size
+                        </span>
+
+                        <strong>
+                            Up to 12
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-list-item">
+
+                        <span>
+                            Best Season
+                        </span>
+
+                        <strong
+                            id="bestSeason">
+
+                            Oct – Apr
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="booking.html"
+                    id="bookPackageButton"
+                    class="booking-cta">
+
+                    Book This Journey →
+
+                </a>
+
+
+                <p class="booking-note">
+                    No payment required to submit an enquiry.
+                </p>
+
+
+                <div class="secure-note">
+
+                    🔒
+
+                    <span>
+                        Secure booking • Flexible support
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RELATED
+====================================================== -->
+
+<section class="section related-section">
+
+    <div class="container">
+
+
+        <div class="related-heading">
+
+            <div>
+
+                <p class="details-eyebrow">
+                    YOU MAY ALSO LIKE
+                </p>
+
+                <h2>
+                    More ways to wander
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="related-grid">
+
+
+            <a
+                href="package-details.html?id=bali"
+                class="related-card">
+
+
+                <div class="related-image">
+
+                    <img
+                        src="images/package-bali.jpg"
+                        alt="Bali">
+
+                </div>
+
+
+                <div class="related-info">
+
+                    <span>
+                        Beach Escape
+                    </span>
+
+                    <h3>
+                        Bali Bliss Escape
+                    </h3>
+
+                    <p>
+                        From ₹39,999 / person
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="package-details.html?id=maldives"
+                class="related-card">
+
+
+                <div class="related-image">
+
+                    <img
+                        src="images/home-maldives.jpg"
+                        alt="Maldives">
+
+                </div>
+
+
+                <div class="related-info">
+
+                    <span>
+                        Luxury
+                    </span>
+
+                    <h3>
+                        Maldives Retreat
+                    </h3>
+
+                    <p>
+                        From ₹69,999 / person
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="package-details.html?id=kashmir"
+                class="related-card">
+
+
+                <div class="related-image">
+
+                    <img
+                        src="images/home-kashmir.jpg"
+                        alt="Kashmir">
+
+                </div>
+
+
+                <div class="related-info">
+
+                    <span>
+                        Mountain
+                    </span>
+
+                    <h3>
+                        Kashmir Escape
+                    </h3>
+
+                    <p>
+                        From ₹29,999 / person
+                    </p>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="logo footer-logo">
+
+                    <span class="logo-mark">
+                        ▲
+                    </span>
+
+                    <span class="logo-text">
+
+                        <strong>
+                            WanderLight
+                        </strong>
+
+                        <small>
+                            TRAVEL & TOURS
+                        </small>
+
+                    </span>
+
+                </a>
+
+                <p>
+                    Creating meaningful journeys,
+                    one destination at a time.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#">
+                        IG
+                    </a>
+
+                    <a href="#">
+                        FB
+                    </a>
+
+                    <a href="#">
+                        X
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Explore
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="destinations.html">
+                    Destinations
+                </a>
+
+                <a href="packages.html">
+                    Packages
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Popular
+                </h3>
+
+                <a href="package-details.html?id=bali">
+                    Bali
+                </a>
+
+                <a href="package-details.html?id=maldives">
+                    Maldives
+                </a>
+
+                <a href="package-details.html?id=paris">
+                    Paris
+                </a>
+
+                <a href="package-details.html?id=kashmir">
+                    Kashmir
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    📍 Pune, Maharashtra, India
+                </p>
+
+                <p>
+                    ✉ hello@wanderlight.com
+                </p>
+
+                <p>
+                    ☎ +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 WanderLight Travel & Tours.
+                All rights reserved.
+            </p>
+
+            <div>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+                <a href="#">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     LIGHTBOX
+====================================================== -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true">
+
+    <button
+        type="button"
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="Close image">
+
+        ×
+
+    </button>
+
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Travel gallery">
+
+</div>
+
+
+
+<!-- SCROLL TOP -->
+
+<button
+    type="button"
+    class="scroll-top"
+    id="scrollTop"
+    aria-label="Scroll to top">
+
+    ↑
+
+</button>
+
+
+
+<!-- MAIN SCRIPT -->
+
+<script src="js/script.js"></script>
+
+
+
+<!-- =====================================================
+     PACKAGE DETAILS JAVASCRIPT
+====================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =================================================
+           PACKAGE DATABASE
+        ================================================= */
+
+
+        const packages = {
+
+
+            bali: {
+
+                title:
+                    "Bali Bliss Escape",
+
+                location:
+                    "Bali, Indonesia",
+
+                category:
+                    "Beach Escape",
+
+                badge:
+                    "Best Seller",
+
+                duration:
+                    "5 Days / 4 Nights",
+
+                price:
+                    "₹39,999",
+
+                season:
+                    "Apr – Oct",
+
+                hero:
+                    "images/package-bali.jpg",
+
+                description:
+
+                    "Escape to the island of the gods and discover a beautiful mix of tropical beaches, ancient temples, peaceful rice terraces and unforgettable sunsets. This carefully planned Bali journey gives you enough time to explore while still leaving space to slow down and enjoy island life.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Arrival in Bali",
+                        "Arrive in Denpasar, meet your local representative and transfer to your beautiful hotel. Spend the evening relaxing by the pool."
+                    ],
+
+                    [
+                        "02",
+                        "Ubud & Temple Trail",
+                        "Explore the artistic heart of Bali with visits to traditional villages, lush rice terraces and a beautiful Balinese temple."
+                    ],
+
+                    [
+                        "03",
+                        "Island Adventures",
+                        "Enjoy a full day of island experiences, tropical scenery and local cuisine before watching the sunset."
+                    ],
+
+                    [
+                        "04",
+                        "Beach & Leisure",
+                        "Take a slower morning by the beach, explore local markets or choose an optional water activity."
+                    ],
+
+                    [
+                        "05",
+                        "Departure",
+                        "Enjoy breakfast at the hotel before your private transfer to the airport."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "4 nights accommodation",
+
+                    "Daily breakfast",
+
+                    "Airport transfers",
+
+                    "Private sightseeing",
+
+                    "Local English-speaking guide",
+
+                    "Selected entrance tickets",
+
+                    "24/7 travel assistance",
+
+                    "Welcome refreshments"
+
+                ],
+
+                gallery: [
+
+                    "images/package-bali.jpg",
+
+                    "images/home-bali.jpg",
+
+                    "images/bali-temple.jpg",
+
+                    "images/bali-beach.jpg",
+
+                    "images/bali-sunset.jpg"
+
+                ]
+
+            },
+
+
+            switzerland: {
+
+                title:
+                    "Swiss Alpine Dream",
+
+                location:
+                    "Switzerland",
+
+                category:
+                    "Mountain",
+
+                badge:
+                    "Premium",
+
+                duration:
+                    "7 Days / 6 Nights",
+
+                price:
+                    "₹79,999",
+
+                season:
+                    "May – Sep",
+
+                hero:
+                    "images/mountain-traveler.jpg",
+
+                description:
+
+                    "Wake up surrounded by dramatic Alpine landscapes, travel through charming mountain villages and experience some of Europe's most beautiful scenic train routes. This journey combines iconic Swiss views with comfortable stays and carefully selected experiences.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Welcome to Switzerland",
+                        "Arrive in Zurich and transfer towards the mountains. Enjoy a relaxed evening exploring your new surroundings."
+                    ],
+
+                    [
+                        "02",
+                        "Lucerne",
+                        "Discover Lucerne's historic streets, lake views and famous Chapel Bridge."
+                    ],
+
+                    [
+                        "03",
+                        "Interlaken",
+                        "Travel towards Interlaken and enjoy spectacular views of the Swiss Alps."
+                    ],
+
+                    [
+                        "04",
+                        "Mountain Experience",
+                        "Take a scenic mountain excursion and enjoy breathtaking panoramic views."
+                    ],
+
+                    [
+                        "05",
+                        "Scenic Rail Journey",
+                        "Experience one of Switzerland's famous panoramic train journeys."
+                    ],
+
+                    [
+                        "06",
+                        "Free Day",
+                        "Enjoy a flexible day for shopping, photography or optional mountain activities."
+                    ],
+
+                    [
+                        "07",
+                        "Departure",
+                        "Breakfast followed by your transfer to the airport."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "6 nights accommodation",
+
+                    "Daily breakfast",
+
+                    "Airport transfers",
+
+                    "Scenic train tickets",
+
+                    "Mountain excursion",
+
+                    "Local sightseeing",
+
+                    "Travel assistance",
+
+                    "Selected entrance tickets"
+
+                ],
+
+                gallery: [
+
+                    "images/mountain-traveler.jpg",
+
+                    "images/switzerland-alps.jpg",
+
+                    "images/swiss-village.jpg",
+
+                    "images/swiss-lake.jpg",
+
+                    "images/swiss-train.jpg"
+
+                ]
+
+            },
+
+
+            maldives: {
+
+                title:
+                    "Maldives Island Retreat",
+
+                location:
+                    "Maldives",
+
+                category:
+                    "Luxury",
+
+                badge:
+                    "Luxury Escape",
+
+                duration:
+                    "5 Days / 4 Nights",
+
+                price:
+                    "₹69,999",
+
+                season:
+                    "Nov – Apr",
+
+                hero:
+                    "images/home-maldives.jpg",
+
+                description:
+
+                    "Leave the everyday behind and settle into island life. Surrounded by turquoise water, soft white sand and endless ocean views, this Maldives retreat is designed for slow mornings, beautiful sunsets and unforgettable moments.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Island Arrival",
+                        "Arrive in Malé and transfer by speedboat to your island resort."
+                    ],
+
+                    [
+                        "02",
+                        "Ocean Morning",
+                        "Enjoy breakfast followed by free time on the beach or beside the lagoon."
+                    ],
+
+                    [
+                        "03",
+                        "Island Experience",
+                        "Discover the underwater world with an optional snorkelling experience."
+                    ],
+
+                    [
+                        "04",
+                        "Sunset Cruise",
+                        "Spend the afternoon relaxing before a beautiful sunset cruise."
+                    ],
+
+                    [
+                        "05",
+                        "Farewell",
+                        "Enjoy your final breakfast before your transfer back to Malé."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "4 nights resort stay",
+
+                    "Daily breakfast",
+
+                    "Speedboat transfers",
+
+                    "Sunset cruise",
+
+                    "Welcome drink",
+
+                    "Island sightseeing",
+
+                    "Snorkelling experience",
+
+                    "24/7 assistance"
+
+                ],
+
+                gallery: [
+
+                    "images/home-maldives.jpg",
+
+                    "images/maldives-villa.jpg",
+
+                    "images/maldives-beach.jpg",
+
+                    "images/maldives-ocean.jpg",
+
+                    "images/maldives-sunset.jpg"
+
+                ]
+
+            },
+
+
+            paris: {
+
+                title:
+                    "Paris Romance",
+
+                location:
+                    "Paris, France",
+
+                category:
+                    "Culture",
+
+                badge:
+                    "Romantic",
+
+                duration:
+                    "6 Days / 5 Nights",
+
+                price:
+                    "₹59,999",
+
+                season:
+                    "Apr – Oct",
+
+                hero:
+                    "images/destination-paris.jpg",
+
+                description:
+
+                    "Experience the timeless charm of Paris through grand boulevards, beautiful architecture, intimate cafés and world-famous landmarks. Designed for couples, culture lovers and first-time visitors.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Bonjour Paris",
+                        "Arrive in Paris, check into your hotel and enjoy an evening walk through the city."
+                    ],
+
+                    [
+                        "02",
+                        "Iconic Paris",
+                        "Visit the Eiffel Tower and explore some of Paris's most famous landmarks."
+                    ],
+
+                    [
+                        "03",
+                        "Art & Culture",
+                        "Discover the city's museums, historic streets and beautiful architecture."
+                    ],
+
+                    [
+                        "04",
+                        "Montmartre",
+                        "Explore charming Montmartre, local cafés and artistic neighbourhoods."
+                    ],
+
+                    [
+                        "05",
+                        "Seine Experience",
+                        "Enjoy free time followed by a relaxing evening Seine cruise."
+                    ],
+
+                    [
+                        "06",
+                        "Au Revoir",
+                        "Breakfast followed by your airport transfer."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "5 nights accommodation",
+
+                    "Daily breakfast",
+
+                    "Airport transfers",
+
+                    "City sightseeing",
+
+                    "Seine cruise",
+
+                    "Local guide",
+
+                    "Selected entrance tickets",
+
+                    "Travel assistance"
+
+                ],
+
+                gallery: [
+
+                    "images/destination-paris.jpg",
+
+                    "images/paris-eiffel.jpg",
+
+                    "images/paris-street.jpg",
+
+                    "images/paris-cafe.jpg",
+
+                    "images/paris-seine.jpg"
+
+                ]
+
+            },
+
+
+            dubai: {
+
+                title:
+                    "Dubai Luxury Explorer",
+
+                location:
+                    "Dubai, UAE",
+
+                category:
+                    "Luxury",
+
+                badge:
+                    "Popular",
+
+                duration:
+                    "5 Days / 4 Nights",
+
+                price:
+                    "₹45,999",
+
+                season:
+                    "Nov – Mar",
+
+                hero:
+                    "images/destination-dubai.jpg",
+
+                description:
+
+                    "Experience the futuristic energy of Dubai with a mix of luxury, desert adventure, shopping and spectacular architecture. From skyline views to golden desert sunsets, this journey has something for every traveller.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Dubai Arrival",
+                        "Airport pickup followed by hotel check-in and an evening at leisure."
+                    ],
+
+                    [
+                        "02",
+                        "Modern Dubai",
+                        "Explore Downtown Dubai, iconic architecture and the city's famous skyline."
+                    ],
+
+                    [
+                        "03",
+                        "Desert Safari",
+                        "Enjoy dune adventures, traditional entertainment and a magical desert sunset."
+                    ],
+
+                    [
+                        "04",
+                        "Luxury & Leisure",
+                        "Enjoy free time for shopping, beach activities or optional experiences."
+                    ],
+
+                    [
+                        "05",
+                        "Departure",
+                        "Breakfast followed by airport transfer."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "4 nights accommodation",
+
+                    "Daily breakfast",
+
+                    "Airport transfers",
+
+                    "Dubai city tour",
+
+                    "Desert safari",
+
+                    "Desert dinner",
+
+                    "Local guide",
+
+                    "Travel assistance"
+
+                ],
+
+                gallery: [
+
+                    "images/destination-dubai.jpg",
+
+                    "images/dubai-skyline.jpg",
+
+                    "images/dubai-desert.jpg",
+
+                    "images/dubai-marina.jpg",
+
+                    "images/dubai-night.jpg"
+
+                ]
+
+            },
+
+
+            kashmir: {
+
+                title:
+                    "Kashmir Valley Escape",
+
+                location:
+                    "Kashmir, India",
+
+                category:
+                    "Mountain",
+
+                badge:
+                    "India Special",
+
+                duration:
+                    "6 Days / 5 Nights",
+
+                price:
+                    "₹29,999",
+
+                season:
+                    "Mar – Oct",
+
+                hero:
+                    "images/home-kashmir.jpg",
+
+                description:
+
+                    "Discover the peaceful beauty of Kashmir through emerald valleys, mountain landscapes, beautiful lakes and warm local hospitality. A relaxed Himalayan journey filled with unforgettable scenery.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Welcome to Kashmir",
+                        "Arrive in Srinagar and check into your hotel or houseboat."
+                    ],
+
+                    [
+                        "02",
+                        "Srinagar Discovery",
+                        "Explore Mughal gardens, local markets and enjoy a peaceful Shikara ride."
+                    ],
+
+                    [
+                        "03",
+                        "Gulmarg",
+                        "Travel to Gulmarg and enjoy spectacular mountain scenery."
+                    ],
+
+                    [
+                        "04",
+                        "Pahalgam",
+                        "Discover the beautiful valleys and rivers around Pahalgam."
+                    ],
+
+                    [
+                        "05",
+                        "Local Experiences",
+                        "Enjoy free time for shopping, photography and local Kashmiri experiences."
+                    ],
+
+                    [
+                        "06",
+                        "Departure",
+                        "Breakfast followed by your airport transfer."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "5 nights accommodation",
+
+                    "Daily breakfast",
+
+                    "Airport transfers",
+
+                    "Shikara ride",
+
+                    "Gulmarg excursion",
+
+                    "Pahalgam excursion",
+
+                    "Local sightseeing",
+
+                    "Travel assistance"
+
+                ],
+
+                gallery: [
+
+                    "images/home-kashmir.jpg",
+
+                    "images/kashmir-lake.jpg",
+
+                    "images/kashmir-mountains.jpg",
+
+                    "images/kashmir-valley.jpg",
+
+                    "images/kashmir-houseboat.jpg"
+
+                ]
+
+            },
+
+
+            kyoto: {
+
+                title:
+                    "Kyoto Heritage Journey",
+
+                location:
+                    "Kyoto, Japan",
+
+                category:
+                    "Culture",
+
+                badge:
+                    "New",
+
+                duration:
+                    "7 Days / 6 Nights",
+
+                price:
+                    "₹74,999",
+
+                season:
+                    "Mar – May",
+
+                hero:
+                    "images/kyoto-japan.jpg",
+
+                description:
+
+                    "Step into old-world Japan with ancient temples, peaceful gardens, traditional neighbourhoods and unforgettable local flavours. This journey is perfect for travellers looking for culture and slow exploration.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Arrival in Kyoto",
+                        "Arrive and settle into your traditional-inspired hotel."
+                    ],
+
+                    [
+                        "02",
+                        "Temple Trail",
+                        "Explore some of Kyoto's most beautiful temples and gardens."
+                    ],
+
+                    [
+                        "03",
+                        "Old Kyoto",
+                        "Walk through historic neighbourhoods and traditional streets."
+                    ],
+
+                    [
+                        "04",
+                        "Arashiyama",
+                        "Discover the famous bamboo forest and surrounding temples."
+                    ],
+
+                    [
+                        "05",
+                        "Japanese Flavours",
+                        "Enjoy a food-focused experience and explore local markets."
+                    ],
+
+                    [
+                        "06",
+                        "Free Exploration",
+                        "Enjoy a flexible day for shopping and independent exploration."
+                    ],
+
+                    [
+                        "07",
+                        "Departure",
+                        "Breakfast followed by your airport transfer."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "6 nights accommodation",
+
+                    "Daily breakfast",
+
+                    "Airport transfers",
+
+                    "Temple tours",
+
+                    "Local guide",
+
+                    "Food experience",
+
+                    "Bamboo forest visit",
+
+                    "Travel assistance"
+
+                ],
+
+                gallery: [
+
+                    "images/kyoto-japan.jpg",
+
+                    "images/kyoto-temple.jpg",
+
+                    "images/kyoto-bamboo.jpg",
+
+                    "images/kyoto-street.jpg",
+
+                    "images/kyoto-garden.jpg"
+
+                ]
+
+            },
+
+
+            iceland: {
+
+                title:
+                    "Iceland Northern Lights",
+
+                location:
+                    "Iceland",
+
+                category:
+                    "Adventure",
+
+                badge:
+                    "Adventure",
+
+                duration:
+                    "8 Days / 7 Nights",
+
+                price:
+                    "₹89,999",
+
+                season:
+                    "Sep – Mar",
+
+                hero:
+                    "images/iceland-northern-lights.jpg",
+
+                description:
+
+                    "Journey into Iceland's wild landscapes in search of dancing Northern Lights. Explore waterfalls, glaciers, volcanic scenery and dramatic coastlines on an unforgettable Nordic adventure.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Reykjavík Arrival",
+                        "Arrive in Reykjavík and enjoy a relaxed introduction to Iceland."
+                    ],
+
+                    [
+                        "02",
+                        "Golden Circle",
+                        "Explore famous waterfalls, geothermal landscapes and dramatic scenery."
+                    ],
+
+                    [
+                        "03",
+                        "South Coast",
+                        "Discover black-sand beaches and powerful waterfalls."
+                    ],
+
+                    [
+                        "04",
+                        "Glacier Adventure",
+                        "Explore Iceland's glacial landscapes with a guided experience."
+                    ],
+
+                    [
+                        "05",
+                        "Northern Lights Hunt",
+                        "Head away from city lights for a chance to witness the Aurora."
+                    ],
+
+                    [
+                        "06",
+                        "Blue Lagoon",
+                        "Relax in Iceland's famous geothermal waters."
+                    ],
+
+                    [
+                        "07",
+                        "Free Reykjavík",
+                        "Explore cafés, shops and local culture at your own pace."
+                    ],
+
+                    [
+                        "08",
+                        "Departure",
+                        "Breakfast followed by airport transfer."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "7 nights accommodation",
+
+                    "Daily breakfast",
+
+                    "Airport transfers",
+
+                    "Golden Circle tour",
+
+                    "Northern Lights hunt",
+
+                    "Glacier experience",
+
+                    "Blue Lagoon visit",
+
+                    "Local guide"
+
+                ],
+
+                gallery: [
+
+                    "images/iceland-northern-lights.jpg",
+
+                    "images/iceland-waterfall.jpg",
+
+                    "images/iceland-glacier.jpg",
+
+                    "images/iceland-landscape.jpg",
+
+                    "images/iceland-lagoon.jpg"
+
+                ]
+
+            },
+
+
+            petra: {
+
+                title:
+                    "Petra Desert Adventure",
+
+                location:
+                    "Petra, Jordan",
+
+                category:
+                    "Adventure",
+
+                badge:
+                    "Explorer",
+
+                duration:
+                    "6 Days / 5 Nights",
+
+                price:
+                    "₹64,999",
+
+                season:
+                    "Mar – May",
+
+                hero:
+                    "images/petra-jordan.jpg",
+
+                description:
+
+                    "Travel through the dramatic landscapes of Jordan and discover Petra's ancient stone-carved architecture. Combine history, desert scenery and authentic local experiences on this unforgettable adventure.",
+
+                itinerary: [
+
+                    [
+                        "01",
+                        "Amman Arrival",
+                        "Arrive in Jordan and settle into your hotel."
+                    ],
+
+                    [
+                        "02",
+                        "Historic Amman",
+                        "Explore ancient sites and discover Jordan's capital."
+                    ],
+
+                    [
+                        "03",
+                        "Petra",
+                        "Walk through the famous Siq and discover the legendary Treasury."
+                    ],
+
+                    [
+                        "04",
+                        "Wadi Rum",
+                        "Explore dramatic desert landscapes and enjoy a desert experience."
+                    ],
+
+                    [
+                        "05",
+                        "Dead Sea",
+                        "Relax beside the Dead Sea before your final evening."
+                    ],
+
+                    [
+                        "06",
+                        "Departure",
+                        "Breakfast followed by airport transfer."
+                    ]
+
+                ],
+
+                inclusions: [
+
+                    "5 nights accommodation",
+
+                    "Daily breakfast",
+
+                    "Airport transfers",
+
+                    "Petra entrance",
+
+                    "Local guide",
+
+                    "Wadi Rum experience",
+
+                    "Dead Sea visit",
+
+                    "Travel assistance"
+
+                ],
+
+                gallery: [
+
+                    "images/petra-jordan.jpg",
+
+                    "images/petra-treasury.jpg",
+
+                    "images/jordan-desert.jpg",
+
+                    "images/wadi-rum.jpg",
+
+                    "images/dead-sea.jpg"
+
+                ]
+
+            }
+
+        };
+
+
+
+        /* =================================================
+           GET PACKAGE ID
+        ================================================= */
+
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const packageId =
+            (
+                params.get("id") ||
+                "bali"
+            ).toLowerCase();
+
+
+        const data =
+            packages[packageId] ||
+            packages.bali;
+
+
+
+        /* =================================================
+           ELEMENTS
+        ================================================= */
+
+
+        const heroImage =
+            document.getElementById(
+                "heroImage"
+            );
+
+
+        const heroTitle =
+            document.getElementById(
+                "heroTitle"
+            );
+
+
+        const heroLocation =
+            document.getElementById(
+                "heroLocation"
+            );
+
+
+        const heroBadge =
+            document.getElementById(
+                "heroBadge"
+            );
+
+
+        const heroDuration =
+            document.getElementById(
+                "heroDuration"
+            );
+
+
+        const heroCategory =
+            document.getElementById(
+                "heroCategory"
+            );
+
+
+        const breadcrumbName =
+            document.getElementById(
+                "breadcrumbName"
+            );
+
+
+        const description =
+            document.getElementById(
+                "packageDescription"
+            );
+
+
+        const itinerary =
+            document.getElementById(
+                "itinerary"
+            );
+
+
+        const inclusionGrid =
+            document.getElementById(
+                "inclusionGrid"
+            );
+
+
+        const gallery =
+            document.getElementById(
+                "gallery"
+            );
+
+
+        const bookingPrice =
+            document.getElementById(
+                "bookingPrice"
+            );
+
+
+        const sidebarDuration =
+            document.getElementById(
+                "sidebarDuration"
+            );
+
+
+        const bestSeason =
+            document.getElementById(
+                "bestSeason"
+            );
+
+
+        const bookButton =
+            document.getElementById(
+                "bookPackageButton"
+            );
+
+
+
+        /* =================================================
+           POPULATE HERO
+        ================================================= */
+
+
+        heroImage.src =
+            data.hero;
+
+        heroImage.alt =
+            data.title;
+
+
+        heroTitle.textContent =
+            data.title;
+
+
+        heroLocation.textContent =
+            data.location;
+
+
+        heroBadge.textContent =
+            data.badge;
+
+
+        heroDuration.textContent =
+            "◷ " + data.duration;
+
+
+        heroCategory.textContent =
+            data.category;
+
+
+        breadcrumbName.textContent =
+            data.title;
+
+
+        document.title =
+            data.title +
+            " | WanderLight";
+
+
+
+        /* =================================================
+           DESCRIPTION
+        ================================================= */
+
+
+        description.textContent =
+            data.description;
+
+
+
+        /* =================================================
+           SIDEBAR
+        ================================================= */
+
+
+        bookingPrice.textContent =
+            data.price;
+
+
+        sidebarDuration.textContent =
+            data.duration;
+
+
+        bestSeason.textContent =
+            data.season;
+
+
+        bookButton.href =
+            "booking.html?package=" +
+            encodeURIComponent(
+                packageId
+            );
+
+
+
+        /* =================================================
+           ITINERARY
+        ================================================= */
+
+
+        itinerary.innerHTML = "";
+
+
+        data.itinerary.forEach(
+            function (item) {
+
+
+                const element =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                element.className =
+                    "itinerary-item";
+
+
+                element.innerHTML = `
+
+                    <div class="day-number">
+
+                        ${item[0]}
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <h3>
+                            ${item[1]}
+                        </h3>
+
+                        <p>
+                            ${item[2]}
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                itinerary.appendChild(
+                    element
+                );
+
+            }
+        );
+
+
+
+        /* =================================================
+           INCLUSIONS
+        ================================================= */
+
+
+        inclusionGrid.innerHTML =
+            "";
+
+
+        data.inclusions.forEach(
+            function (item) {
+
+
+                const element =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                element.className =
+                    "detail-inclusion";
+
+
+                element.innerHTML = `
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    <span>
+                        ${item}
+                    </span>
+
+                `;
+
+
+                inclusionGrid.appendChild(
+                    element
+                );
+
+            }
+        );
+
+
+
+        /* =================================================
+           GALLERY
+        ================================================= */
+
+
+        gallery.innerHTML =
+            "";
+
+
+        data.gallery
+            .slice(0, 5)
+            .forEach(
+                function (
+                    image,
+                    index
+                ) {
+
+
+                    const element =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    element.className =
+                        "gallery-item";
+
+
+                    element.innerHTML = `
+
+                        <img
+                            src="${image}"
+                            alt="${data.title} travel image ${index + 1}"
+                            loading="lazy"
+                        >
+
+                    `;
+
+
+                    gallery.appendChild(
+                        element
+                    );
+
+                }
+            );
+
+
+
+        /* =================================================
+           GALLERY LIGHTBOX
+        ================================================= */
+
+
+        const lightbox =
+            document.getElementById(
+                "lightbox"
+            );
+
+
+        const lightboxImage =
+            document.getElementById(
+                "lightboxImage"
+            );
+
+
+        const lightboxClose =
+            document.getElementById(
+                "lightboxClose"
+            );
+
+
+        document
+            .querySelectorAll(
+                ".gallery-item"
+            )
+            .forEach(
+                function (item) {
+
+
+                    item.addEventListener(
+                        "click",
+                        function () {
+
+
+                            const image =
+                                item.querySelector(
+                                    "img"
+                                );
+
+
+                            if (!image) {
+                                return;
+                            }
+
+
+                            lightboxImage.src =
+                                image.src;
+
+
+                            lightboxImage.alt =
+                                image.alt;
+
+
+                            lightbox.classList.add(
+                                "show"
+                            );
+
+
+                            document.body.style
+                                .overflow =
+                                "hidden";
+
+                        }
+                    );
+
+                }
+            );
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove(
+                "show"
+            );
+
+            document.body.style
+                .overflow = "";
+
+        }
+
+
+        lightboxClose.addEventListener(
+            "click",
+            closeLightbox
+        );
+
+
+        lightbox.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target ===
+                    lightbox
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+
+
+        /* =================================================
+           BOOKING BUTTON LOCAL STORAGE
+        ================================================= */
+
+
+        bookButton.addEventListener(
+            "click",
+            function () {
+
+
+                localStorage.setItem(
+                    "selectedTravelPackage",
+                    JSON.stringify({
+
+                        id:
+                            packageId,
+
+                        name:
+                            data.title,
+
+                        destination:
+                            data.location,
+
+                        price:
+                            data.price
+
+                    })
+                );
+
+            }
+        );
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>

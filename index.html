@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WanderLight | Explore The World</title>
+
+    <meta name="description"
+        content="WanderLight helps you discover beautiful destinations, curated travel packages and unforgettable experiences.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Yellowtail&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header" id="header">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                <span class="logo-mark">▲</span>
+
+                <span class="logo-text">
+                    <strong>WanderLight</strong>
+                    <small>TRAVEL & TOURS</small>
+                </span>
+            </a>
+
+            <nav class="navbar" id="navbar">
+
+                <a href="index.html" class="nav-link active">
+                    Home
+                </a>
+
+                <a href="destinations.html" class="nav-link">
+                    Destinations
+                </a>
+
+                <a href="packages.html" class="nav-link">
+                    Packages
+                </a>
+
+                <a href="about.html" class="nav-link">
+                    About
+                </a>
+
+                <a href="contact.html" class="nav-link">
+                    Contact
+                </a>
+                <a href="cart.html" class="nav-cart">
+                   ♡ My Trips
+                </a>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <button
+                    type="button"
+                    class="icon-btn search-toggle"
+                    id="searchToggle"
+                    aria-label="Open search">
+                    <span>⌕</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open menu"
+                    aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <a href="booking.html" class="btn btn-primary nav-btn">
+                    Plan Your Trip
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- SEARCH PANEL -->
+
+        <div class="search-panel" id="searchPanel">
+
+            <div class="container search-inner">
+
+                <form action="destinations.html" method="GET" class="search-form">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="search"
+                        name="search"
+                        id="globalSearch"
+                        placeholder="Search destinations, packages..."
+                        autocomplete="off">
+
+                    <button type="submit" class="btn btn-primary">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             HERO SECTION
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="hero-background"></div>
+
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content">
+
+                <div class="hero-copy">
+
+                    <p class="eyebrow light">
+                        EXPLORE • DISCOVER • EXPERIENCE
+                    </p>
+
+                    <h1>
+                        Discover
+                        <span class="script-text">Beautiful</span>
+                        Places
+                    </h1>
+
+                    <h2>
+                        Create Stories
+                        <br>
+                        Worth Remembering
+                    </h2>
+
+                    <p class="hero-description">
+                        From breathtaking beaches to majestic mountains,
+                        discover extraordinary destinations and unforgettable
+                        experiences around the world.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="destinations.html" class="btn btn-gold">
+                            Explore Destinations
+                            <span>→</span>
+                        </a>
+
+                        <a href="#featured" class="btn btn-outline-light">
+                            View Popular Places
+                        </a>
+
+                    </div>
+
+                    <div class="hero-stats">
+
+                        <div class="hero-stat">
+                            <strong>50+</strong>
+                            <span>Destinations</span>
+                        </div>
+
+                        <div class="hero-stat">
+                            <strong>120+</strong>
+                            <span>Travel Packages</span>
+                        </div>
+
+                        <div class="hero-stat">
+                            <strong>10K+</strong>
+                            <span>Happy Travelers</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hero-scroll">
+                <span></span>
+                Scroll to explore
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DESTINATIONS SECTION
+        ========================== -->
+
+        <section class="section destinations-section" id="featured">
+
+            <div class="container">
+
+                <div class="section-heading centered">
+
+                    <p class="eyebrow">
+                        TOP DESTINATIONS
+                    </p>
+
+                    <h2>
+                        Hidden Gems Around
+                        <span class="script-text">The World</span>
+                    </h2>
+
+                    <p>
+                        Escape the ordinary and discover places that
+                        deserve a place on your travel bucket list.
+                    </p>
+
+                </div>
+
+
+                <div class="destination-grid">
+
+                    <!-- DESTINATION 01 -->
+
+                    <article class="destination-card">
+
+                        <div class="destination-image">
+
+                            <img
+                                src="images/iceland-northern-lights.jpg"
+                                alt="Iceland Northern Lights">
+
+                            <span class="destination-number">
+                                01
+                            </span>
+
+                            <button
+                                type="button"
+                                class="favorite-btn"
+                                aria-label="Add Iceland to favorites">
+                                ♡
+                            </button>
+
+                            <div class="destination-content">
+
+                                <span class="destination-location">
+                                    📍 Iceland
+                                </span>
+
+                                <h3>
+                                    Northern Lights
+                                </h3>
+
+                                <p>
+                                    Magical skies, dramatic landscapes
+                                    and unforgettable winter adventures.
+                                </p>
+
+                                <a
+                                    href="destinations.html?destination=iceland"
+                                    class="card-link">
+                                    Explore
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- DESTINATION 02 -->
+
+                    <article class="destination-card">
+
+                        <div class="destination-image">
+
+                            <img
+                                src="images/home-switzerland.jpg"
+                                alt="Swiss Alps">
+
+                            <span class="destination-number">
+                                02
+                            </span>
+
+                            <button
+                                type="button"
+                                class="favorite-btn"
+                                aria-label="Add Switzerland to favorites">
+                                ♡
+                            </button>
+
+                            <div class="destination-content">
+
+                                <span class="destination-location">
+                                    📍 Switzerland
+                                </span>
+
+                                <h3>
+                                    Swiss Alps
+                                </h3>
+
+                                <p>
+                                    Snow-covered peaks, peaceful villages
+                                    and spectacular mountain views.
+                                </p>
+
+                                <a
+                                    href="destinations.html?destination=switzerland"
+                                    class="card-link">
+                                    Explore
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- DESTINATION 03 -->
+
+                    <article class="destination-card">
+
+                        <div class="destination-image">
+
+                            <img
+                                src="images/home-paris.jpg"
+                                alt="Paris France">
+
+                            <span class="destination-number">
+                                03
+                            </span>
+
+                            <button
+                                type="button"
+                                class="favorite-btn"
+                                aria-label="Add Paris to favorites">
+                                ♡
+                            </button>
+
+                            <div class="destination-content">
+
+                                <span class="destination-location">
+                                    📍 France
+                                </span>
+
+                                <h3>
+                                    Paris
+                                </h3>
+
+                                <p>
+                                    Art, architecture, romantic streets
+                                    and timeless European charm.
+                                </p>
+
+                                <a
+                                    href="destinations.html?destination=paris"
+                                    class="card-link">
+                                    Explore
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- DESTINATION 04 -->
+
+                    <article class="destination-card">
+
+                        <div class="destination-image">
+
+                            <img
+                                src="images/home-maldives.jpg"
+                                alt="Maldives">
+
+                            <span class="destination-number">
+                                04
+                            </span>
+
+                            <button
+                                type="button"
+                                class="favorite-btn"
+                                aria-label="Add Maldives to favorites">
+                                ♡
+                            </button>
+
+                            <div class="destination-content">
+
+                                <span class="destination-location">
+                                    📍 Maldives
+                                </span>
+
+                                <h3>
+                                    Maldives
+                                </h3>
+
+                                <p>
+                                    Crystal-clear water, private beaches
+                                    and peaceful island escapes.
+                                </p>
+
+                                <a
+                                    href="destinations.html?destination=maldives"
+                                    class="card-link">
+                                    Explore
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="section-button">
+
+                    <a href="destinations.html" class="btn btn-dark">
+                        View All Destinations
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PLAN YOUR TRIP
+        ========================== -->
+
+        <section class="section trip-section">
+
+            <div class="container">
+
+                <div class="section-heading centered">
+
+                    <p class="eyebrow">
+                        PLAN YOUR TRIP
+                    </p>
+
+                    <h2>
+                        Find Your
+                        <span class="script-text">Perfect Escape</span>
+                    </h2>
+
+                    <p>
+                        Whatever kind of traveler you are,
+                        we have an experience designed for you.
+                    </p>
+
+                </div>
+
+
+                <div class="trip-grid">
+
+                    <!-- ADVENTURE -->
+
+                    <article class="trip-card">
+
+                        <img
+                            src="images/mountain-traveler.jpg"
+                            alt="Adventure travel">
+
+                        <div class="trip-overlay"></div>
+
+                        <div class="trip-icon">
+                            ↗
+                        </div>
+
+                        <div class="trip-content">
+
+                            <span>
+                                ADVENTURE
+                            </span>
+
+                            <h3>
+                                Chase The Wild
+                            </h3>
+
+                            <p>
+                                Hike, explore and embrace
+                                the wild side.
+                            </p>
+
+                            <a
+                                href="packages.html?category=adventure"
+                                class="btn btn-small btn-outline-light">
+                                Choose Adventure
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- RELAXATION -->
+
+                    <article class="trip-card">
+
+                        <img
+                            src="images/home-maldives.jpg"
+                            alt="Relaxation travel">
+
+                        <div class="trip-overlay"></div>
+
+                        <div class="trip-icon">
+                            ✦
+                        </div>
+
+                        <div class="trip-content">
+
+                            <span>
+                                RELAXATION
+                            </span>
+
+                            <h3>
+                                Slow Down
+                            </h3>
+
+                            <p>
+                                Find peaceful beaches,
+                                sunshine and serenity.
+                            </p>
+
+                            <a
+                                href="packages.html?category=relaxation"
+                                class="btn btn-small btn-outline-light">
+                                Choose Relaxation
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CULTURE -->
+
+                    <article class="trip-card">
+
+                        <img
+                            src="images/kyoto-japan.jpg"
+                            alt="Cultural travel">
+
+                        <div class="trip-overlay"></div>
+
+                        <div class="trip-icon">
+                            ◈
+                        </div>
+
+                        <div class="trip-content">
+
+                            <span>
+                                CULTURE
+                            </span>
+
+                            <h3>
+                                Discover Culture
+                            </h3>
+
+                            <p>
+                                Explore new places,
+                                traditions and local life.
+                            </p>
+
+                            <a
+                                href="packages.html?category=culture"
+                                class="btn btn-small btn-gold">
+                                Choose Culture
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FEATURED PACKAGES
+        ========================== -->
+
+        <section class="section packages-section">
+
+            <div class="container">
+
+                <div class="section-heading section-heading-row">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            CURATED EXPERIENCES
+                        </p>
+
+                        <h2>
+                            Travel Packages
+                            <span class="script-text">Made For You</span>
+                        </h2>
+
+                    </div>
+
+                    <a href="packages.html" class="btn btn-outline-dark">
+                        View All Packages
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+
+                <div class="package-grid">
+
+                    <!-- PACKAGE 1 -->
+
+                    <article class="package-card">
+
+                        <div class="package-image">
+
+                            <img
+                                src="images/package-bali.jpg"
+                                alt="Bali travel package">
+
+                            <span class="package-tag">
+                                BEST SELLER
+                            </span>
+
+                        </div>
+
+                        <div class="package-body">
+
+                            <div class="package-meta">
+                                <span>📍 Bali, Indonesia</span>
+                                <span>5 Days</span>
+                            </div>
+
+                            <h3>
+                                Bali Island Escape
+                            </h3>
+
+                            <p>
+                                Beaches, temples, local culture and
+                                unforgettable tropical experiences.
+                            </p>
+
+                            <div class="package-bottom">
+
+                                <strong>
+                                    ₹39,999
+                                </strong>
+
+                                <a
+                                    href="package-details.html?id=bali"
+                                    class="btn btn-small btn-dark">
+                                    View Details
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PACKAGE 2 -->
+
+                    <article class="package-card">
+
+                        <div class="package-image">
+
+                            <img
+                                src="images/home-dubai.jpg"
+                                alt="Dubai travel package">
+
+                            <span class="package-tag">
+                                POPULAR
+                            </span>
+
+                        </div>
+
+                        <div class="package-body">
+
+                            <div class="package-meta">
+                                <span>📍 Dubai, UAE</span>
+                                <span>4 Days</span>
+                            </div>
+
+                            <h3>
+                                Dubai City Lights
+                            </h3>
+
+                            <p>
+                                Luxury shopping, desert adventures,
+                                skyscrapers and Arabian nights.
+                            </p>
+
+                            <div class="package-bottom">
+
+                                <strong>
+                                    ₹45,999
+                                </strong>
+
+                                <a
+                                    href="package-details.html?id=dubai"
+                                    class="btn btn-small btn-dark">
+                                    View Details
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PACKAGE 3 -->
+
+                    <article class="package-card">
+
+                        <div class="package-image">
+
+                            <img
+                                src="images/home-kashmir.jpg"
+                                alt="Kashmir travel package">
+
+                            <span class="package-tag">
+                                NEW
+                            </span>
+
+                        </div>
+
+                        <div class="package-body">
+
+                            <div class="package-meta">
+                                <span>📍 Kashmir, India</span>
+                                <span>6 Days</span>
+                            </div>
+
+                            <h3>
+                                Kashmir Paradise
+                            </h3>
+
+                            <p>
+                                Mountains, lakes, valleys and peaceful
+                                Himalayan landscapes.
+                            </p>
+
+                            <div class="package-bottom">
+
+                                <strong>
+                                    ₹29,999
+                                </strong>
+
+                                <a
+                                    href="package-details.html?id=kashmir"
+                                    class="btn btn-small btn-dark">
+                                    View Details
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OFFER SECTION
+        ========================== -->
+
+        <section class="offer-section">
+
+            <div class="container">
+
+                <div class="offer-card">
+
+                    <img
+                        src="images/offer-banner.jpg"
+                        alt="Special travel offer">
+
+                    <div class="offer-overlay"></div>
+
+                    <div class="offer-content">
+
+                        <p class="eyebrow light">
+                            LIMITED TIME OFFER
+                        </p>
+
+                        <h2>
+                            Your Next Adventure
+                            <br>
+                            Starts Here.
+                        </h2>
+
+                        <p>
+                            Get up to
+                            <strong>25% OFF</strong>
+                            selected travel packages.
+                        </p>
+
+                        <a
+                            href="packages.html"
+                            class="btn btn-gold">
+                            Explore Offers
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TESTIMONIALS
+        ========================== -->
+
+        <section class="section testimonials-section">
+
+            <div class="container">
+
+                <div class="section-heading centered">
+
+                    <p class="eyebrow">
+                        TRAVEL STORIES
+                    </p>
+
+                    <h2>
+                        Loved By
+                        <span class="script-text">Travelers</span>
+                    </h2>
+
+                    <p>
+                        Real experiences from people who explored
+                        the world with WanderLight.
+                    </p>
+
+                </div>
+
+
+                <div class="testimonial-grid">
+
+                    <!-- TESTIMONIAL 1 -->
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-image">
+
+                            <img
+                                src="images/testimonial-1.jpg"
+                                alt="WanderLight traveler">
+
+                        </div>
+
+                        <div class="testimonial-content">
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                “Everything was perfectly organized.
+                                The hotel, transport and activities
+                                made our trip completely stress-free.”
+                            </p>
+
+                            <div class="testimonial-user">
+
+                                <strong>
+                                    Ananya Sharma
+                                </strong>
+
+                                <span>
+                                    Mumbai, India
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- TESTIMONIAL 2 -->
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-image">
+
+                            <img
+                                src="images/testimonial-2.jpg"
+                                alt="Happy traveler">
+
+                        </div>
+
+                        <div class="testimonial-content">
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                “Our Bali vacation was unforgettable.
+                                The itinerary gave us enough freedom
+                                while still covering everything.”
+                            </p>
+
+                            <div class="testimonial-user">
+
+                                <strong>
+                                    Rohan Mehta
+                                </strong>
+
+                                <span>
+                                    Pune, India
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- TESTIMONIAL 3 -->
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-image">
+
+                            <img
+                                src="images/testimonial-3.jpg"
+                                alt="Travel couple">
+
+                        </div>
+
+                        <div class="testimonial-content">
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                “From booking to returning home,
+                                the WanderLight team was helpful,
+                                responsive and professional.”
+                            </p>
+
+                            <div class="testimonial-user">
+
+                                <strong>
+                                    Priya & Arjun
+                                </strong>
+
+                                <span>
+                                    Bengaluru, India
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NEWSLETTER
+        ========================== -->
+
+        <section class="newsletter-section">
+
+            <div class="container newsletter-container">
+
+                <div class="newsletter-content">
+
+                    <span class="newsletter-icon">
+                        ✈
+                    </span>
+
+                    <div>
+
+                        <p class="eyebrow light">
+                            TRAVEL INSPIRATION
+                        </p>
+
+                        <h2>
+                            Get More Travel Inspiration
+                        </h2>
+
+                        <p>
+                            Join our newsletter for destination ideas,
+                            exclusive offers and travel guides.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form class="newsletter-form" id="newsletterForm">
+
+                    <input
+                        type="email"
+                        id="newsletterEmail"
+                        placeholder="Enter your email address"
+                        required>
+
+                    <button
+                        type="submit"
+                        class="btn btn-gold">
+                        Join The Journey
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-main">
+
+                <div class="footer-brand">
+
+                    <a href="index.html" class="logo footer-logo">
+
+                        <span class="logo-mark">
+                            ▲
+                        </span>
+
+                        <span class="logo-text">
+
+                            <strong>
+                                WanderLight
+                            </strong>
+
+                            <small>
+                                TRAVEL & TOURS
+                            </small>
+
+                        </span>
+
+                    </a>
+
+                    <p>
+                        Creating meaningful journeys,
+                        one destination at a time.
+                    </p>
+
+                    <div class="social-links">
+
+                        <a href="#" aria-label="Instagram">
+                            IG
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            FB
+                        </a>
+
+                        <a href="#" aria-label="Twitter">
+                            X
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Explore
+                    </h3>
+
+                    <a href="destinations.html">
+                        Destinations
+                    </a>
+
+                    <a href="packages.html">
+                        Travel Packages
+                    </a>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Travel With Us
+                    </h3>
+
+                    <a href="packages.html?category=adventure">
+                        Adventure
+                    </a>
+
+                    <a href="packages.html?category=relaxation">
+                        Relaxation
+                    </a>
+
+                    <a href="packages.html?category=culture">
+                        Culture
+                    </a>
+
+                    <a href="booking.html">
+                        Plan A Trip
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Contact
+                    </h3>
+
+                    <p>
+                        📍 Pune, Maharashtra, India
+                    </p>
+
+                    <p>
+                        ✉ hello@wanderlight.com
+                    </p>
+
+                    <p>
+                        ☎ +91 98765 43210
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 WanderLight Travel & Tours.
+                    All rights reserved.
+                </p>
+
+                <div>
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                    <a href="#">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         SCROLL TO TOP
+    ========================== -->
+
+    <button
+        type="button"
+        class="scroll-top"
+        id="scrollTop"
+        aria-label="Scroll to top">
+        ↑
+    </button>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
